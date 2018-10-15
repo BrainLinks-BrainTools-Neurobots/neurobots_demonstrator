@@ -410,7 +410,7 @@ class RosDatabaseHandler():
 
 def get_problem_from_database(domain):
     has_rooms = False
-    if domain.name in ["neurobots-demo", "neurobots-iros2", "neurobots-simgen"]:
+    if domain.name in ["neurobots-demo", "neurobots-iros2", "neurobots-simgen", "neurobots-small"]:
         has_rooms = True
         logger.debug("Domain has rooms %s" % domain.name)
     else:

@@ -1,0 +1,14 @@
+<launch>
+	<!-- Robot Motion Planning -->
+	<!-- <include file="$(find neurobots_launch)/launch/planners/motion_planning.launch" /> -->
+
+	<!-- Neurobots Database -->
+	<include file="$(find neurobots_launch)/launch/database/database_iros1.launch" />
+
+
+	<node name="fake_action_executor" pkg="goal_planner_gui" type="fake_action_executor_node.py" args="1.0 1 50" output="screen" />
+
+
+<arg name="auto" default="" />
+	<node name="goal_generation_planner_gui" pkg="goal_planner_gui" type="start_goal_planner_gui.py" args="-g $(find neurobots_scenario)/iros1-domain.pddl $(find neurobots_scenario)/iros1.ref $(arg auto) -ros -it /shelf_left_camera/rgb/image_raw /shelf_right_camera/rgb/image_raw /omnirob_camera_bridge/rgb/image_rect_color /face_camera/rgb/image_raw" output="screen" required="true"/>
+</launch>

@@ -578,7 +578,11 @@ void Painter::drawGlass(Element* vessel,
 		int numberOfObjects)
 {
 	const std::string& position = vessel->m_stringAttributes["position"][0];
-	const std::string& shape = vessel->m_stringAttributes["shaped"][0];
+	std::string shape = "cylinder";
+	if (vessel->m_stringAttributes.find("shaped") != vessel->m_stringAttributes.end())
+	{
+		shape = vessel->m_stringAttributes["contains"][0];
+	}
 	std::string contains = "empty";
 	if (vessel->m_stringAttributes.find("contains") != vessel->m_stringAttributes.end())
 	{

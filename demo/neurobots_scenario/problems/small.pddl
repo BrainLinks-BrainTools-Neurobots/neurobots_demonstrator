@@ -5,8 +5,7 @@
    kitchen living-room - room
    omnirob - robot
    shelf1 shelf2 - shelf
-   ballon wwineglas cylinder beerstein - shape
-   red white yellow blue green - color
+   blue green - color
    c0 - cup
    g0 g1 - glass
  )
@@ -19,14 +18,12 @@
    (= (in shelf1) kitchen)
    (= (in shelf2) living-room)
    (= (in omnirob) kitchen)
-   (= (at omnirob) shelf1)
+   (= (at omnirob) nowhere)
    (arm-empty omnirob)
    (= (position c0) shelf1)
-   (= (colored c0) red)
+   (= (colored c0) blue)
    (= (position g0) shelf2)
-   (= (shaped g0) wwineglas)
    (= (position g1) shelf1)
-   (= (shaped g1) beerstein)
  )
 
  (:goal (and)

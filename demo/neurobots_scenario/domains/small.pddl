@@ -4,7 +4,6 @@
    furniture robot - base
    shelf - furniture
    cup glass - transportable
-   shape
    room   
    color)
 
@@ -24,7 +23,6 @@
    (position ?t - transportable) - base
    (at ?r - robot) - base
    (in ?b - base) - room
-   (shaped ?g - glass) - shape
    (colored ?o - object) - color)
 
   (:action approach
