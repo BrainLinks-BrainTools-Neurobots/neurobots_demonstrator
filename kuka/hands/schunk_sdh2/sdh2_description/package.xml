@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <name>sdh2_description</name>
+  <version>0.0.0</version>
+  <description>The omnirob_sdh2_description package</description>
+
+  <maintainer email="Aklinger@dk-netz.de">Andreas Kuhner</maintainer>
+  <license>TODO</license>
+  
+   
+</package>

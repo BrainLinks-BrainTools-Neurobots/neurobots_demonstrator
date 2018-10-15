@@ -1,0 +1,19 @@
+<launch>
+	<!-- Please provide the poses_file, which contains the poses of arm and camera -->
+	<arg name="iterations" default="100" />
+	<arg name="threshold" default="1e-15" />
+	<arg name="marker_size" default="0.125" />
+	<arg name="poses_file" default="$(find lbr_camera_calibration)/tests/poses_15_06_29.txt" />
+	<arg name="aruco_marker_description" default="$(find lbr_camera_calibration)/aruco_boards/board_2_1/board.yml" />
+	
+	<include file="$(find lbr_camera_calibration)/launch/robot_camera.launch.xml"/>
+
+	<node name="lbr_camera_calibration" pkg="lbr_camera_calibration" type="lbr_camera_calibration" output="screen"
+		args="-i $(arg iterations)
+			--th $(arg threshold)
+			-m $(arg marker_size)
+			-r $(arg poses_file)
+			-b $(arg aruco_marker_description)
+			--visualize
+			--save-temp-calibration" />
+</launch>

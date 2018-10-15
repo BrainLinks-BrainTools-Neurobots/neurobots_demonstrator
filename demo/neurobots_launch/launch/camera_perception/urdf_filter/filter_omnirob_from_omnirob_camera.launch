@@ -1,0 +1,10 @@
+<launch>
+	<arg name="camera_suffix" default="" />
+	<include file="$(find neurobots_launch)/launch/camera_perception/urdf_filter/include/filter.launch.xml">
+		<arg name="nodelet" value="false" />
+		<arg name="parameter_file" value="$(find neurobots_launch)/launch/camera_perception/urdf_filter/params/omnirob_omnirob_camera.yaml" />
+		<arg name="camera_prefix" value="omnirob" />
+		<arg name="camera_suffix" value="$(arg camera_suffix)" />
+	</include>
+</launch>
+

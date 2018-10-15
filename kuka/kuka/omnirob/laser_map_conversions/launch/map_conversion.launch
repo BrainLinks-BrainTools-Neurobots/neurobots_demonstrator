@@ -1,0 +1,11 @@
+<launch>
+
+  <arg name="map_file" default="$(find omnirob_gmapping)/map.yaml"/>
+
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+  
+  <!-- Run the map to octomap converter -->
+  <node name="laser_map_converter" pkg="laser_map_conversions" type="laser_map_conversions_node" output="screen"/>
+
+</launch>

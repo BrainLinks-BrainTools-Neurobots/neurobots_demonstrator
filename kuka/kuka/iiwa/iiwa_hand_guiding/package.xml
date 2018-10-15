@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package>
+  <name>iiwa_hand_guiding</name>
+  <version>1.0.0</version>
+  <description>The iiwa_hand_guiding package</description>
+
+  <maintainer email="kuhnerd@informatik.uni-freiburg.de">Daniel Kuhner</maintainer>
+  <license>BSD</license>
+	<buildtool_depend>catkin</buildtool_depend>
+</package>

@@ -1,0 +1,80 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.2
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Erstellungszeit: 31. Aug 2017 um 16:16
+-- Server-Version: 10.1.26-MariaDB
+-- PHP-Version: 7.1.8
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Datenbank: `user_survey`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `data`
+--
+
+CREATE TABLE `data` (
+  `id` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `question1I` int(11) NOT NULL,
+  `question2I` int(11) NOT NULL,
+  `question3I` int(11) NOT NULL,
+  `question4I` int(11) NOT NULL,
+  `question5I` int(11) NOT NULL,
+  `question6I` int(11) NOT NULL,
+  `question7I` int(11) NOT NULL,
+  `question8I` int(11) NOT NULL,
+  `question9I` int(11) NOT NULL,
+  `question10I` int(11) NOT NULL,
+  `question11I` int(11) NOT NULL,
+  `question12I` int(11) NOT NULL,
+  `question13I` int(11) NOT NULL,
+  `question14I` int(11) NOT NULL,
+  `question15I` int(11) NOT NULL,
+  `question16I` int(11) NOT NULL,
+  `question17I` int(11) NOT NULL,
+  `question18I` int(11) NOT NULL,
+  `question19I` int(11) NOT NULL,
+  `question20I` int(11) NOT NULL,
+  `question21I` int(11) NOT NULL,
+  `question22I` int(11) NOT NULL,
+  `question23I` int(11) NOT NULL,
+  `question24I` int(11) NOT NULL,
+  `question25I` int(11) NOT NULL,
+  `question1S` varchar(2000) NOT NULL,
+  `question2S` varchar(2000) NOT NULL,
+  `question3S` varchar(2000) NOT NULL,
+  `question4S` varchar(2000) NOT NULL,
+  `question5S` varchar(2000) NOT NULL,
+  `nav_log` varchar(2000) NOT NULL,
+  `action_log` varchar(2000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indizes der exportierten Tabellen
+--
+
+--
+-- Indizes für die Tabelle `data`
+--
+ALTER TABLE `data`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT für exportierte Tabellen
+--
+
+--
+-- AUTO_INCREMENT für Tabelle `data`
+--
+ALTER TABLE `data`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;COMMIT;

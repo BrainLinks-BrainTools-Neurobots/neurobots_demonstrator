@@ -1,0 +1,9 @@
+<launch>
+	<machine name="cube1" address="cube1" env-loader="/sysgen/ros_workspaces/neurobots_catkin_ws/src/demo/neurobots_launch/scripts/setup_env_cube1" user="sysgen" />
+<!-- 	<machine name="omnirob-on-board" address="192.168.42.36" env-loader="/home/felix/catkin_neurobots_ws/src/demo/neurobots_launch/scripts/setup_env_omnirob_laptop_onboard" user="felix" /> -->
+	<machine name="omnirob-on-board" address="192.168.42.36" env-loader="/home/kuhnerd/ros_workspaces/neurobots_ws/src/demo/neurobots_launch/scripts/setup_env_omnirob_laptop_onboard_daniel" user="kuhnerd" />
+	<machine name="omnirob-lenovo" address="192.168.42.76" env-loader="/home/neurobots-demo/ros_workspaces/neurobots_demo_ws/src/demo/neurobots_launch/scripts/setup_env_omnirob_lenovo" user="neurobots-demo" />
+	<machine name="felix_laptop" address="192.168.42.78" env-loader="/home/felix/catkin_neurobots_ws/src/demo/neurobots_launch/scripts/configure_felix_laptop" user="felix" />
+	<machine name="omnirob-raspberry-pi" address="192.168.42.73" env-loader="/home/pi/setup_env_omnirob_raspberry_pi" user="pi" />
+	<machine name="omnirob-notebook" address="localhost"/>
+</launch>

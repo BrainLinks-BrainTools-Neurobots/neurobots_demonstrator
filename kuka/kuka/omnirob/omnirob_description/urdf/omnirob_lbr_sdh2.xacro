@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<robot name="omnirob" xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:include
+		filename="$(find omnirob_description)/urdf/xacro/omnirob.urdf.xacro" />
+	<xacro:include filename="$(find omnirob_description)/urdf/xacro/lbr.urdf.xacro" />
+	<xacro:include filename="$(find omnirob_description)/urdf/xacro/pole.urdf.xacro" />
+	<xacro:include filename="$(find sdh2_description)/urdf/xacro/sdh.urdf.xacro" />
+	<xacro:include filename="$(find camera_description)/urdf/xacro/asus_xtion.urdf.xacro" />
+
+	<xacro:omnirob_base></xacro:omnirob_base>
+
+	<xacro:lbr name="lbr" parent="omnirob">
+		<origin xyz="0.42 0.18 0.655" rpy="0 0 -1.5708" />
+	</xacro:lbr>
+
+	<xacro:pole name="pole" parent="base_link">
+		<origin xyz="-0.35 -0.25 0.64" rpy="0 0 0" />
+	</xacro:pole>
+
+	<xacro:asus_xtion name="pole_camera" parent="pole_top2_link">
+		<origin xyz="0.14 -0.01 0" rpy="0 0.5 -1.57" />
+	</xacro:asus_xtion>
+
+	<xacro:sdh2 name="sdh2">
+	</xacro:sdh2>
+
+	<joint name="sdh2_palm_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<parent link="lbr_flange_link" />
+		<child link="sdh2_palm_link" />
+	</joint>
+</robot>

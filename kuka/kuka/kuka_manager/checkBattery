@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "Battery state:"
+#upower -i /org/freedesktop/UPower/devices/battery_BAT0 |grep time
+upower -i /org/freedesktop/UPower/devices/battery_BAT1 |grep time
+#cat /proc/acpi/battery/BAT0/state

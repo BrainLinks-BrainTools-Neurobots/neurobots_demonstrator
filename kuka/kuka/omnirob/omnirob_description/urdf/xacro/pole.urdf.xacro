@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!-- FROM: https://github.com/IDSCETHZurich/re_trajectory-generator -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<material name="pole_gray">
+		<color rgba="0.9 0.9 0.9 1.0" />
+	</material>
+
+	<xacro:macro name="pole" params="parent name *origin">
+		<joint name="${name}_base_joint" type="fixed">
+			<insert_block name="origin" />
+			<parent link="${parent}" />
+			<child link="${name}_base_link" />
+		</joint>
+
+		<link name="${name}_base_link">
+			<visual>
+				<geometry>
+					<box size="0.08 0.08 1.01" />
+				</geometry>
+				<origin xyz="0.04 0.04 0.505" />
+				<material name="pole_gray" />
+			</visual>
+			<collision>
+				<geometry>
+					<box size="0.08 0.08 1.01" />
+				</geometry>
+				<origin xyz="0.04 0.04 0.505" />
+			</collision>
+		</link>
+
+		<joint name="${name}_top_joint" type="fixed">
+			<parent link="${name}_base_link" />
+			<child link="${name}_top_link" />
+			<origin xyz="0 0 1.01" rpy="0 0 0" />
+		</joint>
+
+		<!-- to front -->
+		<link name="${name}_top_link">
+			<visual>
+				<geometry>
+					<box size="0.36 0.04 0.04" />
+				</geometry>
+				<origin xyz="0.18 0.02 0.02" />
+				<material name="pole_gray" />
+			</visual>
+			<collision>
+				<geometry>
+					<box size="0.36 0.04 0.04" />
+				</geometry>
+				<origin xyz="0.18 0.02 0.02" />
+			</collision>
+		</link>
+
+		<joint name="${name}_top2_joint" type="fixed">
+			<parent link="${name}_base_link" />
+			<child link="${name}_top2_link" />
+			<origin xyz="0.04 0.04 1.01" rpy="0 0 1.57" />
+		</joint>
+
+		<!-- to left -->
+		<link name="${name}_top2_link">
+			<visual>
+				<geometry>
+					<box size="0.31 0.04 0.04" />
+				</geometry>
+				<origin xyz="0.155 0.02 0.02" />
+				<material name="pole_gray" />
+			</visual>
+			<collision>
+				<geometry>
+					<box size="0.31 0.04 0.04" />
+				</geometry>
+				<origin xyz="0.155 0.02 0.02" />
+			</collision>
+		</link>
+	</xacro:macro>
+
+</robot>

@@ -1,0 +1,13 @@
+<launch>
+
+  <param name="amcl/odom_frame_id" value="omnirob_lbr/odom"/>
+  <param name="amcl/base_frame_id" value="omnirob_lbr/base_link"/>
+  <param name="amcl/global_frame_id" value="/map"/>  
+
+  <arg name="scan_topic" default="/omnirob_lbr/scan_front"/>
+
+  <node name="amcl" pkg="amcl" type="amcl">
+    <remap from="scan" to="$(arg scan_topic)"/>
+    <param name="odom_model_type" value="omni"/>
+  </node>
+</launch>

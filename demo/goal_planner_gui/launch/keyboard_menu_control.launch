@@ -1,0 +1,4 @@
+<launch>
+	<!-- manual menu control by keyboard -->
+	<node name="keyboard_menu_control" pkg="goal_planner_gui" type="menu_control_node.py" output="screen"/>
+</launch>

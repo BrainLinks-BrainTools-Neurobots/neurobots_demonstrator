@@ -1,0 +1,19 @@
+<launch>
+
+    <group ns="iiwa">
+		<!-- <include file="$(find kuka_manager)/launch/iiwa_manager.launch" /> -->
+		<!--include file="$(find kuka_manager)/launch/moveit_iiwa.launch" /-->
+		<include file="$(find kuka_manager)/launch/moveit_iiwa_sdh2.launch" />
+		<include file="$(find sdh2_hand)/launch/sdh2_hand_iiwa.launch" />
+		<!--include file="$(find kuka_manager)/launch/moveit_iiwa_wsg.launch" /-->
+		<!--include file="$(find wsg_gripper)/launch/wsg_gripper_driver.launch" /-->
+    </group> 
+    
+    <param name="robot" type="str" value="IIWA" />
+    <!--param name="gripperIIWA" type="str" value="None" /-->
+    <param name="gripperIIWA" type="str" value="Schunk_Hand" />
+    <!--param name="gripperIIWA" type="str" value="WSG_Gripper" /-->
+    <node pkg="kuka_moveit_controller" name="kuka_moveit_controller" type="kuka_moveit_controller" />
+
+</launch>
+

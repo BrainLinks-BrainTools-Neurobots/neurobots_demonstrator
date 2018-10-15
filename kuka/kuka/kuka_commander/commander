@@ -1,0 +1,405 @@
+#!/usr/bin/python
+
+import sys
+import signal
+import os
+
+from PyQt4 import QtCore, QtGui
+from gui.gui import Ui_MainWindow
+from gui.camera_calibration import Ui_calibrationDialog
+from scripts.process_handler import ProcessHandler
+from scripts.console import convert
+from scripts.ping import updatePingImage, Ping
+from scripts.camera_calibration_configs import getConfigs, addArucoBoardsToComboBox
+
+import rospy
+import rospkg
+
+#########################################
+#CALLBACKS DEFINITIONS ##################
+#########################################
+nameOmniRobManager = "omniRob_manager"
+commandOmniRobManager = ["roslaunch", "omnirob_manager", "omnirob_manager.launch"]
+nameIiwaManager = "iiwa_manager"
+commandIiwaManager = ["ping", "google.de"]
+
+nameMoveItOmniRob = "moveit_omniRob"
+commandMoveItOmniRob = ["roslaunch", "omnirob_moveit_config", "move_group.launch"]  
+nameMoveItOmniRobSDH = "moveit_omniRob_sdh"
+commandMoveItOmniRobSDH = ["roslaunch", "omnirob_sdh2_moveit_config", "move_group.launch"] 
+nameMoveItOmniRobWSG = "moveit_omniRob_wsg"
+commandMoveItOmniRobWSG = ["roslaunch", "omnirob_wsg_moveit_config", "move_group.launch"] 
+
+nameMoveItIiwa = "moveit_iiwa"
+commandMoveItIiwa = ["roslaunch", "omnirob_manager", "omnirob_manager.launch"]
+nameMoveItIiwaSDH = "moveit_iiwa_sdh"
+commandMoveItIiwaSDH = ["roslaunch", "omnirob_manager", "omnirob_manager.launch"]
+nameMoveItIiwaWSG = "moveit_iiwa_wsg"
+commandMoveItIiwaWSG = ["roslaunch", "omnirob_manager", "omnirob_manager.launch"]
+
+nameSDHDriver = "sdh_driver"
+commandSDHDriver = ["roslaunch", "sdh2_hand", "sdh2_hand.launch"]
+nameWSGDriver = "wsg_driver"
+commandWSGDriver = ["roslaunch", "wsg_gripper", "wsg_gripper_driver.launch"]
+
+nameOpenNi = "openni"
+commandOpenNi = ["roslaunch", "openni_launch", "openni.launch"]
+nameOpenNi2 = "openni2"
+commandOpenNi2 = ["roslaunch", "openni2_launch", "openni2.launch"]
+nameCameraCalibration = "lbr_camera_calibration"
+#########################################
+#########################################
+#########################################
+
+class MyWindow(QtGui.QMainWindow):
+    def __init__(self, parent=None):
+        QtGui.QWidget.__init__(self, parent)
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+        self.updateTimer = QtCore.QTimer()
+        self.logTimer = QtCore.QTimer()
+        self.processHandler = ProcessHandler(self)
+         
+        self.ui.groupBoxIiwa.setEnabled(False)
+        self.ui.groupBoxOmniRob.setEnabled(False)
+        
+        self.ui.textEditConsole.setReadOnly(True)
+         
+        self.lastConsole = ""
+        self.ping = Ping()
+        self.ping.start()
+        
+        rospack = rospkg.RosPack()
+        self.lbrCameraCalibrationPath = rospack.get_path("lbr_camera_calibration") + "/aruco_boards/"
+        self.lbrCameraCalibrationArucoBoards = getConfigs(self.lbrCameraCalibrationPath)
+ 
+        self.updateTimer.timeout.connect(self.updateWindow)
+        self.logTimer.timeout.connect(self.updateConsoleOutput)
+        self.ui.actionStopAll.triggered.connect(self.onActionStopAll)
+         
+#########################################
+#CALLBACKS DEFINITIONS ##################
+        # omnirob and iiwa manager
+        self.ui.pushButtonStartOmniRobManager.clicked.connect(self.onStartStopOmniRobManager)
+        self.ui.pushButtonStartIiwaManager.clicked.connect(self.onStartStopIiwaManager)
+        
+        # moveit omnirob
+        self.ui.pushButtonStartMoveItOmniRob.clicked.connect(self.onStartStopMoveItOmniRob)
+        self.ui.pushButtonStartMoveItOmniRobSDH.clicked.connect(self.onStartStopMoveItOmniRobSDH)
+        self.ui.pushButtonStartMoveItOmniRobWSG.clicked.connect(self.onStartStopMoveItOmniRobWSG)
+        
+        # moveit iiwa
+        self.ui.pushButtonStartMoveItIiwa.clicked.connect(self.onStartStopMoveItIiwa)
+        self.ui.pushButtonStartMoveItIiwaSDH.clicked.connect(self.onStartStopMoveItIiwaSDH)
+        self.ui.pushButtonStartMoveItIiwaWSG.clicked.connect(self.onStartStopMoveItIiwaWSG)
+        
+        # eef tab
+        self.ui.pushButtonStartSDHDriver.clicked.connect(self.onStartStopSDHDriver)
+        self.ui.pushButtonStartWSGDriver.clicked.connect(self.onStartStopWSGDriver)
+        
+        # camera tab
+        self.ui.pushButtonStartOpenNi.clicked.connect(self.onStartStopOpenNi)
+        self.ui.pushButtonStartOpenNi2.clicked.connect(self.onStartStopOpenNi2)
+        self.ui.pushButtonStartCameraCalibration.clicked.connect(self.onStartStopCameraCalibration)
+        
+        # general tab
+        self.ui.pushButtonStart.clicked.connect(self.onStartSelected)
+        self.ui.pushButtonShortcutOmniRobSDH.clicked.connect(self.onStartShortcutOmniRobSDH)
+        self.ui.pushButtonShortcutOmniRobWSG.clicked.connect(self.onStartShortcutOmniRobWSG)
+        self.ui.pushButtonShortcutOmniRobMoveItSDH.clicked.connect(self.onStartShortcutOmniRobMoveItSDH)
+        self.ui.pushButtonShortcutOmniRobMoveItWSG.clicked.connect(self.onStartShortcutOmniRobMoveItWSG)
+        self.ui.pushButtonTerminateAll.clicked.connect(self.onActionStopAll)
+#########################################
+         
+        self.logTimer.start(100);
+        self.updateTimer.start(1000);
+     
+    def __enter__(self):
+        return self
+   
+    def __exit__(self, _type, value, traceback): 
+        self.ping.stopPingThread()
+        print "Stopping all processes..."
+        self.processHandler.stopAllProcesses()
+        print "Processes have been terminated!"
+        
+#########################################
+#CALLBACKS BUTTONS ######################
+#########################################           
+    def onStartStopOmniRobManager(self):
+        if not self.processHandler.isRunning(nameOmniRobManager):
+            self.processHandler.addProcess(nameOmniRobManager, commandOmniRobManager)
+        else:
+            self.processHandler.stopProcess(nameOmniRobManager)
+        
+    def onStartStopIiwaManager(self):
+        if not self.processHandler.isRunning(nameIiwaManager):
+            self.processHandler.addProcess(nameIiwaManager, commandIiwaManager)
+        else:
+            self.processHandler.stopProcess(nameIiwaManager)
+            
+    def onStartStopMoveItOmniRob(self):
+        if not self.processHandler.isRunning(nameMoveItOmniRob):
+            self.processHandler.addProcess(nameMoveItOmniRob, commandMoveItOmniRob)
+        else:
+            self.processHandler.stopProcess(nameMoveItOmniRob)
+            
+    def onStartStopMoveItOmniRobSDH(self):
+        if not self.processHandler.isRunning(nameMoveItOmniRobSDH):
+            self.processHandler.addProcess(nameMoveItOmniRobSDH, commandMoveItOmniRobSDH)
+        else:
+            self.processHandler.stopProcess(nameMoveItOmniRobSDH)        
+
+    def onStartStopMoveItOmniRobWSG(self):
+        if not self.processHandler.isRunning(nameMoveItOmniRobWSG):
+            self.processHandler.addProcess(nameMoveItOmniRobWSG, commandMoveItOmniRobWSG)
+        else:
+            self.processHandler.stopProcess(nameMoveItOmniRobWSG)
+            
+    def onStartStopMoveItIiwa(self):
+        if not self.processHandler.isRunning(nameMoveItIiwa):
+            self.processHandler.addProcess(nameMoveItIiwa, commandMoveItIiwa)
+        else:
+            self.processHandler.stopProcess(nameMoveItIiwa)
+            
+    def onStartStopMoveItIiwaSDH(self):
+        if not self.processHandler.isRunning(nameMoveItIiwaSDH):
+            self.processHandler.addProcess(nameMoveItIiwaSDH, commandMoveItIiwaSDH)
+        else:
+            self.processHandler.stopProcess(nameMoveItIiwaSDH)        
+
+    def onStartStopMoveItIiwaWSG(self):
+        if not self.processHandler.isRunning(nameMoveItIiwaWSG):
+            self.processHandler.addProcess(nameMoveItIiwaWSG, commandMoveItIiwaWSG)
+        else:
+            self.processHandler.stopProcess(nameMoveItIiwaWSG)
+            
+    def onStartStopSDHDriver(self):
+        if not self.processHandler.isRunning(nameSDHDriver):
+            self.processHandler.addProcess(nameSDHDriver, commandSDHDriver)
+        else:
+            self.processHandler.stopProcess(nameSDHDriver)
+            
+    def onStartStopWSGDriver(self):
+        if not self.processHandler.isRunning(nameWSGDriver):
+            self.processHandler.addProcess(nameWSGDriver, commandWSGDriver)
+        else:
+            self.processHandler.stopProcess(nameWSGDriver)
+            
+    def onStartStopOpenNi(self):
+        if not self.processHandler.isRunning(nameOpenNi2):
+            if not self.processHandler.isRunning(nameOpenNi):
+                self.processHandler.addProcess(nameOpenNi, commandOpenNi)
+            else:
+                self.processHandler.stopProcess(nameOpenNi)
+            
+    def onStartStopOpenNi2(self):
+        if not self.processHandler.isRunning(nameOpenNi):
+            if not self.processHandler.isRunning(nameOpenNi2):
+                self.processHandler.addProcess(nameOpenNi2, commandOpenNi2)
+            else:
+                self.processHandler.stopProcess(nameOpenNi2)
+            
+    def onStartStopCameraCalibration(self):
+        if not self.processHandler.isRunning(nameCameraCalibration):
+            dialog = QtGui.QDialog()
+            dialog.ui = Ui_calibrationDialog()
+            dialog.ui.setupUi(dialog)
+            addArucoBoardsToComboBox(dialog.ui.arucoBoardConfigurationComboBox, self.lbrCameraCalibrationArucoBoards)
+            if dialog.exec_() == QtGui.QDialog.Accepted:
+                #start camera
+                if not self.processHandler.isRunning(nameOpenNi2):
+                    self.processHandler.addProcess(nameOpenNi2, commandOpenNi2) 
+                 
+                #TODO: start robot model    
+                 
+                currentIndexArucoBoard = dialog.ui.arucoBoardConfigurationComboBox.currentIndex()
+                command = ["rosrun", "lbr_camera_calibration", "lbr_camera_calibration",
+                           "-a", str(dialog.ui.lineEditCameraPoseX.text()) + "," + str(dialog.ui.lineEditCameraPoseY.text()) + "," + str(dialog.ui.lineEditCameraPoseZ.text()),
+                           "-b", str(dialog.ui.arucoBoardConfigurationComboBox.itemData(currentIndexArucoBoard).toString()),
+                           "-i", str(dialog.ui.iterationsSpinBox.value()),
+                           "-m", str(dialog.ui.markerSizeDoubleSpinBox.value()),
+                           "--th", str(dialog.ui.thresholdDoubleSpinBox.value()),
+                           "--visualize",
+                           "--save-temp-calibration"]
+ 
+                self.processHandler.addProcess(nameCameraCalibration, command)
+        else:
+            #copy calibration matrix if needed
+            if os.path.isfile("/tmp/calibration.mat"):
+                if QtGui.QMessageBox.question(self, 'Calibration',
+                                   "Do you want to save the calibration?", QtGui.QMessageBox.Yes | 
+                                   QtGui.QMessageBox.No, QtGui.QMessageBox.No) == QtGui.QMessageBox.Yes:
+                    os.rename("/tmp/calibration.mat", self.lbrCameraCalibrationPath + "/calibration.mat")
+                 
+            self.processHandler.stopProcess(nameCameraCalibration)
+            
+    def onStartSelected(self):
+        self.processHandler.stopAllProcesses()
+        
+        omnirob = self.ui.omniRobShortcutCheckBox.checkState() == QtCore.Qt.Checked
+        iiwa = self.ui.iiwaShortcutCheckBox.checkState() == QtCore.Qt.Checked
+        moveit = self.ui.moveItShortcutCheckBox.checkState() == QtCore.Qt.Checked
+        sdh = self.ui.sdhShortcutCheckBox.checkState() == QtCore.Qt.Checked
+        wsg = self.ui.wsgShortcutCheckBox.checkState() == QtCore.Qt.Checked
+
+        if omnirob:
+            self.onStartStopOmniRobManager()
+        if iiwa:
+            self.onStartStopIiwaManager()
+        if sdh:
+            self.onStartStopSDHDriver()
+        if wsg:
+            self.onStartStopWSGDriver()
+        if moveit:
+            if omnirob:
+                if sdh:
+                    self.onStartStopMoveItOmniRobSDH()
+                elif wsg:
+                    self.onStartStopMoveItOmniRobWSG()
+                else:
+                    self.onStartStopMoveItOmniRob()
+            if iiwa:
+                if sdh:
+                    self.onStartStopMoveItIiwaSDH()
+                elif wsg:
+                    self.onStartStopMoveItIiwaWSG()
+                else:
+                    self.onStartStopMoveItIiwa()
+                    
+    def onStartShortcutOmniRobSDH(self):
+        self.onStartStopOmniRobManager()
+        self.onStartStopSDHDriver()
+        
+    def onStartShortcutOmniRobWSG(self):
+        self.onStartStopOmniRobManager()
+        self.onStartStopWSGDriver()
+        
+    def onStartShortcutOmniRobMoveItSDH(self):
+        self.onStartStopOmniRobManager()
+        self.onStartStopSDHDriver()
+        self.onStartStopMoveItOmniRobSDH()
+        
+    def onStartShortcutOmniRobMoveItWSG(self):
+        self.onStartStopOmniRobManager()
+        self.onStartStopWSGDriver()
+        self.onStartStopMoveItOmniRobWSG()
+        
+        
+#########################################
+#########################################
+#########################################
+
+    def onActionStopAll(self):
+        self.processHandler.stopAllProcesses()
+       
+    def updateWindow(self):
+        self.updateGUI()
+        
+    def updateGUI(self):
+        omnirobControl = self.ping.pingOmnirobControl()
+        omnirobLBR = self.ping.pingOmnirobLBR()
+        omnirob = omnirobControl and omnirobLBR
+        iiwa = self.ping.pingIiwa()
+        sdh = self.ping.pingSDH()
+        wsg = self.ping.pingWSG()
+        
+        self.ui.groupBoxIiwa.setEnabled(iiwa)
+        self.ui.groupBoxOmniRob.setEnabled(omnirob)
+        
+        # shortcuts
+        self.updateShortCutEntry(self.ui.omniRobShortcutCheckBox, omnirob)
+        self.updateShortCutEntry(self.ui.iiwaShortcutCheckBox, iiwa)
+        self.updateShortCutEntry(self.ui.sdhShortcutCheckBox, sdh)
+        self.updateShortCutEntry(self.ui.wsgShortcutCheckBox, wsg)
+        
+        self.ui.pushButtonStart.setEnabled(True)
+        self.ui.pushButtonShortcutOmniRobSDH.setEnabled(omnirob and sdh)
+        self.ui.pushButtonShortcutOmniRobWSG.setEnabled(omnirob and wsg)
+        self.ui.pushButtonShortcutOmniRobMoveItSDH.setEnabled(omnirob and sdh)
+        self.ui.pushButtonShortcutOmniRobMoveItWSG.setEnabled(omnirob and wsg)
+        self.ui.pushButtonStartIiwaManager.setEnabled(iiwa)
+        
+        # buttons
+        self.updateButton(nameIiwaManager, self.ui.pushButtonStartIiwaManager, self.ui.labelImageIiwaManagerOnline, iiwa)
+        self.updateButton(nameOmniRobManager, self.ui.pushButtonStartOmniRobManager, self.ui.labelImageOmniRobManagerOnline, omnirob)
+        self.updateButton(nameMoveItOmniRob, self.ui.pushButtonStartMoveItOmniRob, self.ui.labelImageMoveItOmniRobOnline, True)
+        self.updateButton(nameMoveItOmniRobSDH, self.ui.pushButtonStartMoveItOmniRobSDH, self.ui.labelImageMoveItOmniRobSDHOnline, True)
+        self.updateButton(nameMoveItOmniRobWSG, self.ui.pushButtonStartMoveItOmniRobWSG, self.ui.labelImageMoveItOmniRobWSGOnline, True)
+        self.updateButton(nameMoveItIiwa, self.ui.pushButtonStartMoveItIiwa, self.ui.labelImageMoveItIiwaOnline, True)
+        self.updateButton(nameMoveItIiwaSDH, self.ui.pushButtonStartMoveItIiwaSDH, self.ui.labelImageMoveItIiwaSDHOnline, True)
+        self.updateButton(nameMoveItIiwaWSG, self.ui.pushButtonStartMoveItIiwaWSG, self.ui.labelImageMoveItIiwaWSGOnline, True)
+        self.updateButton(nameSDHDriver, self.ui.pushButtonStartSDHDriver, self.ui.labelImageSDHDriverOnline, sdh)
+        self.updateButton(nameWSGDriver, self.ui.pushButtonStartWSGDriver, self.ui.labelImageWSGDriverOnline, wsg)
+        self.updateButton(nameOpenNi, self.ui.pushButtonStartOpenNi, self.ui.labelImageOpenNiOnline, True)
+        self.updateButton(nameOpenNi2, self.ui.pushButtonStartOpenNi2, self.ui.labelImageOpenNi2Online, True)
+        self.updateButton(nameCameraCalibration, self.ui.pushButtonStartCameraCalibration, self.ui.labelImageCameraCalibrationOnline, True, "Finish (Save Calibration and Stop)")
+        
+        # application state
+        self.ui.labelApplicationStateRunning.setText(str(self.processHandler.getNumberOfActiveProcesses()))
+        
+        # connection state
+        updatePingImage(self.ui.labelImageIiwaOnline, iiwa)
+        updatePingImage(self.ui.labelImageOmniRobControlOnline, omnirobControl) 
+        updatePingImage(self.ui.labelImageOmniRobLBROnline, omnirobLBR) 
+        updatePingImage(self.ui.labelImageSDHOnline, sdh) 
+        updatePingImage(self.ui.labelImageWSGOnline, wsg) 
+            
+    def updateButton(self, name, button, icon, enabled, textStop='Stop'):
+        if self.processHandler.isRunning(name):
+            icon.setPixmap(QtGui.QPixmap(":/icons/img/icons/25-Green1.png"))
+            button.setText(textStop)
+        else:
+            button.setText('Start')
+            button.setEnabled(enabled)
+            if enabled:
+                icon.setPixmap(QtGui.QPixmap(":/icons/img/icons/25-Red1.png"))
+            else:
+                icon.setPixmap(QtGui.QPixmap(":/icons/img/icons/25-Gray1.png"))
+            
+    def updateShortCutEntry(self, checkbox, enabled):
+        if enabled:
+            checkbox.setEnabled(True)
+        else: 
+            checkbox.setEnabled(False)
+            checkbox.setCheckState(QtCore.Qt.Unchecked)   
+            
+    def addConsoleEntry(self, name):
+        allItems = [self.ui.comboBoxConsole.itemText(i) for i in range(self.ui.comboBoxConsole.count())]
+        if name in allItems:
+            return
+        self.ui.comboBoxConsole.addItem(name)
+        
+    def updateConsoleOutput(self):
+        self.processHandler.updateOutput()
+        name = self.ui.comboBoxConsole.currentText()
+        if name.isEmpty():
+            return
+        
+        name = unicode(name.toUtf8(), encoding="UTF-8")
+        
+        if name != self.lastConsole:
+            html = convert(self.processHandler.getOutput(name).strip().decode("utf-8"))
+            self.ui.textEditConsole.setHtml(html)
+            self.lastConsole = name
+        else:
+            html = convert(self.processHandler.getNewOutput(name).strip().decode("utf-8"))
+            if html != '':
+                self.ui.textEditConsole.insertHtml(html)
+                
+def sigintHandler(*args):
+    QtGui.QApplication.quit()
+    
+if __name__ == "__main__":
+    signal.signal(signal.SIGINT, sigintHandler)
+#     rospy.init_node('kuka_commander', anonymous=True)
+    app = QtGui.QApplication(sys.argv)
+    appIcon = QtGui.QIcon()
+    appIcon.addFile(":/img/img/icon.png")
+    app.setWindowIcon(appIcon)
+    returnCode = 0
+    with MyWindow() as myapp:
+        myapp.show()
+        returnCode = app.exec_()
+    sys.exit(returnCode)
+    

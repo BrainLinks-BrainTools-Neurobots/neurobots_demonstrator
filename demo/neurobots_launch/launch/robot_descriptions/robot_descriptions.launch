@@ -1,0 +1,32 @@
+
+<launch>
+	<!-- Define Parameter storing the namespace of the omnirob robot -->
+<!--	<param name="ns_prefix_robot" value="omnirob_lbr/" /> -->
+<!-- 	<param name="ns_iiwa_robot" value="iiwa/" /> -->
+
+	<!-- Define Parameter storing the name of the robot description parameter -->
+<!-- 	<param name="robot_description_robot" value="/omnirob_lbr/robot_description" /> -->
+<!-- 	<param name="robot_description_iiwa" value="/iiwa/robot_description" /> -->
+<!-- 	<param name="robot_description" textfile="$(find omnirob_description)/urdf/omnirob_lbr_wsg.urdf" /> -->
+	
+	<group ns="omnirob_lbr">
+		<param name="tf_prefix" value="omnirob_lbr" />
+		<param name="robot_description" textfile="$(find omnirob_description)/urdf/omnirob_lbr_sdh2_extended.urdf" />
+		<!--<param name="robot_description_semantic" textfile="$(find omnirob_description)/srdf/omnirob_lbr_sdh2.srdf" /> -->
+
+		<!--<node name="omnirob_joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"> -->
+		<!--<remap from="robot_description" to="omnirob_robot_description" /> -->
+		<!-- <remap from="omnirob_robot_description_semantic" to="$(arg omnirob_robot_semantic)" /> -->
+		<!--</node> -->
+
+		<node name="omnirob_robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+			<!--<remap from="robot_description" to="omnirob_robot_description" /> -->
+			<!-- <remap from="omnirob_robot_description_semantic" to="$(arg omnirob_robot_semantic)" /> -->
+		</node>
+	</group>
+<!-- 	<group ns="iiwa"> -->
+<!-- 		<param name="tf_prefix" value="iiwa" /> -->
+<!-- 		<param name="robot_description" textfile="$(find iiwa_description)/urdf/iiwa_sdh2.urdf" /> -->
+<!-- 		<node name="iiwa_robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" /> -->
+<!-- 	</group> -->
+</launch>

@@ -1,0 +1,85 @@
+#!/bin/bash
+INSTALL_PATH=@JAVA_INSTALL_PATH@
+JAVA_LIBS=@JAR_PATH@
+SRC_DIR=@JAVA_SRC_DIR@
+TOOL_NAME=@PROJECT_NAME@
+BUILD_DIR=build
+
+#define java files here
+JAVA_FILES=(@JAVA_SRCS@)
+
+#check if the source files are newer
+RUN_BUILD=0
+if [ -d ${BUILD_DIR}/application ]; then
+	for f in ${JAVA_FILES[*]}
+	do
+		COMPLETE_PATH_SRC=${SRC_DIR}/$f
+		COMPLETE_PATH_LOCAL=${BUILD_DIR}/application/$f
+	  	if [ $COMPLETE_PATH_SRC -nt $COMPLETE_PATH_LOCAL ]; then
+			RUN_BUILD=1
+			break
+		fi		
+	done
+else
+	RUN_BUILD=1
+fi
+
+#if not skip build
+if [ $RUN_BUILD -eq 0 ]; then
+	echo "Skipping build of ${TOOL_NAME} because there are no changes in the sources!"
+	exit 0
+fi
+
+#otherwise build the lib
+echo "--"
+echo "-- ${TOOL_NAME}"
+
+rm -rf ${BUILD_DIR}
+mkdir ${BUILD_DIR}
+cd ${BUILD_DIR}
+mkdir application
+
+#unpack depency jars first
+unzip -o ${JAVA_LIBS}/common.utilities.jar > /dev/null
+unzip -o ${JAVA_LIBS}/roboticsAPI.jar > /dev/null
+unzip -o ${JAVA_LIBS}/roboticsAPI.omniRob.jar > /dev/null 
+unzip -o ${JAVA_LIBS}/roboticsAPI.omniDirectionalPlatform.jar > /dev/null
+unzip -o ${JAVA_LIBS}/roboticsAPI.smartServo.jar > /dev/null
+unzip -o ${JAVA_LIBS}/slf4j-log4j12-1.7.2.jar > /dev/null
+unzip -o ${JAVA_LIBS}/slf4j-api-1.7.2.jar > /dev/null
+unzip -o ${JAVA_LIBS}/log4j-1.2.17.jar > /dev/null
+rm -rf META-INF
+rm -f about.html
+
+for f in ${JAVA_FILES[*]}
+do
+	cp -p ${SRC_DIR}/$f ./application
+done
+
+echo "--- Compiling..."
+javac -cp "${JAVA_LIBS}/*" ./application/*.java
+
+if [ $? -ne 0 ]; then
+	echo "--- ERROR occured"
+	exit 1
+fi
+
+#build manifest
+echo "Main-Class: @JAR_MAIN_CLASS@" > manifest.xml
+echo "--- Building jar"
+jar cvfm ${TOOL_NAME}.jar manifest.xml application/*.class > /dev/null
+
+if [ $? -ne 0 ]; then
+	echo "--- ERROR occured"
+	exit 2
+fi
+
+#add the dependencies
+zip -mr ${TOOL_NAME}.jar com org > /dev/null
+
+#present the result at the top-level dir
+mkdir -p ${INSTALL_PATH}
+mv ${TOOL_NAME}.jar ${INSTALL_PATH}
+
+echo "--- Successfully build jar!"
+echo "--"

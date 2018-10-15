@@ -1,0 +1,7 @@
+<launch>
+	<include
+		file="$(find realtime_urdf_filter)/launch/include/filter.launch.xml">
+		<arg name="nodelet" value="true" />
+		<arg name="parameter_file" value="config/iiwa" />
+	</include>
+</launch>

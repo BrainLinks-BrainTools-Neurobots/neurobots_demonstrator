@@ -1,0 +1,11 @@
+This repository contains packages which are needed to use our KUKA robots.
+- doc: Contains documentation files of the robots (for more documentation you 
+  can ask Daniel Kuhner
+- examples: Contains a example sunrise project 
+- hands: The SDH2 and WSG gripper descriptions and drivers are stored in this
+  directory
+- kuka: Drivers, descriptions and moveit related code for omniRob and iiwa
+- libraries: extarnal libraries which are used in the repository
+- other: camera description
+
+sudo apt install ros-kinetic-joy ros-kinetic-moveit* ros-kinetic-visp-hand2eye-calibration ros-kinetic-octomap-ros

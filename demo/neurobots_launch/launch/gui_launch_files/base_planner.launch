@@ -1,0 +1,5 @@
+<launch>
+	<machine name="omnirob-on-board" address="192.168.42.36" env-loader="/home/kuhnerd/ros_workspaces/neurobots_ws/src/demo/neurobots_launch/scripts/setup_env_omnirob_laptop_onboard_daniel" user="kuhnerd" default="true" />
+	<include file="$(find neurobots_launch)/launch/planners/birrt_planner.launch" />
+	<include file="$(find neurobots_launch)/launch/robot_localization/laser_map_converter.launch" />
+</launch>

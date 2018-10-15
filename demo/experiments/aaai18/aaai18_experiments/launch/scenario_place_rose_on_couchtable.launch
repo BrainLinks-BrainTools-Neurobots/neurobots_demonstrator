@@ -1,0 +1,17 @@
+<launch>
+	<!-- Database -->
+	<group ns="robot_poses">
+		<rosparam command="load" file="$(find neurobots_setup_poses)/config/poses.yaml" />
+	</group>
+	<node name="neurobots_database" pkg="neurobots_database" type="neurobots_database_node" output="screen">
+		<param name="problem_file" type="string" value="$(find aaai18_experiments)/scenario/scenario_place_rose_on_couchtable.pddl" />
+		<param name="domain_file" type="string" value="$(find neurobots_scenario)/simgen-domain.pddl" />
+	</node>
+
+	<!-- Fake Action Executer -->
+	<node name="fake_action_executor" pkg="goal_planner_gui" type="fake_action_executor_node.py" args="1.0 20 10" output="screen" />
+
+	<!-- GUI -->
+	<node name="database_gui" pkg="neurobots_database_gui" type="neurobots_database_gui" />
+	<node name="goal_generation_planner_gui" pkg="goal_planner_gui" type="start_goal_planner_gui.py" args="-d -g -m --autoexecute --serialized-partitions $(find aaai18_experiments)/partitions/reference_list_scenario_place_rose_on_couchtable $(find neurobots_scenario)/simgen-domain.pddl $(find neurobots_scenario)/simgen.ref --ros" output="screen" required="true" />
+</launch>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<package>
+  <name>camera_description</name>
+  <version>1.0.0</version>
+  <description>The camera2_description package</description>
+
+  <maintainer email="kuhnerd@informatik.uni-freiburg.de">Daniel Kuhner</maintainer>
+  <license>BSD</license>
+</package>

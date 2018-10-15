@@ -1,0 +1,10 @@
+#goal definition
+string robot	# omnirob / iiwa
+string flower # f1 / f2 / f3 / ...
+string vase # v1 / ...
+---
+#result definition
+bool picked
+---
+#feedback
+string state

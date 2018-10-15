@@ -1,0 +1,4 @@
+<launch>
+	<include file="$(find neurobots_launch)/launch/hardware/omnirob.launch" />
+	<include file="$(find neurobots_launch)/launch/hardware/sdh.launch" />
+</launch>

@@ -1,0 +1,10 @@
+#goal definition
+string robot	# omnirob / iiwa
+string current_object # b1 / b2 / b3 / ... / g1 / g2 / ...
+string target_location # shelf / couch-table / ...
+---
+#result definition
+bool placed
+---
+#feedback
+string state

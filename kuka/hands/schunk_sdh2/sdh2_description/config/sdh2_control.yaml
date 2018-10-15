@@ -1,0 +1,40 @@
+sdh2:
+  # Publish all joint states -----------------------------------
+  joint_state_controller2:
+    type: joint_state_controller/JointStateController
+    publish_rate: 100  
+
+  # Position Controllers ---------------------------------------
+  joint8_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: sdh2_knuckle_joint
+    pid: {p: 400.0, i: 0.01, d: 10.0}
+  joint9_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: sdh2_finger_12_joint
+    pid: {p: 400.0, i: 0.01, d: 10.0}
+  joint10_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: sdh2_finger_13_joint
+    pid: {p: 400.0, i: 0.01, d: 10.0}
+  joint11_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: sdh2_finger_21_joint
+    pid: {p: 400.0, i: 0.01, d: 10.0}
+  joint12_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: sdh2_finger_22_joint
+    pid: {p: 400.0, i: 0.01, d: 10.0}
+  joint13_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: sdh2_finger_23_joint
+    pid: {p: 400.0, i: 0.01, d: 10.0}
+  joint14_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: sdh2_thumb_2_joint
+    pid: {p: 400.0, i: 0.01, d: 10.0}
+  joint15_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: sdh2_thumb_3_joint
+    pid: {p: 400.0, i: 0.01, d: 10.0}
+  

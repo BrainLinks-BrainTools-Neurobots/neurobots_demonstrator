@@ -1,0 +1,14 @@
+<launch>
+
+	<group ns="omnirob_lbr">
+		<param name="tf_prefix" value="omnirob_lbr" />
+		<include file="$(find kuka_manager)/launch/omnirob_manager.launch">
+			<arg name="base_prismatic_joints" value="true" />
+		</include>
+		<include file="$(find omnirob_joy)/launch/omnirob_teleop.launch">
+			<arg name="namespace" value="omnirob_lbr" />
+		</include>
+	</group>
+
+	<include file="$(find kuka_manager)/launch/omnirob_description.launch" />
+</launch>

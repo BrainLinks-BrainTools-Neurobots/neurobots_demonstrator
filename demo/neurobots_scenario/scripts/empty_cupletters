@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rosservice call /neurobots_database/debug/set_string "name: 'cupletters'       
+attribute: 'contains'
+value: 'empty'
+send_change: true"

@@ -1,0 +1,10 @@
+#goal definition
+string robot	#omnirob / iiwa
+string target_object
+string action_name	#move_to / approach
+---
+#result definition
+bool arrived
+---
+#feedback
+string state

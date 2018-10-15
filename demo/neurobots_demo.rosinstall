@@ -1,0 +1,8 @@
+- git: {local-name: kuka, uri: 'https://aisgit.informatik.uni-freiburg.de/kuhnerd/kuka.git', version: master}
+- git: {local-name: robot_motion_control, uri: 'https://aisgit.informatik.uni-freiburg.de/burgetf/robot_motion_control.git', version: master}
+- git: {local-name: robot_motion_planning, uri: 'https://aisgit.informatik.uni-freiburg.de/burgetf/robot_motion_planning.git', version: master}
+- git: {local-name: ros_util, uri: 'https://aisgit.informatik.uni-freiburg.de/kuhnerd/ros_util.git', version: master}
+- git: {local-name: prm_planner_libraries, uri: 'https://aisgit.informatik.uni-freiburg.de/kuhnerd/prm_planner_libraries.git', version: master}
+- git: {local-name: prm_planner, uri: 'https://aisgit.informatik.uni-freiburg.de/kuhnerd/prm_planner.git', version: master}
+- git: {local-name: demo, uri: 'http://mlgitlab.informatik.uni-freiburg.de/neurobots/demo.git', version: master}
+- git: {local-name: simtrack, uri: 'https://aisgit.informatik.uni-freiburg.de/burgetf/ais_simtrack.git', version: master}

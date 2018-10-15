@@ -1,0 +1,10 @@
+<launch>
+	<!--<include file="$(find kuka_manager)/launch/omnirob_manager.launch"/> -->
+
+	<!-- Load Map using the map server -->
+	<arg name="map_file" default="$(find neurobots_launch)/launch/robot_localization/maps/map_omnirob.yaml" />
+	<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+	<!-- Start Localization Node -->
+	<include file="$(find omnirob_amcl)/launch/amcl.launch.xml" />
+</launch>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<robot name="lbr" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:include filename="$(find sdh2_description)/urdf/xacro/sdh.urdf.xacro" />
+
+	<xacro:sdh2 name="sdh2">
+	</xacro:sdh2>
+</robot>

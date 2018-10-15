@@ -1,0 +1,8 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: omnirob_description
+    relative_path: urdf/omnirob_lbr_sdh2.urdf
+  SRDF:
+    relative_path: config/omnirob_lbr_sdh2.srdf
+  CONFIG:
+    generated_timestamp: 1441285583

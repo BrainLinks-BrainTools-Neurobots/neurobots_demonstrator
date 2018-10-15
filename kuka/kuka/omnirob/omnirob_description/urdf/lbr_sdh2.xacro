@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<robot name="lbr" xmlns:xacro="http://ros.org/wiki/xacro">
+  	<xacro:include filename="$(find omnirob_description)/urdf/xacro/lbr_sdh2.urdf.xacro"/>
+	
+	<xacro:lbr_shd2 name_lbr="lbr" name_sdh2="sdh2">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</xacro:lbr_shd2>
+</robot>

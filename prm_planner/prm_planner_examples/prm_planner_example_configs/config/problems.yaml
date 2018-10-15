@@ -1,0 +1,54 @@
+names:
+- single_arm_iiwa
+- right_arm_pr2
+- single_arm_omnirob
+problems:
+    single_arm_iiwa:
+        robot: iiwa
+        root_frame: iiwa/iiwa_base_link
+        plugin_package: prm_planner
+        plugin_class: prm_planner::SingleArmProblemDefinition
+        planning:
+            planner_type: prm_a_star
+            constraint: xyzrpy
+            planning_frame: iiwa/iiwa_base_link
+            prm:
+                filename: /tmp/prm.prm
+                save: true
+                size: 7000
+                visibility_distance: 0.3
+            rrt:
+                sample_goal: 0.2
+                max_expansion_distance: 0.1
+    right_arm_pr2:
+        robot: pr2
+        root_frame: /pr2/base_footprint
+        plugin_package: prm_planner
+        plugin_class: prm_planner::SingleArmProblemDefinition
+        planning:
+            planner_type: prm_a_star
+            constraint: xyzrpy
+            planning_frame: pr2/torso_lift_link
+            prm:
+                filename: /tmp/prm_pr2.prm
+                save: true
+                size: 7000
+                visibility_distance: 0.3
+            rrt:
+                sample_goal: 0.2
+                max_expansion_distance: 0.1
+    single_arm_omnirob:
+        robot: omnirob
+        root_frame: /map
+        plugin_package: prm_planner
+        plugin_class: prm_planner::SingleArmProblemDefinition
+        planning:
+            planner_type: prm_a_star
+            planning_frame: /omnirob_lbr/lbr_0_link
+            constraint: y_down
+            prm:
+                filename: /tmp/prm_omnirob.prm
+                save: true
+                size: 500
+                visibility_distance: 0.3
+                min_height: 0.0

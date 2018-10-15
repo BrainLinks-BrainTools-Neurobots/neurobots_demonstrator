@@ -1,0 +1,13 @@
+<launch>
+
+	<include file="$(find neurobots_launch)/launch/hardware/omnirob_demo.launch" />
+	
+	<!-- BiRRT Planner Setup -->
+	<include file="$(find neurobots_launch)/launch/planners/birrt_planner.launch" />
+	
+	<!-- Start Map Conversion -->
+	<include file="$(find neurobots_launch)/launch/robot_localization/laser_map_converter.launch" />
+	
+	<!-- Omnirob Robot Localization -->
+	<include file="$(find neurobots_launch)/launch/robot_localization/robot_localization.launch" />
+</launch>

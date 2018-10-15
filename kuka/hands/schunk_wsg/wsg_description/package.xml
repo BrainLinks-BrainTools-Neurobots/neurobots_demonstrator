@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<package>
+  <name>wsg_description</name>
+  <version>0.0.0</version>
+  <description>The omnirob_wsg_description package</description>
+
+  <maintainer email="kuhnera@informatik.uni-freiburg.de">Andreas Kuhner</maintainer>
+  <license>BSD</license>
+</package>

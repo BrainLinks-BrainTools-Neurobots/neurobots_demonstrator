@@ -1,0 +1,9 @@
+<launch>
+	<arg name="camera" default="" />
+	<node name="camera_tf_broadcaster_omnirob_camera_to_omnirob" pkg="lbr_camera_calibration" type="camera_tf_broadcaster" output="screen">
+		<param name="from_link" value="/omnirob_lbr/lbr_0_link" />
+		<param name="to_link" value="/$(arg camera)_camera_link" />
+		<!--The following line is only needed if you have a calibration file in custom location -->
+		<param name="calibration_file" value="$(find neurobots_calibration)/calibration_files/omnirob_camera_to_omnirob.mat" />
+	</node>
+</launch>

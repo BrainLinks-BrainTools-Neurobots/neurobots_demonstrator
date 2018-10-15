@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<package>
+  <name>iiwa_java_controller</name>
+  <version>0.0.0</version>
+  <description>The iiwa_java_controller package</description>
+
+  <maintainer email="killmani@informatik.uni-freiburg.de">Ingo Killmann</maintainer>
+  <license>BSD</license>
+	<buildtool_depend>catkin</buildtool_depend>
+</package>

@@ -1,0 +1,20 @@
+<launch>
+	<include file="$(find neurobots_launch)/launch/machines/machines.launch" />
+	
+	<!-- Starts the camera -->
+	<!-- <include file="$(find simtrack_nodes)/launch/camera_xtion.launch" /> -->
+
+	<param name="camera/driver/color_mode" value="5" /> <!-- mode 1 = sxga/30hz, "hi-res" -->
+
+	<include file="$(find neurobots_launch)/launch/camera_perception/openni2/openni2.launch">
+		<arg name="depth_registration" value="true" />
+		<arg name="device_id" default="#1" />  <!--1401110340-->
+		<arg name="camera" value="table_camera" /> 
+		<arg name="machine" value="omnirob-notebook"/>
+		<arg name="rgb_camera_info_url" value="package://neurobots_calibration/calibration_files/rgb_asus_xtion_xpl_blbt_1.yaml" />
+		<arg name="depth_camera_info_url" value="package://neurobots_calibration/calibration_files/depth_asus_xtion_xpl_blbt_1.yaml" />
+	</include>
+
+	<!-- Start urdf filter -->
+<!-- 	<include file="$(find neurobots_launch)/launch/camera_perception/urdf_filter/filter_omnirob_from_shelf_camera.launch" /> -->
+</launch>

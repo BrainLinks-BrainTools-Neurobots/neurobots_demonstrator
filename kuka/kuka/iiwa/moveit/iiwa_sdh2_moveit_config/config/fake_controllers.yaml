@@ -1,0 +1,19 @@
+controller_list:
+  - name: fake_iiwa_controller
+    joints:
+      - iiwa_1_joint
+      - iiwa_2_joint
+      - iiwa_3_joint
+      - iiwa_4_joint
+      - iiwa_5_joint
+      - iiwa_6_joint
+      - iiwa_7_joint
+  - name: fake_gripper_controller
+    joints:
+      - sdh2_finger_22_joint
+      - sdh2_finger_23_joint
+      - sdh2_knuckle_joint
+      - sdh2_finger_12_joint
+      - sdh2_finger_13_joint
+      - sdh2_thumb_2_joint
+      - sdh2_thumb_3_joint

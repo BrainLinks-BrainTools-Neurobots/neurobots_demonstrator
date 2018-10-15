@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot name="omnirob" xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:include filename="$(find omnirob_description)/urdf/xacro/omnirob_prm_planner.urdf.xacro"/>
+  	<xacro:include filename="$(find omnirob_description)/urdf/xacro/lbr.urdf.xacro"/>
+	
+    <xacro:omnirob_base></xacro:omnirob_base>  	
+	<xacro:lbr name="lbr" parent="omnirob">
+		<origin xyz="0.42 0.18 0.655" rpy="0 0 -1.5708" />
+	</xacro:lbr>
+</robot>

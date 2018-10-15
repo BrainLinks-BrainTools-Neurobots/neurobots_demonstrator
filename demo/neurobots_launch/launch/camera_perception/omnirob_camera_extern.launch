@@ -1,0 +1,10 @@
+<launch>
+	<include file="$(find neurobots_launch)/launch/machines/machines.launch" />
+
+	<node name="omnirob_camera_launcher" pkg="neurobots_launch" type="start_omnirob_camera" args="omnirob" machine="omnirob-on-board" />
+
+	<!-- Start urdf filter -->
+	<include file="$(find neurobots_launch)/launch/camera_perception/urdf_filter/filter_omnirob_from_omnirob_camera.launch">
+		<arg name="camera_suffix" value="_bridge" />
+	</include>
+</launch>

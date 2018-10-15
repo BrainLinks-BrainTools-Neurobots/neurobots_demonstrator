@@ -1,0 +1,18 @@
+<launch>
+  <param name="robot" type="str" value="Omnirob" />
+  <node pkg="kuka_manager" type="kuka_manager" name="kuka_manager" output="screen">     
+    <param name="portFrontLaser" type="int" value="34791" />
+    <param name="portRearLaser" type="int" value="34792" />
+    <param name="portOdometry" type="int" value="34789" />
+    <param name="host" type="str" value="localhost" />
+    <param name="port" type="int" value="60000" />
+  </node>
+
+  <node pkg="omnirob_java_controller" type="startJavaController" name="omnirob_java_controller" output="screen">  
+  </node>   
+</launch>
+
+<launch>
+  <node pkg="sdh2_hand" type="sdh2_hand" name="sdh2_hand" respawn="true" output="screen" > 
+  </node>
+</launch>

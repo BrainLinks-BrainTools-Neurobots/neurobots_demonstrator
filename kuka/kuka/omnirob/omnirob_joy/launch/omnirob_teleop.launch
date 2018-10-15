@@ -1,0 +1,8 @@
+<launch>
+	<arg name="namespace" default="" />
+	<node pkg="omnirob_joy" type="detect_joystick" name="detect_joystick" args="$(arg namespace)" />
+	<node pkg="omnirob_joy" type="omnirob_joy" name="omnirob_joy" output="screen">
+		<param name="scale_angular" type="double" value="1.0" />
+		<param name="scale_linear" type="double" value="1.0" />
+	</node>
+</launch>

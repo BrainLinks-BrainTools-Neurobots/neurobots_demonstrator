@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "Building iiwa URDF model..."
+rosrun xacro xacro -o iiwa.urdf --inorder xacro/iiwa.urdf.xacro
+echo "Done!"
+
+echo "Building iiwa+SDH2 URDF model..."
+rosrun xacro xacro -o iiwa_sdh2.urdf --inorder xacro/iiwa_sdh2.xacro
+echo "Done!"
+
+echo "Building iiwa+WSG URDF model..."
+rosrun xacro xacro -o iiwa_wsg.urdf --inorder xacro/iiwa_wsg.xacro
+echo "Done!"

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+camera="$1"
+
+devices=`lsusb | grep ASUS | cut -d' ' -f4 | sed s/://g`
+
+for device in $devices; do
+	log=`lsusb -s $device -vvv`
+	total_length=`echo $log | grep -o "wTotalLength [0-9]*" | head -1 | cut -d' ' -f2`
+	echo $total_length
+ 	device_without_zero=$(echo $device | sed 's/^0*//')
+ 	echo $device_without_zero
+
+	#face camera
+	if [ $camera == "shelf_right" ] && [ $total_length -eq 183 ]; then
+		echo "Found shelf_right camera on device" $device
+		roslaunch neurobots_launch shelf_right_camera.launch device_id:=1/$device_without_zero
+		break
+	fi
+	if [ $camera == "overview" ] && [ $total_length -eq 206 ]; then
+		echo "Found overview camera on device" $device
+		roslaunch neurobots_launch overview_camera.launch device_id:=1/$device_without_zero
+		break
+	fi
+done
+
+

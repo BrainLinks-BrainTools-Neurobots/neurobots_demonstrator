@@ -1,0 +1,14 @@
+controller_list:
+ - name: omnirob_lbr
+   action_ns: follow_joint_trajectory
+   type: FollowJointTrajectory
+   default: true
+   joints:
+     - omnirob_base_joint
+     - lbr_1_joint
+     - lbr_2_joint
+     - lbr_3_joint
+     - lbr_4_joint
+     - lbr_5_joint
+     - lbr_6_joint
+     - lbr_7_joint

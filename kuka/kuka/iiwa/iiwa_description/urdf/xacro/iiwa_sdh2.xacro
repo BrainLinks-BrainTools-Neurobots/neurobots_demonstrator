@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot name="iiwa" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:include
+		filename="$(find iiwa_description)/urdf/xacro/iiwa.urdf.xacro" />
+	<xacro:include filename="$(find sdh2_description)/urdf/xacro/sdh.urdf.xacro" />
+
+	<xacro:sdh2 name="sdh2">
+	</xacro:sdh2>
+
+	<joint name="sdh2_palm_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 3.1415926535897931" />
+		<parent link="iiwa_flange_link" />
+		<child link="sdh2_adapter_link" />
+	</joint>
+</robot>

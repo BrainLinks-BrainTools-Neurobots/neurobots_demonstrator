@@ -1,0 +1,31 @@
+<launch>
+  <!--
+  <include file="$(find turtlebot_bringup)/launch/3dsensor.launch">
+    <arg name="rgb_processing" value="false" />
+    <arg name="depth_registration" value="false" />
+    <arg name="depth_processing" value="false" />
+    
+    <arg name="scan_topic" value="/scan" />
+  </include>
+  -->
+  
+  
+  <include file="$(find kuka_manager)/launch/omnirob_manager.launch"/>
+  
+  <!-- Load universal robot description format (URDF) -->
+  <param name="robot_description" textfile="$(find omnirob_description)/urdf/omnirob.urdf"/>
+
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+  <include file="$(find omnirob_gmapping)/launch/gmapping.launch.xml"/>
+
+  <include file="$(find omnirob_joy)/launch/omnirob_teleop.launch" >
+                  <arg name="namespace" value="/" />
+  </include>
+
+  <!--<include file="$(find omnirob_gmapping)/launch/move_base.launch.xml"/>-->
+  
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find omnirob_gmapping)/gmapping_omnirob.rviz"/>
+
+</launch>

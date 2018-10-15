@@ -1,0 +1,5 @@
+<launch>
+	<!-- gui --> 
+	<node name="goal_generation_planner_gui" pkg="goal_planner_gui" type="start_goal_planner_gui.py"
+	args="-d -g $(find neurobots_scenario)/simgen-domain.pddl $(find neurobots_scenario)/simgen.ref --ros" output="screen" required="true"/> 
+</launch>

@@ -1,0 +1,12 @@
+<launch>
+	<group ns="omnirob_lbr">
+		<param name="tf_prefix" value="omnirob_lbr" />
+		<node pkg="tf" type="static_transform_publisher" name="virtual_joint_transform" args="0 0 0 0 0 0 1 /omnirob_lbr/base_link /base_link 100" />
+		<param name="robot_description_semantic" textfile="$(find omnirob_description)/srdf/omnirob_lbr_sdh2_map.srdf" />
+	</group>
+<!-- 	<group ns="iiwa"> -->
+<!-- 		<param name="tf_prefix" value="iiwa" /> -->
+<!-- 		<node pkg="tf" type="static_transform_publisher" name="virtual_joint_transform0" args="0 0 0 0 0 0 1 /iiwa/iiwa_base_link /iiwa_base_link 100" /> -->
+<!-- 		<param name="robot_description_semantic" textfile="$(find iiwa_sdh2_moveit_config)/config/iiwa.srdf" /> -->
+<!-- 	</group> -->
+</launch>

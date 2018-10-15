@@ -1,0 +1,5 @@
+<launch>
+	<!-- gui --> 
+	<node name="goal_generation_planner_gui" pkg="goal_planner_gui" type="start_goal_planner_gui.py"
+	args="-g $(find neurobots_scenario)/neurobots-demo-domain.pddl $(find neurobots_scenario)/neurobots-demo.ref --autoexecute -ros" output="screen" required="true"/> 
+</launch>

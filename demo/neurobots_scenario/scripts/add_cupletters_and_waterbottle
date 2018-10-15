@@ -1,0 +1,36 @@
+#!/bin/bash
+rosservice call /neurobots_database/debug/add_empty_object "name: 'cupletters'
+type: 'cup'"
+
+rosservice call /neurobots_database/debug/add_empty_object "name: 'waterbottle'
+type: 'bottle'"
+
+rosservice call /neurobots_database/debug/set_string "name: 'cupletters'       
+attribute: 'position'
+value: 'shelfright'
+send_change: false"
+
+rosservice call /neurobots_database/debug/set_string "name: 'cupletters'       
+attribute: 'contains'
+value: 'empty'
+send_change: false"
+
+rosservice call /neurobots_database/debug/set_bool "name: 'cupletters'       
+attribute: 'is-open'
+value: True
+send_change: false"
+
+rosservice call /neurobots_database/debug/set_string "name: 'waterbottle'       
+attribute: 'position'
+value: 'shelfleft'
+send_change: false"
+
+rosservice call /neurobots_database/debug/set_string "name: 'waterbottle'       
+attribute: 'contains'
+value: 'water'
+send_change: false"
+
+rosservice call /neurobots_database/debug/set_bool "name: 'waterbottle'       
+attribute: 'is-open'
+value: True
+send_change: true"

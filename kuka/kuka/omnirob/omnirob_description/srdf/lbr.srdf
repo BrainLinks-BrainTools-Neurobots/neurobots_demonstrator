@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<robot name="lbr">
+
+   <virtual_joint name="world_joint" type="planar" parent_frame="odom" child_link="lbr_0_link"/> 
+
+
+   <group name="kuka_complete_arm">
+      <chain base_link="lbr_0_link" tip_link="lbr_flange_link"/>
+   </group>
+    
+</robot>

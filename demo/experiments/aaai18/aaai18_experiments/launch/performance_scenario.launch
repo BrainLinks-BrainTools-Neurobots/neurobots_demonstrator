@@ -1,0 +1,14 @@
+<launch>
+	<arg name="myargs" default=""/>
+	<!-- Database --> 
+	<group ns="robot_poses">
+		<rosparam command="load" file="$(find neurobots_setup_poses)/config/poses.yaml" />
+	</group>
+	<node name="scenario_gen_node" pkg="neurobots_scenario" type="simgen.py" args="$(arg myargs)" output="screen" />
+
+	<!-- Fake Action Executer -->
+	<node name="fake_action_executor" pkg="goal_planner_gui" type="fake_action_executor_node.py" args="1.0 20 10" output="screen" />
+      
+	<!-- GUI -->	
+	<node name="goal_generation_planner_gui" pkg="goal_planner_gui" type="start_goal_planner_gui.py" args="-d -g --auto_perf_ex $(find neurobots_scenario)/simgen-domain.pddl $(find neurobots_scenario)/simgen.ref --ros" output="screen" required="true" />
+</launch>

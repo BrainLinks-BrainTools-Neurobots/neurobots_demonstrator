@@ -1,0 +1,38 @@
+<launch>
+	<!-- Please provide the rough position of the camera, which is needed to specify the calibration movement -->
+	<arg name="robot" default="Omnirob" />
+	<arg name="iterations" default="100" />
+	<arg name="threshold" default="1e-15" />
+	<arg name="marker_size" default="0.125" />
+	<arg name="camera_path" default="$(find neurobots_calibration)/config/calibration_path_omnirob.txt" />
+	<arg name="aruco_marker_description" default="$(find lbr_camera_calibration)/aruco_boards/board_2_1/board.yml" />
+	<arg name="cal_save_path" default="$(find neurobots_calibration)/calibration_files/omnirob_camera_to_omnirob.mat" />
+
+	<!-- Start camera -->
+	<include file="$(find openni2_launch)/launch/openni2.launch">
+		<arg name="depth_registration" default="true" />
+		<arg name="rgb_camera_info_url" value="package://neurobots_calibration/calibration_files/rgb_omnirob_camera.yaml" />
+		<arg name="depth_camera_info_url" value="package://neurobots_calibration/calibration_files/depth_omnirob_camera.yaml" />
+	</include>
+
+	<include file="$(find kuka_manager)/launch/omnirob_manager.launch" />
+
+	<include file="$(find wsg_gripper)/launch/wsg_gripper_driver.launch">
+		<arg name="close_on_start" value="true" />
+	</include>
+
+	<param name="robot_description" textfile="$(find omnirob_description)/urdf/omnirob_lbr_wsg_extended.urdf" />
+	<node name="omnirob_robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+	<node name="lbr_camera_calibration" pkg="lbr_camera_calibration" type="lbr_camera_calibration" output="screen" args="
+			--robot $(arg robot)
+			-i $(arg iterations)
+			--th $(arg threshold)
+			-m $(arg marker_size)
+			-t $(arg camera_path)
+			-b $(arg aruco_marker_description)
+			-s $(arg cal_save_path)
+			-d 2
+			--visualize" />
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find neurobots_calibration)/rviz/omnirob_omnirob.rviz" />
+</launch>

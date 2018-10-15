@@ -1,0 +1,4 @@
+<launch>
+  <node pkg="sdh2_hand" type="sdh2_hand" name="sdh2_hand" respawn="true" >
+  </node>
+</launch>

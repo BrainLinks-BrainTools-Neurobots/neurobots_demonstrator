@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export ROS_IP=192.168.42.76
+export ROS_MASTER_URI=http://192.168.42.71:11311
+
+source /home/neurobots-demo/ros_workspaces/neurobots_demo_ws/devel/setup.bash
+
+exec "$@"

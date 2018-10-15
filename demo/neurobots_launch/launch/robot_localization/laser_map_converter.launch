@@ -1,0 +1,7 @@
+<launch>
+	<arg name="extrusion_height" default="0.71"/>
+	<arg name="planning_scene_topic_prefix" default="/omnirob_lbr"/>
+	
+	<!-- Extrude map to 3D -->
+	<node name="map_converter" pkg="laser_map_conversions" type="laser_map_conversions_node" args="$(arg extrusion_height) $(arg planning_scene_topic_prefix)" output="screen" />
+</launch>

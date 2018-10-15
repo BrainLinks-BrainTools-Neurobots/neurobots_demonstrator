@@ -1,0 +1,16 @@
+hardstatus alwayslastline
+hardstatus string '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %m/%d %c ]%{W}'
+
+screen -t sunrise
+screen -t ping
+screen -t roscore
+screen -t state_publisher
+screen -t kuka_manager
+#screen -t gripper
+#screen -t localizer
+#screen -t planner
+#screen -t tracker
+#screen -t relmotion
+#screen -t xtion
+screen -t battery
+screen -t scratch

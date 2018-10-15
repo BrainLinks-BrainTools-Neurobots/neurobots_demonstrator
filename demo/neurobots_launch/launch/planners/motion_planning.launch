@@ -1,0 +1,13 @@
+<launch>
+	<!-- Load machine configs -->
+	<include file="$(find neurobots_launch)/launch/machines/machines.launch" />
+
+	<!-- BiRRT Planner Setup -->
+<!-- 	<include file="$(find neurobots_launch)/launch/planners/birrt_planner.launch" /> -->
+
+	<!-- Roadmap Planner Setup -->
+	<include file="$(find neurobots_launch)/launch/planners/roadmap_planner.launch" />
+
+	<!-- Start Map Conversion -->
+<!-- 	<include file="$(find neurobots_launch)/launch/robot_localization/laser_map_converter.launch" /> -->
+</launch>

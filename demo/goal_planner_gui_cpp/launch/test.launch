@@ -1,0 +1,16 @@
+<launch>
+	<!-- Database -->
+	<group ns="robot_poses">
+		<rosparam command="load" file="$(find neurobots_setup_poses)/config/poses.yaml" />
+	</group>
+	<node name="neurobots_database" pkg="neurobots_database" type="neurobots_database_node" output="screen">
+		<param name="problem_file" type="string" value="$(find goal_planner_gui_cpp)/scenarios/test_1.pddl" />
+		<param name="domain_file" type="string" value="$(find neurobots_scenario)/simgen-domain.pddl" />
+	</node>
+
+	<!-- Fake Action Executer -->
+	<node name="fake_action_executor" pkg="goal_planner_gui" type="fake_action_executor_node.py" args="1.0 1 50" output="screen" />
+
+	<!-- GUI -->
+	<node name="database_gui" pkg="neurobots_database_gui" type="neurobots_database_gui" />
+</launch>

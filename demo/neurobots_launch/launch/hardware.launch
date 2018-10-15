@@ -1,0 +1,15 @@
+<launch>
+	<!-- Load machine configs -->
+	<include file="$(find neurobots_launch)/launch/machines/machines.launch" />
+
+	<include file="$(find neurobots_launch)/launch/hardware/omnirob_demo.launch" />
+
+	<!-- Robot Descriptions -->
+	<include file="$(find neurobots_launch)/launch/robot_descriptions/robot_descriptions.launch" />
+
+	<!-- Omnirob Robot Localization -->
+	<include file="$(find neurobots_launch)/launch/robot_localization/robot_localization.launch" />
+
+	<!-- Robot Descriptions -->
+	<include file="$(find neurobots_launch)/launch/robot_descriptions/robot_description_semantics.launch" />
+</launch>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RoboticsAPI>
+		
+    <Engine Class="com.kuka.roboticsAPI.persistenceModel.PersistenceEngine"/>
+        	
+    <DataSource Class="com.kuka.roboticsAPI.persistenceModel.XmlApplicationDataSource" DataFile="RoboticsAPI.data.xml" Name="robotApplicationDataSource"/>
+<Engine Class="com.kuka.roboticsAPI.uiModel.UIEngine"/>
+    <Controller Class="com.kuka.roboticsAPI.controllerModel.sunrise.SunriseController" Name="Controller_LBR4" NameserverAddress="192.168.42.155" NameserverPort="23456">
+    <Mapper Class="com.kuka.roboticsAPI.OmniRob.controllerModel.sunrise.OmniRobRealtimeMoveMapper"/>
+    <Mapper Class="com.kuka.roboticsAPI.controllerModel.sunrise.DirectServoMapper"/>
+    <Mapper Class="com.kuka.roboticsAPI.controllerModel.sunrise.SmartServoMapper"/>
+    </Controller>
+</RoboticsAPI>

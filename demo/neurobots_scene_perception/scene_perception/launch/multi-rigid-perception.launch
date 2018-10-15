@@ -1,0 +1,32 @@
+<launch>
+
+	<arg name="camera_name" default="camera" />
+	<arg name="camera_name_suffix" default="" />
+	<arg name="sync_queue_size" default="5" />
+	
+
+	<group ns="$(arg camera_name)camera$(arg camera_name_suffix)">
+
+		<rosparam command="load" file="$(find scene_perception)/config/parameters.yaml"/>
+		<param name="simtrack/use_compressed_streams" value="false" />
+		<param name="simtrack/tracker/color_only_mode" value="false" />
+
+		<rosparam command="load" file="$(find scene_perception)/config/neurobots_objects.yaml"/>
+		<param name="simtrack/model_path" value="$(find neurobots_object_models)/object_models"/>
+
+		<param name="simtrack/tf_prefix" value="$(arg camera_name)camera$(arg camera_name_suffix)/simtrack" />
+        
+        	<param name="simtrack/sync_queue_size" value="$(arg sync_queue_size)" />
+
+		<node name="simtrack" pkg="simtrack_nodes" type="multi_rigid_node" output="screen" > 
+		<remap from="rgb" to="/$(arg camera_name)camera$(arg camera_name_suffix)/rgb/image_rect_color" />
+<!-- 		<remap from="rgb/compressed" to="/$(arg camera_name)camera$(arg camera_name_suffix)/rgb/image_rect_color/compressed/" /> -->
+		<remap from="rgb_info" to="/$(arg camera_name)camera$(arg camera_name_suffix)/rgb/camera_info" />
+		<remap from="depth" to="/$(arg camera_name)camera$(arg camera_name_suffix)/depth_registered/image_raw" />
+<!-- 		<remap from="depth/compressedDepth" to="/$(arg camera_name)camera$(camera_name_suffix)/depth_registered/image_raw/compressedDepth" /> -->
+		</node>
+	</group>
+
+</launch>
+
+

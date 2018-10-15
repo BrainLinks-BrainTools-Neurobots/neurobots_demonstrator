@@ -1,0 +1,6 @@
+string name
+string attribute
+string value
+bool send_change
+---
+bool success

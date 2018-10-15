@@ -1,0 +1,7 @@
+<launch>
+	<include file="$(find neurobots_launch)/launch/machines/machines.launch" />
+
+	<include file="$(find neurobots_launch)/launch/camera_perception/neurobots_perception.launch">
+		<arg name="calibration" value="false" />
+	</include>
+</launch>

@@ -1,0 +1,20 @@
+<launch>
+	<!-- Please provide the rough position of the camera, which is needed to specify the calibration movement -->
+	<arg name="camera_prefix" value="overview" />
+	<arg name="iterations" default="100" />
+	<arg name="threshold" default="1e-15" />
+	<arg name="marker_size" default="0.38" />
+	<arg name="aruco_marker_description" default="$(find lbr_camera_calibration)/aruco_boards/board_2_1/board.yml" />
+	<arg name="cal_save_path" default="$(find neurobots_calibration)/calibration_files/map_to_overview_camera.mat" />
+	<arg name="save_poses" default="/tmp/calibration_poses.txt" />
+	<!-- -w $(arg save_poses) -->
+	<!-- -r $(arg save_poses) -->
+	<node name="omnirob_platform_calibration" pkg="omnirob_platform_calibration" type="omnirob_platform_calibration" output="screen" args="
+			-c $(arg camera_prefix)
+			-i $(arg iterations)
+			--th $(arg threshold)
+			-m $(arg marker_size)
+			-b $(arg aruco_marker_description)
+			-s $(arg cal_save_path)
+			--visualize" />
+</launch>

@@ -1,0 +1,7 @@
+The tool has been changed. It is built now directly by running catkin_make in the catkin folder. By running catkin_make a file run is generated which can be used to run the tool:
+
+	rosrun omnirob_java_controller start_controller
+
+Alternatively, you can directly execute the script in the package folder:
+
+	./start_controller

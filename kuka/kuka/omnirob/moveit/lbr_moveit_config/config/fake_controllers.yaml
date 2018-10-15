@@ -1,0 +1,17 @@
+controller_list:
+  - name: fake_kuka_arm_controller
+    joints:
+      - lbr_1_joint
+      - lbr_2_joint
+      - lbr_3_joint
+      - lbr_4_joint
+      - lbr_5_joint
+      - lbr_6_joint
+      - lbr_7_joint
+      - sdh2_finger_22_joint
+      - sdh2_finger_23_joint
+      - sdh2_knuckle_joint
+      - sdh2_finger_12_joint
+      - sdh2_finger_13_joint
+      - sdh2_thumb_2_joint
+      - sdh2_thumb_3_joint

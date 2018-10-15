@@ -1,0 +1,5 @@
+<launch>
+	<include file="$(find neurobots_launch)/launch/machines/machines.launch" />
+<!-- 	<node pkg="tf" type="static_transform_publisher" name="publisher" args="1 0 0 0 0 0 1 asd asd" /> -->
+	<node machine="omnirob-raspberry-pi" pkg="raspicam" type="raspicam_node" name="raspicam_node" />
+</launch>

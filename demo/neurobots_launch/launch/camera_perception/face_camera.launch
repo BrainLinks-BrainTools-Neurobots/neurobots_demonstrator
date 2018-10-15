@@ -1,0 +1,22 @@
+<launch>
+	<include file="$(find neurobots_launch)/launch/machines/machines.launch" />
+	<arg name="device_id" default="#1" />
+
+	<!-- Starts the camera -->
+	<!-- <include file="$(find simtrack_nodes)/launch/camera_xtion.launch" /> -->
+
+	<param name="camera/driver/color_mode" value="5" /> <!-- mode 1 = sxga/30hz, "hi-res" -->
+
+	<include file="$(find neurobots_launch)/launch/camera_perception/openni2/openni2.launch">
+		<arg name="depth_registration" value="true" />
+		<arg name="device_id" default="$(arg device_id)" /> <!--1403180090 -->
+		<arg name="camera" value="face_camera" />
+		<arg name="machine" value="omnirob-on-board" />
+		<arg name="rgb_camera_info_url" value="package://neurobots_calibration/calibration_files/rgb_asus_xtion_ais_neurobots_1.yaml" />
+		<arg name="depth_camera_info_url" value="package://neurobots_calibration/calibration_files/depth_asus_xtion_ais_neurobots_1.yaml" />
+	</include>
+
+	<include file="$(find mouth_detection)/launch/mouth_detection.launch">
+		<arg name="machine" value="omnirob-on-board" />
+	</include>
+</launch>

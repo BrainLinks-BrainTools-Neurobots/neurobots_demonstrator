@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<xacro:macro name="schunk_sdh_gazebo" params="name">
+
+		<!-- ros_control plugin -->
+		<gazebo>
+			<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+				<robotNamespace>/sdh2</robotNamespace>
+				<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+			</plugin>
+		</gazebo>
+
+		<gazebo reference="${name}_adapter_link">
+			<material>Schunk/LightGrey</material>
+			<turnGravityOff>false</turnGravityOff>
+		</gazebo>
+
+		<gazebo reference="${name}_palm_link">
+			<material>Schunk/LightGrey</material>
+			<turnGravityOff>false</turnGravityOff>
+		</gazebo>
+
+		<gazebo reference="${name}_finger_11_link">
+			<material>Schunk/LightGrey</material>
+			<turnGravityOff>false</turnGravityOff>
+		</gazebo>
+
+		<gazebo reference="${name}_finger_12_link">
+			<selfCollide>true</selfCollide>
+			<material>Schunk/LightGrey</material>
+			<turnGravityOff>false</turnGravityOff>
+		</gazebo>
+
+		<gazebo reference="${name}_finger_13_link">
+			<selfCollide>true</selfCollide>
+			<material>Schunk/LightGrey</material>
+		</gazebo>
+
+		<gazebo reference="${name}_finger_21_link">
+			<material>Schunk/LightGrey</material>
+			<turnGravityOff>false</turnGravityOff>
+		</gazebo>
+
+		<gazebo reference="${name}_finger_22_link">
+			<selfCollide>true</selfCollide>
+			<material>Schunk/LightGrey</material>
+			<turnGravityOff>false</turnGravityOff>
+		</gazebo>
+
+		<gazebo reference="${name}_finger_23_link">
+			<selfCollide>true</selfCollide>
+			<material>Schunk/LightGrey</material>
+		</gazebo>
+
+		<gazebo reference="${name}_thumb_1_link">
+			<material>Schunk/LightGrey</material>
+			<turnGravityOff>false</turnGravityOff>
+		</gazebo>
+
+		<gazebo reference="${name}_thumb_2_link">
+			<selfCollide>true</selfCollide>
+			<material>Schunk/LightGrey</material>
+			<turnGravityOff>false</turnGravityOff>
+		</gazebo>
+
+		<gazebo reference="${name}_thumb_3_link">
+			<selfCollide>true</selfCollide>
+			<material>Schunk/LightGrey</material>
+		</gazebo>
+
+	</xacro:macro>
+
+</robot>

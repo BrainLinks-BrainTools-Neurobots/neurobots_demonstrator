@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <group ns="omnirob_group">
+	
+	<!-- define arguments -->
+	<arg name="omnirob_robot_description" default="omnirob_robot_description"/>
+	<arg name="omnirob_robot_semantic" default="omnirob_robot_description_semantic"/>
+
+	<!-- Launch Omnirob Robot -->
+	<include file="$(find omnirob_description)/launch/omnirob_lbr_sdh2_extended.launch" >
+	  <arg name="multi_robot" value="true"/>
+	  <arg name="omnirob_robot_description" value="$(arg omnirob_robot_description)" /> 
+	  <arg name="omnirob_robot_semantic" value="$(arg omnirob_robot_semantic)" />
+	</include>
+  
+  </group>
+
+
+  <group ns="robotino_group"> 
+	
+	<arg name="robotino_robot_description" default="robotino_robot_description"/>
+	<arg name="robotino_robot_semantic" default="robotino_robot_description_semantic"/>
+	
+	<!-- Launch Robotino Robot -->
+	<include file="$(find robotino_bringup_sim)/launch/robot_planning.launch" > 
+	  <arg name="multi_robot" value="true"/>
+	  <arg name="robotino_robot_description" value="$(arg robotino_robot_description)" /> 
+	  <arg name="robotino_robot_semantic" value="$(arg robotino_robot_semantic)" />
+	</include>
+  
+  </group>
+  
+  
+ 
+  <!-- Define Parameter storing the namespace of the first robot--> 
+  <param name="ns_first_robot" value="/omnirob_group/" />
+  <!-- Define Parameter storing the namespace of the second robot--> 
+  <param name="ns_second_robot" value="/robotino_group/" />
+  
+  <!-- Define Parameter storing the name of the robot description parameter--> 
+  <param name="robot_description_first_robot" value="/omnirob_group/omnirob_robot_description" />
+  
+  <!-- Define Parameter storing the name of the robot description parameter--> 
+  <param name="robot_description_second_robot" value="/robotino_group/robotino_robot_description" />
+  
+  <!-- Load planner parameters -->
+  <rosparam command="load" file="$(find planner_param_config)/planner_config/planner_parameters_omnirob_robotino.yaml"/>
+
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find bi_rrt_star_multi_robot_algorithm)/rviz_setup_multi_robot_planning.rviz"/>
+   
+</launch>

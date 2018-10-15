@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package>
+  <name>kuka_moveit_controller</name>
+  <version>0.0.0</version>
+  <description>The kuka_moveit_controller package</description>
+
+  <maintainer email="killmani@informatik.uni-freiburg.de">killmani</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>moveit_ros_planning_interface</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>shape_msgs</build_depend>
+  <build_depend>trajectory_msgs</build_depend>
+  <build_depend>kuka_manager</build_depend>
+  <build_depend>wsg_gripper</build_depend>
+  <build_depend>sdh2_hand</build_depend>
+  
+  <run_depend>moveit_ros_planning_interface</run_depend>
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>sensor_msgs</run_depend>
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>shape_msgs</run_depend>
+  <run_depend>trajectory_msgs</run_depend>
+  <run_depend>kuka_manager</run_depend>
+  <run_depend>wsg_gripper</run_depend>
+  <run_depend>sdh2_hand</run_depend>
+</package>

@@ -1,0 +1,9 @@
+# the menu control is decoded by the following numbers:
+# 1 = up
+# 2 = down
+# 3 = select
+# 4 = abort
+# 5 = abort/down-contextsensitive
+int8 direction
+---
+bool success

@@ -1,0 +1,19 @@
+<launch>
+
+    <group>
+		<include file="$(find kuka_manager)/launch/omnirob_manager.launch" />
+		<!--include file="$(find kuka_manager)/launch/moveit_omnirob.launch" /-->
+		<!--include file="$(find kuka_manager)/launch/moveit_omnirob_sdh2.launch" /-->
+		<!--include file="$(find sdh2_hand)/launch/sdh2_hand.launch" /-->
+		<include file="$(find kuka_manager)/launch/moveit_omnirob_wsg.launch" />
+		<include file="$(find wsg_gripper)/launch/wsg_gripper_driver.launch" />
+    </group> 
+    
+    <param name="robot" type="str" value="Omnirob" />
+    <!--param name="gripperOmnirob" type="str" value="None" /-->
+    <!--param name="gripperOmnirob" type="str" value="Schunk_Hand" /-->
+    <param name="gripperOmnirob" type="str" value="WSG_Gripper" />
+    <node pkg="kuka_moveit_controller" name="kuka_moveit_controller" type="kuka_moveit_controller" />
+
+</launch>
+

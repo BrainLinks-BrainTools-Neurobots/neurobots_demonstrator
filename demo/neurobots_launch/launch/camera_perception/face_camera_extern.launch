@@ -1,0 +1,5 @@
+<launch>
+	<include file="$(find neurobots_launch)/launch/machines/machines.launch" />
+
+	<node name="face_camera_launcher" pkg="neurobots_launch" type="start_omnirob_camera" args="face" machine="omnirob-on-board" />
+</launch>

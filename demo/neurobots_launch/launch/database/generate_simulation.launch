@@ -1,0 +1,3 @@
+<launch>
+	<node name="scenario_gen_node" pkg="neurobots_scenario" type="simgen.py" output="screen"/>
+</launch>

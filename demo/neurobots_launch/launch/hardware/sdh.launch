@@ -1,0 +1,6 @@
+<launch>
+	<group ns="omnirob_lbr">
+		<param name="tf_prefix" value="omnirob_lbr" />
+		<include file="$(find sdh2_hand)/launch/sdh2_hand.launch" />
+	</group>
+</launch>

@@ -1,0 +1,76 @@
+#!/bin/bash
+#these ensure that the correct ips/hostnames are used when connecting from the outside
+#this finds the own IP that is assigned in the 192.168.42. subnet
+MYIP=`ifconfig | grep "inet addr:" | grep "192.168.42" | cut -d: -f2 | awk '{ print $1}'`
+if [[ -z ${MYIP} ]]; then 
+    echo 
+    echo
+    echo "ERROR: YOU HAVE NO IP ASSIGNED IN THE 192.168.42. SUBNET!"
+    echo "==> EXITING!"
+    echo
+    echo
+    exit -99
+else
+    echo
+    export ROS_IP=${MYIP}
+    echo "Exporting your ROS_IP as "${MYIP}
+    export ROS_MASTER_URI="http://"${MYIP}":11311"
+    echo "Exporting your ROS_MASTER_URI as http://"${MYIP}":11311"
+    echo
+fi
+
+echo "starting screen"
+screen -S omnirob -c ./screenconfig-omnirob -d -m
+sleep 2.0
+
+echo "establishing TELNET"
+screen -p 0 -S omnirob -X eval 'stuff "script sunriselog.txt\015 telnet 192.168.42.155\015"'
+sleep 0.5
+
+echo "starting ping"
+screen -p 1 -S omnirob -X eval 'stuff "ping 192.168.42.155\015"'
+sleep 0.5
+
+echo "starting roscore"
+screen -p 2 -S omnirob -X eval 'stuff "roscore\015"'
+sleep 0.5
+
+echo "starting state publisher"
+screen -p 3 -S omnirob -X eval 'stuff "roslaunch omnirob_description omnirob_state_publisher.launch\015"'
+sleep 2.0
+
+echo "starting kuka manager"
+screen -p 4 -S omnirob -X eval 'stuff "roslaunch kuka_manager kuka_manager.launch omnirob\015"'
+sleep 2.0
+
+# echo "starting gripper driver"
+# screen -p 5 -S omnirob -X eval 'stuff "roslaunch wsg_gripper wsg_gripper_driver_msg.launch\015"'
+# sleep 2.0
+
+
+# echo "preparing localizer"
+# screen -p 6 -S omnirob -X eval 'stuff "roslaunch omnirob_ros_localizer localizer_map_server.launch"'
+# sleep 0.5
+
+# echo "preparing planner"
+# screen -p 7 -S omnirob -X eval 'stuff "roslaunch trajectoryplanning ros_trajectory_planning.launch"'
+# sleep 0.5
+
+# echo "preparing tracker"
+# screen -p 8 -S omnirob -X eval 'stuff "roslaunch trajectory_execution omnirob_tracker.launch"'
+# sleep 0.5
+
+# echo "starting relative motion"
+# screen -p 9 -S omnirob -X eval 'stuff "roslaunch omnirob_relative_motion omnirob_relative_motion.launch\015"'
+# sleep 0.5
+
+# echo "preparing xtion pro"
+# screen -p 10 -S omnirob -X eval 'stuff "roslaunch omnirob_executive xtion_pro.launch"'
+# sleep 0.5
+
+
+echo "starting battery watch"
+screen -p 5 -S omnirob -X eval 'stuff "watch -n 2 ./checkBattery\015"'
+sleep 0.5
+
+screen -r

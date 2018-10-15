@@ -1,0 +1,11 @@
+#goal definition
+string robot	#omnirob / iiwa
+string current_vessel # b1 / b2 / ... / g1 / g2 / ...
+string target_object # g1 / g2 / ...
+string swapped_content # apple-juice / lemonade / ...
+---
+#result definition
+bool poured
+---
+#feedback
+string state

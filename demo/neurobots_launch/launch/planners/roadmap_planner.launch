@@ -1,0 +1,32 @@
+<launch>
+	<group ns="prm_planner">
+		<group ns="omnirob_pouring">
+			<rosparam command="load" file="$(find neurobots_launch)/launch/planners/prm_planner/omnirob_pouring/params.yaml" />
+			<rosparam command="load" ns="problem_definitions" file="$(find neurobots_launch)/launch/planners/prm_planner/omnirob_pouring/problems.yaml" />
+			<rosparam command="load" ns="robots" file="$(find neurobots_launch)/launch/planners/prm_planner/omnirob_pouring/robots.yaml" />
+			<node pkg="prm_planner" type="prm_planner" name="prm_planner" args="true" required="false" output="screen" />
+		</group>
+		<group ns="omnirob_drinking">
+			<rosparam command="load" file="$(find neurobots_launch)/launch/planners/prm_planner/omnirob_drinking/params.yaml" />
+			<rosparam command="load" ns="problem_definitions" file="$(find neurobots_launch)/launch/planners/prm_planner/omnirob_drinking/problems.yaml" />
+			<rosparam command="load" ns="robots" file="$(find neurobots_launch)/launch/planners/prm_planner/omnirob_drinking/robots.yaml" />
+			<node pkg="prm_planner" type="prm_planner" name="prm_planner" args="true" required="false" output="screen" />
+		</group>
+		<group ns="default_omnirob">
+			<rosparam command="load" file="$(find neurobots_launch)/launch/planners/prm_planner/default_omnirob/params.yaml" />
+			<rosparam command="load" ns="problem_definitions" file="$(find neurobots_launch)/launch/planners/prm_planner/default_omnirob/problems.yaml" />
+			<rosparam command="load" ns="robots" file="$(find neurobots_launch)/launch/planners/prm_planner/default_omnirob/robots.yaml" />
+			<node pkg="prm_planner" type="prm_planner" name="prm_planner" args="true" required="false" output="screen" />
+		</group>
+		<group ns="default_omnirob_y_down">
+			<rosparam command="load" file="$(find neurobots_launch)/launch/planners/prm_planner/default_omnirob_y_down/params.yaml" />
+			<rosparam command="load" ns="problem_definitions" file="$(find neurobots_launch)/launch/planners/prm_planner/default_omnirob_y_down/problems.yaml" />
+			<rosparam command="load" ns="robots" file="$(find neurobots_launch)/launch/planners/prm_planner/default_omnirob_y_down/robots.yaml" />
+			<node pkg="prm_planner" type="prm_planner" name="prm_planner" args="true" required="false" output="screen" />
+		</group>
+	</group>
+
+	<group ns="omnirob_lbr">
+		<param name="collision_matrix" type="string" value="$(find omnirob_description)/collision_matrices/omnirob_lbr_sdh2.cm" />
+	</group>
+</launch>

@@ -1,0 +1,24 @@
+<launch>
+	<arg name="nodelet" default="false" />
+	<arg name="parameter_file" default="filter_parameters" />
+	<arg name="camera_prefix" default="" />
+	<arg name="camera_suffix" default="" />
+
+	<!-- Launch nodelet -->
+	<node if="$(arg nodelet)" pkg="nodelet" type="nodelet" name="$(arg camera_prefix)_camera_realtime_urdf_filter_nodelet" args="load realtime_urdf_filter/RealtimeURDFFilterNodelet $(arg camera_prefix)_camera/$(arg camera_prefix)_camera_nodelet_manager" output="screen">
+		<remap from="~input_depth" to="/$(arg camera_prefix)_camera$(arg camera_suffix)/depth_registered/image_raw" />
+		<remap from="~output_depth" to="/$(arg camera_prefix)_camera$(arg camera_suffix)/depth_registered_filtered/image_raw" />
+		<remap from="~output_mask" to="/$(arg camera_prefix)_urdf_filtered_mask" />
+
+		<rosparam command="load" file="$(arg parameter_file)" />
+	</node>
+
+	<node unless="$(arg nodelet)" pkg="realtime_urdf_filter" type="realtime_urdf_filter" name="$(arg camera_prefix)_camera_realtime_urdf_filter" output="screen">
+		<remap from="~input_depth" to="/$(arg camera_prefix)_camera$(arg camera_suffix)/depth_registered/image_raw" />
+		<remap from="~output_depth" to="/$(arg camera_prefix)_camera$(arg camera_suffix)/depth_registered_filtered/image_raw" />
+		<remap from="~output_mask" to="/$(arg camera_prefix)_urdf_filtered_mask" />
+
+		<rosparam command="load" file="$(arg parameter_file)" />
+	</node>
+</launch>
+

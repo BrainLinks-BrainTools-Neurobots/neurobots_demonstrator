@@ -1,0 +1,21 @@
+<launch>
+	<!-- Publish extrinsic camera parameters (tf) -->
+	<include file="$(find neurobots_calibration)/launch/publish_shelf_left_camera_to_map.launch">
+		<arg name="camera" value="shelf_left" />
+	</include>
+	<include file="$(find neurobots_calibration)/launch/publish_shelf_right_camera_to_map.launch">
+		<arg name="camera" value="shelf_right" />
+	</include>
+	<include file="$(find neurobots_calibration)/launch/publish_omnirob_camera_to_omnirob.launch">
+		<arg name="camera" value="omnirob" />
+	</include>
+	<include file="$(find neurobots_calibration)/launch/publish_face_camera_to_omnirob.launch">
+		<arg name="camera" value="face" />
+	</include>
+	<include file="$(find neurobots_calibration)/launch/publish_table_camera_to_map.launch">
+		<arg name="camera" value="table" />
+	</include>
+	<include file="$(find neurobots_calibration)/launch/publish_overview_camera_to_map.launch">
+		<arg name="camera" value="overview" />
+	</include>
+</launch>

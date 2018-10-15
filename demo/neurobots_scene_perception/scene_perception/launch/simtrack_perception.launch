@@ -1,0 +1,29 @@
+<launch>
+
+	<!-- Simtrack for Camera to be calibrated -->
+	<include file="$(find scene_perception)/launch/multi-rigid-perception.launch">
+		<arg name="camera_name" value="shelf_right_" />
+		<arg name="sync_queue_size" value="15" />
+	</include>
+
+	<include file="$(find scene_perception)/launch/multi-rigid-perception.launch">
+		<arg name="camera_name" value="shelf_left_" />
+		<arg name="sync_queue_size" value="15" />
+	</include>
+
+	<!-- Simtrack for Camera to be calibrated -->
+	<!--include file="$(find scene_perception)/launch/multi-rigid-perception.launch">
+		<arg name="camera_name" value="table" />
+		<arg name="sync_queue_size" value="15" />
+	</include-->
+	
+	<!-- Simtrack for Camera to be calibrated -->
+	<include file="$(find scene_perception)/launch/multi-rigid-perception.launch">
+		<arg name="camera_name" value="omnirob_" />
+		<arg name="camera_name_suffix" value="_bridge" />
+		<arg name="sync_queue_size" value="15" />
+	</include>
+	
+	<node name="simtrack_objects_database" pkg="scene_perception" type="simtrack_object_mapping" output="screen" />
+
+</launch>	

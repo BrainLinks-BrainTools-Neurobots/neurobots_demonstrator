@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RoboticsAPI>
+	<Engine Class="com.kuka.roboticsAPI.persistenceModel.PersistenceEngine"/>
+<!--	<DataSource Class="com.kuka.roboticsAPI.persistenceModel.XmlApplicationDataSource" DataFile="src/RoboticsAPI.data.xml" Name="robotApplicationDataSource"/> -->
+	<Controller Class="com.kuka.roboticsAPI.controllerModel.sunrise.SunriseController" Name="Sunrise" NameserverAddress="192.168.42.155" NameserverPort="23456">
+	</Controller>
+
+	<!--
+	<Controller Name="Mock" Class="com.kuka.roboticsAPI.controllerModel.mock.MockController" SimulationAddress="127.0.0.1" SimulationPort="54321" LBRCount="2" />
+	-->
+</RoboticsAPI>

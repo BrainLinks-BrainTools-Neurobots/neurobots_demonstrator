@@ -1,0 +1,366 @@
+<?xml version="1.0"?>
+<robot name="iiwa" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Import all Gazebo-customization elements, including Gazebo colors -->
+  <xacro:include filename="$(find iiwa_description)/urdf/xacro/iiwa.gazebo.xacro" />
+  <!-- Import Transmissions -->
+  <xacro:include filename="$(find iiwa_description)/urdf/xacro/iiwa.transmission.xacro" />
+  <!-- Include Utilities -->
+  <xacro:include filename="$(find iiwa_description)/urdf/xacro/utilities.xacro" />
+
+  <!-- some constants -->
+ <!-- <xacro:property name="safety_controller_k_pos" value="100" />
+  <xacro:property name="safety_controller_k_vel" value="2" /> -->
+  <xacro:property name="joint_damping" value="0.5" />
+  <xacro:property name="max_effort" value="300"/>
+  <xacro:property name="max_velocity" value="10"/>
+
+  <xacro:macro name="iiwa" params="parent name hardware_interface *origin">
+
+    <!--joint between {parent} and link_0-->
+    <joint name="${parent}_joint" type="fixed">
+      <xacro:insert_block name="origin"/>
+      <parent link="${parent}"/>
+      <child link="${name}_0_link"/>
+    </joint>
+
+    <link name="${name}_0_link">
+      <inertial>
+        <origin xyz="-0.1 0 0.07" rpy="0 0 0"/>
+        <mass value="5"/>
+        <inertia ixx="0.05"  ixy="0"  ixz="0" iyy="0.06" iyz="0" izz="0.03" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/link_0.stl"/>
+        </geometry>
+        <material name="Grey"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/coarse/link_0.stl"/>
+        </geometry>
+        <material name="Grey"/>
+      </collision>
+
+      <self_collision_checking>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <capsule radius="0.15" length="0.25"/>
+        </geometry>
+      </self_collision_checking>
+
+    </link>
+
+    <!-- joint between link_0 and link_1 -->
+    <joint name="${name}_1_joint" type="revolute">
+      <parent link="${name}_0_link"/>
+      <child link="${name}_1_link"/>
+      <origin xyz="0 0 0.1575" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="${-169 * PI / 180}" upper="${169 * PI / 180}"
+             effort="${max_effort}" velocity="${max_velocity}" />
+      <!--   <safety_controller soft_lower_limit="${-168 * M_PI / 180}"
+           soft_upper_limit="${168 * M_PI / 180}"
+           k_position="${safety_controller_k_pos}"
+           k_velocity="${safety_controller_k_vel}"/> -->
+      <dynamics damping="${joint_damping}"/>
+    </joint>
+
+    <link name="${name}_1_link">
+      <inertial>
+        <origin xyz="0 -0.03 0.12" rpy="0 0 0"/>
+        <mass value="4"/>
+        <inertia ixx="0.1"  ixy="0"  ixz="0" iyy="0.09" iyz="0" izz="0.02" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/link_1.stl"/>
+        </geometry>
+        <material name="Orange"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/coarse/link_1.stl"/>
+        </geometry>
+        <material name="Orange"/>
+      </collision>
+    </link>
+
+    <!-- joint between link_1 and link_2 -->
+    <joint name="${name}_2_joint" type="revolute">
+      <parent link="${name}_1_link"/>
+      <child link="${name}_2_link"/>
+      <origin xyz="0 0 0.2025" rpy="${PI / 2}   0 ${PI}"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="${-119 * PI / 180}" upper="${119 * PI / 180}"
+             effort="${max_effort}" velocity="${max_velocity}" />
+      <!-- <safety_controller soft_lower_limit="${-118 * PI / 180}"
+           soft_upper_limit="${118 * PI / 180}"
+           k_position="${safety_controller_k_pos}"
+           k_velocity="${safety_controller_k_vel}"/> -->
+      <dynamics damping="${joint_damping}"/>
+    </joint>
+
+    <link name="${name}_2_link">
+      <inertial>
+        <origin xyz="0.0003 0.059 0.042" rpy="0 0 0"/>
+        <mass value="4"/>
+        <inertia ixx="0.05"  ixy="0"  ixz="0" iyy="0.018" iyz="0" izz="0.044" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/link_2.stl"/>
+        </geometry>
+        <material name="Orange"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/coarse/link_2.stl"/>
+        </geometry>
+        <material name="Orange"/>
+      </collision>
+    </link>
+
+    <!-- joint between link_2 and link_3 -->
+    <joint name="${name}_3_joint" type="revolute">
+      <parent link="${name}_2_link"/>
+      <child link="${name}_3_link"/>
+      <origin xyz="0 0.2045 0" rpy="${PI / 2} 0 ${PI}"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="${-169 * PI / 180}" upper="${169 * PI / 180}"
+             effort="${max_effort}" velocity="${max_velocity}" />
+      <!-- <safety_controller soft_lower_limit="${-118 * PI / 180}"
+           soft_upper_limit="${118 * PI / 180}"
+           k_position="${safety_controller_k_pos}"
+           k_velocity="${safety_controller_k_vel}"/> -->
+      <dynamics damping="${joint_damping}"/>
+    </joint>
+
+    <link name="${name}_3_link">
+      <inertial>
+        <origin xyz="0 0.03 0.13" rpy="0 0 0"/>
+        <mass value="3"/>
+        <inertia ixx="0.08"  ixy="0"  ixz="0" iyy="0.075" iyz="0" izz="0.01" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/link_3.stl"/>
+        </geometry>
+        <material name="Orange"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/coarse/link_3.stl"/>
+        </geometry>
+        <material name="Orange"/>
+      </collision>
+    </link>
+
+   <!-- joint between link_3 and link_4 -->
+    <joint name="${name}_4_joint" type="revolute">
+      <parent link="${name}_3_link"/>
+      <child link="${name}_4_link"/>
+      <origin xyz="0 0 0.2155" rpy="${PI / 2} 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="${-119 * PI / 180}" upper="${119 * PI / 180}"
+             effort="${max_effort}" velocity="${max_velocity}" />
+      <!-- <safety_controller soft_lower_limit="${-118 * PI / 180}"
+           soft_upper_limit="${118 * PI / 180}"
+           k_position="${safety_controller_k_pos}"
+           k_velocity="${safety_controller_k_vel}"/> -->
+      <dynamics damping="${joint_damping}"/>
+    </joint>
+
+    <link name="${name}_4_link">
+      <inertial>
+        <origin xyz="0 0.067 0.034" rpy="0 0 0"/>
+        <mass value="2.7"/>
+        <inertia ixx="0.03"  ixy="0"  ixz="0" iyy="0.01" iyz="0" izz="0.029" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/link_4.stl"/>
+        </geometry>
+        <material name="Orange"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/coarse/link_4.stl"/>
+        </geometry>
+        <material name="Orange"/>
+      </collision>
+    </link>
+
+    <!-- joint between link_4 and link_5 -->
+    <joint name="${name}_5_joint" type="revolute">
+      <parent link="${name}_4_link"/>
+      <child link="${name}_5_link"/>
+      <origin xyz="0 0.1845 0" rpy="${-PI / 2} ${PI} 0"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="${-169 * PI / 180}" upper="${169 * PI / 180}"
+             effort="${max_effort}" velocity="${max_velocity}" />
+      <!-- <safety_controller soft_lower_limit="${-118 * PI / 180}"
+           soft_upper_limit="${118 * PI / 180}"
+           k_position="${safety_controller_k_pos}"
+           k_velocity="${safety_controller_k_vel}"/> -->
+      <dynamics damping="${joint_damping}"/>
+    </joint>
+
+    <link name="${name}_5_link">
+      <inertial>
+        <origin xyz="0.0001 0.021 0.076" rpy="0 0 0"/>
+        <mass value="1.7"/>
+        <inertia ixx="0.02"  ixy="0"  ixz="0" iyy="0.018" iyz="0" izz="0.005" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/link_5.stl"/>
+        </geometry>
+        <material name="Orange"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/coarse/link_5.stl"/>
+        </geometry>
+        <material name="Orange"/>
+      </collision>
+    </link>
+
+ <!-- joint between link_5 and link_6 -->
+    <joint name="${name}_6_joint" type="revolute">
+      <parent link="${name}_5_link"/>
+      <child link="${name}_6_link"/>
+      <origin xyz="0 0 0.2155" rpy="${PI / 2} 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="${-119 * PI / 180}" upper="${119 * PI / 180}"
+             effort="${max_effort}" velocity="${max_velocity}" />
+      <!-- <safety_controller soft_lower_limit="${-118 * PI / 180}"
+           soft_upper_limit="${118 * PI / 180}"
+           k_position="${safety_controller_k_pos}"
+           k_velocity="${safety_controller_k_vel}"/> -->
+      <dynamics damping="${joint_damping}"/>
+    </joint>
+
+    <link name="${name}_6_link">
+      <inertial>
+        <origin xyz="0 0.0006 0.0004" rpy="0 0 0"/>
+        <mass value="1.8"/>
+        <inertia ixx="0.005"  ixy="0"  ixz="0" iyy="0.0036" iyz="0" izz="0.0047" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/link_6.stl"/>
+        </geometry>
+        <material name="Orange"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/coarse/link_6.stl"/>
+        </geometry>
+        <material name="Orange"/>
+      </collision>
+    </link>
+
+ <!-- joint between link_6 and link_7 -->
+    <joint name="${name}_7_joint" type="revolute">
+      <parent link="${name}_6_link"/>
+      <child link="${name}_7_link"/>
+      <origin xyz="0 0.081 0" rpy="${- PI / 2} ${PI} 0"/>
+      <axis xyz="0 0 1"/>
+      <limit lower="${-174 * PI / 180}" upper="${174 * PI / 180}"
+             effort="${max_effort}" velocity="${max_velocity}" />
+      <!-- <safety_controller soft_lower_limit="${-118 * PI / 180}"
+           soft_upper_limit="${118 * PI / 180}"
+           k_position="${safety_controller_k_pos}"
+           k_velocity="${safety_controller_k_vel}"/> -->
+      <dynamics damping="${joint_damping}"/>
+    </joint>
+
+    <link name="${name}_7_link">
+      <inertial>
+        <origin xyz="0 0 0.02" rpy="0 0 0"/>
+        <mass value="0.3"/>
+        <inertia ixx="0.001"  ixy="0"  ixz="0" iyy="0.001" iyz="0" izz="0.001" />
+      </inertial>
+
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/link_7.stl"/>
+        </geometry>
+        <material name="Grey"/>
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://iiwa_description/meshes/coarse/link_7.stl"/>
+        </geometry>
+        <material name="Grey"/>
+      </collision>
+    </link>
+
+    <joint name="adapter" type="fixed">
+    	<parent link="${name}_7_link"/>
+   	<child link="${name}_adapter"/>
+    	<origin rpy="0 0 0" xyz="0 0 0.06"/>
+    </joint>
+
+    <link name="${name}_adapter">
+	<visual>
+      	  <geometry>
+            <cylinder length="0.029" radius="0.039"/>
+          </geometry>
+          <material name="Grey"/>
+        </visual>
+
+        <collision>
+          <geometry>
+            <cylinder length="0.029" radius="0.039"/>
+          </geometry>
+        </collision>
+    </link>
+
+    <joint name="flange" type="fixed">
+    	<parent link="${name}_adapter"/>
+   	<child link="${name}_flange_link"/>
+    	<origin rpy="0 0 0" xyz="0 0 0.013"/>
+    </joint>
+
+    <link name="${name}_flange_link"/>
+
+    <!--Extensions -->
+    <!-- <xacro:iiwa_gazebo name="${name}" />
+    <xacro:iiwa_transmission name="${name}" hardware_interface="${hardware_interface}"/> -->
+
+  </xacro:macro>
+
+</robot>

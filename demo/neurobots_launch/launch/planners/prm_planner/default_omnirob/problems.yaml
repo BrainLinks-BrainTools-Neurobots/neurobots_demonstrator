@@ -1,0 +1,35 @@
+names:
+- single_arm_omnirob
+problems:
+    single_arm_omnirob:
+        robot: omnirob
+        root_frame: /map
+        plugin_package: prm_planner
+        plugin_class: prm_planner::SingleArmProblemDefinition
+        planning:
+            planner_type: prm_a_star
+            planning_frame: /omnirob_lbr/lbr_0_link
+            constraint: y_up
+            prm: 
+                filename: ${find neurobots_launch}/launch/planners/prm_planner/default_omnirob/pd_lbr.prm
+                save: true
+                size: 7000
+                visibility_distance: 0.3
+                min_height: 0.0
+        dropping:
+            search_radius: 1.0
+        objects:
+            names:
+            - waterbottle
+            - cupletters
+            - redcup21
+            objects:
+                waterbottle:
+                    model: ${find neurobots_object_models}/object_models/waterbottle/waterbottle.obj
+                    frame_name: /omnirob_camera_bridge/simtrack/waterbottle
+                cupletters:
+                    model: ${find neurobots_object_models}/object_models/cupletters/cupletters.obj
+                    frame_name: /omnirob_camera_bridge/simtrack/cupletters
+                redcup21:
+                    model: ${find neurobots_object_models}/object_models/redcup21/redcup21.obj
+                    frame_name: /omnirob_camera_bridge/simtrack/redcup21

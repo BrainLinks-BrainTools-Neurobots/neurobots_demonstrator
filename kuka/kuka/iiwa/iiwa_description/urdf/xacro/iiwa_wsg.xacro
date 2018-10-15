@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot name="iiwa" xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:include
+		filename="$(find iiwa_description)/urdf/xacro/iiwa.urdf.xacro" />
+	<xacro:include filename="$(find wsg_description)/urdf/wsg.urdf.xacro" />
+
+	<xacro:wsg name="wsg" parent_link_name="iiwa">
+	</xacro:wsg>
+
+</robot>

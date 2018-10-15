@@ -1,0 +1,10 @@
+#goal definition
+string robot	# omnirob / iiwa
+string glass # g1 / g2 / ...
+string target_subject # me
+---
+#result definition
+bool arrived
+---
+#feedback
+string state

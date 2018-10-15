@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package>
+  <name>auto_drinking_planner</name>
+  <version>0.0.0</version>
+  <description>The auto_drinking package</description>
+
+  <maintainer email="holub@informatik.uni-freiburg.de">root</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+  <build_depend>tf</build_depend>
+  <build_depend>tf_conversions</build_depend>
+  <build_depend>kuka_moveit_controller</build_depend>
+  <build_depend>robot_interface_definition</build_depend>
+  
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>tf</run_depend>
+  <run_depend>tf_conversions</run_depend>
+  <run_depend>kuka_moveit_controller</run_depend>
+  <run_depend>robot_interface_definition</run_depend>
+
+  <export>
+
+  </export>
+</package>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/applicationServer.publishing.jar"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/applicationServer.publishing-javadoc.zip"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/common.JniExtractor.jar"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/common.JniExtractor-javadoc.zip"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/common.utilities.jar"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/common.utilities-javadoc.zip"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/connectivity.fri.jar"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/connectivity.fri-javadoc.zip"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/de.mukis.jama-2.0.0.M1.jar"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/de.mukis.jama-2.0.0.M1-javadoc.jar"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/roboticsAPI.directServo.jar"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/roboticsAPI.directServo-javadoc.zip"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/roboticsAPI.jar"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/roboticsAPI.smartServo.jar"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/roboticsAPI.smartServo-javadoc.zip"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/roboticsAPI.smartServoLIN.jar"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/roboticsAPI.smartServoLIN-javadoc.zip"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/roboticsAPI-javadoc.zip"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/slf4j-api-1.7.2.jar"/>
+	<classpathentry kind="lib" path="../iiwa_java_libs/slf4j-log4j12-1.7.2.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

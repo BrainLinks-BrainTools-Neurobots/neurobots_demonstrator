@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<package>
+  <name>omnirob_launch</name>
+  <version>0.0.0</version>
+  <description>The omnirob_launch package</description>
+
+  <maintainer email="kuhnera@informatik.uni-freiburg.de">Andreas Kuhner</maintainer>
+  <license>BSD</license>
+</package>

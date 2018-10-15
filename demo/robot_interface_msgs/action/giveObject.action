@@ -1,0 +1,10 @@
+#goal definition
+string robot	#omnirob / iiwa
+string target_object
+string human
+---
+#result definition
+bool given
+---
+#feedback
+string state

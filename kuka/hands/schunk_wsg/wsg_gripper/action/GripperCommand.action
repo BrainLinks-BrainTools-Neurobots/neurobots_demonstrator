@@ -1,0 +1,76 @@
+#goal definition
+
+byte command_code # command id to execute
+# further information: doc/WSG50_Command_Set_Reference_Manual.pdf
+
+
+byte HOMING=32 
+byte ACK_FAST_STOP=36 
+
+byte MOVE_FINGERS=33
+byte GRASP_A_PART=37 
+byte MOVE_WITHOUT_FORCE_CONTROL=38 
+byte flags
+float32 width
+float32 speed
+
+byte GET_ACCELERATION=49
+byte SET_ACCELERATION=48
+float32 acc
+
+byte GET_GRASPING_FORCE_LIMIT=51
+byte SET_GRASPING_FORCE_LIMIT=50
+float32 force
+
+byte GET_SYSTEM_STATE=64
+
+byte GET_OPENING_WIDTH=67
+
+byte GET_FINGER_INFO=96
+byte GET_FINGER_FLAGS=97
+byte FINGER_POWER_CONTROL=98
+byte finger_index
+byte on_off
+
+byte GET_FINGER_DATA=99
+---
+#result definition
+# a selection of possible error codes
+# (for more detailed error messages look at the output
+# of the gripper driver node)
+byte E_SUCCESS = 0
+byte E_NOT_AVAILABLE = 1
+byte E_NOT_INITIALIZED = 3
+byte E_ACCESS_DENIED = 16
+byte E_CMD_FAILED = 18
+
+byte executed_command
+bool successful
+byte return_code
+
+# specific return values
+# GET_GRASPING_FORCE_LIMIT
+float32 force_limit
+
+# GET_ACCELERATION
+float32 acc_limit
+
+# GET_SYSTEM_STATE
+uint32 system_state
+
+# GET_OPENING_WIDTH
+float32 opening_width
+
+# GET_FINGER_INFO
+byte finger_type
+uint16 finger_data_size
+
+# GET_FINGER_FLAGS
+byte finger_flags
+
+# GET_FINGER_DATA
+uint8[] finger_data
+float32 finger_force
+
+---
+#feedback

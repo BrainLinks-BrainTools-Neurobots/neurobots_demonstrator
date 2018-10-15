@@ -1,0 +1,5 @@
+relaxed_exploration.py:302 - get_triggers() returns multiple triggers which are None all the time. I'm not completely sure, if the repetition of the following loop makes any difference.
+
+Implement std::hash<...> for all pointers because of hash_combine
+
+Parameter has no hash function, which means that all parameters are only distinguished by their parameter specification but no by its instantions...

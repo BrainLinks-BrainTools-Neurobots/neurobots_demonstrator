@@ -1,0 +1,9 @@
+<launch>
+	<node pkg="kuka_manager" type="kuka_manager" name="kuka_manager" output="screen">
+		<param name="robot_name" type="str" value="IIWA" />
+		<param name="host" type="str" value="localhost" />
+	</node>
+
+	<node pkg="iiwa_java_controller" type="start_iiwa_controller" name="iiwa_java_controller" output="screen">
+	</node>
+</launch>

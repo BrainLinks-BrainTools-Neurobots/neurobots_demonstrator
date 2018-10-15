@@ -1,0 +1,1651 @@
+Panels:
+  - Class: rviz/Displays
+    Help Height: 89
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Global Options1
+        - /PlanningScene1/Scene Robot1
+        - /Simtrack omniRob1
+        - /TF1/Frames1
+        - /Default Arm1
+        - "/PRM: Path1"
+        - "/PRM: Path1/Namespaces1"
+        - "/PRM: Drop Positions1/Namespaces1"
+        - /MarkerArray2
+        - /MarkerArray2/Namespaces1
+      Splitter Ratio: 0.586134434
+    Tree Height: 365
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Tool Properties
+    Expanded:
+      - /2D Pose Estimate1
+      - /2D Nav Goal1
+      - /Publish Point1
+    Name: Tool Properties
+    Splitter Ratio: 0.588679016
+  - Class: rviz/Views
+    Expanded:
+      - /Current View1
+    Name: Views
+    Splitter Ratio: 0.5
+  - Class: rviz/Time
+    Experimental: false
+    Name: Time
+    SyncMode: 0
+    SyncSource: Simtrack omniRob
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.0299999993
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Class: moveit_rviz_plugin/PlanningScene
+      Enabled: true
+      Move Group Namespace: omnirob_lbr
+      Name: PlanningScene
+      Planning Scene Topic: omnirob_lbr/planning_scene
+      Robot Description: omnirob_lbr/robot_description
+      Scene Geometry:
+        Scene Alpha: 0.899999976
+        Scene Color: 50; 230; 50
+        Scene Display Time: 0.200000003
+        Show Scene Geometry: true
+        Voxel Coloring: Z-Axis
+        Voxel Rendering: Occupied Voxels
+      Scene Robot:
+        Attached Body Color: 150; 50; 150
+        Links:
+          All Links Enabled: true
+          Expand Joint Details: false
+          Expand Link Details: false
+          Expand Tree: false
+          Link Tree Style: Links in Alphabetic Order
+          base_box_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          base_theta_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          base_x_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          base_y_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          camera_depth_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera_depth_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          camera_rgb_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          camera_rgb_optical_frame:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          laser_front_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          laser_rear_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          lbr_0_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lbr_1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lbr_2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lbr_3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lbr_4_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lbr_5_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lbr_6_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lbr_7_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          lbr_flange_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          platform_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          pole_base_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          pole_top2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          pole_top_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          sdh2_finger_11_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          sdh2_finger_12_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          sdh2_finger_13_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          sdh2_finger_21_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          sdh2_finger_22_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          sdh2_finger_23_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          sdh2_grasp_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          sdh2_palm_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          sdh2_thumb_1_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          sdh2_thumb_2_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          sdh2_thumb_3_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          sdh2_tip_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+          sdh_adapter_link:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+        Robot Alpha: 1
+        Show Robot Collision: false
+        Show Robot Visual: false
+      Value: true
+    - Alpha: 1
+      Class: rviz/RobotModel
+      Collision Enabled: false
+      Enabled: true
+      Links:
+        All Links Enabled: true
+        Expand Joint Details: false
+        Expand Link Details: false
+        Expand Tree: false
+        Link Tree Style: Links in Alphabetic Order
+        base_box_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_theta_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_x_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_y_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        camera_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_depth_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        camera_rgb_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_rgb_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        laser_front_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        laser_rear_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        lbr_0_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lbr_1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lbr_2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lbr_3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lbr_4_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lbr_5_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lbr_6_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lbr_7_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        lbr_flange_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        platform_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        pole_base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        pole_top2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        pole_top_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sdh2_finger_11_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sdh2_finger_12_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sdh2_finger_13_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sdh2_finger_21_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sdh2_finger_22_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sdh2_finger_23_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sdh2_grasp_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        sdh2_palm_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sdh2_thumb_1_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sdh2_thumb_2_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sdh2_thumb_3_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sdh2_tip_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        sdh_adapter_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+      Name: OmniRob
+      Robot Description: omnirob_lbr/robot_description
+      TF Prefix: omnirob_lbr
+      Update Interval: 0
+      Value: true
+      Visual Enabled: true
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/LaserScan
+      Color: 0; 0; 255
+      Color Transformer: FlatColor
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: Omnirob Laser Front
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.0199999996
+      Style: Flat Squares
+      Topic: /omnirob_lbr/scan_front
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 0.136639997
+        Min Value: 0.136639997
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/LaserScan
+      Color: 255; 0; 0
+      Color Transformer: FlatColor
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: Omnirob Laser Rear
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.0199999996
+      Style: Flat Squares
+      Topic: /omnirob_lbr/scan_rear
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: Shelf Right Camera
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: false
+      Size (Pixels): 3
+      Size (m): 0.0199999996
+      Style: Points
+      Topic: /shelf_right_camera/depth_registered/points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: Shelf Left Camera
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: false
+      Size (Pixels): 3
+      Size (m): 0.0199999996
+      Style: Points
+      Topic: /shelf_left_camera/depth_registered/points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: omniRob Camera
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: false
+      Size (Pixels): 3
+      Size (m): 0.0199999996
+      Style: Points
+      Topic: /omnirob_camera/depth_registered/points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: Face Camera
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.00999999978
+      Style: Points
+      Topic: /face_camera/depth_registered/points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: Table Camera
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.00999999978
+      Style: Points
+      Topic: /table_camera/depth_registered/points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Alpha: 1
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 255; 255; 255
+      Color Transformer: RGB8
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: Overview Camera
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.00999999978
+      Style: Flat Squares
+      Topic: /overview_camera/depth_registered/points
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /omnirob_camera_bridge/simtrack/image
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Simtrack omniRob
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: true
+    - Class: rviz/Image
+      Enabled: false
+      Image Topic: /mouth_detect/face_detection
+      Max Value: 1
+      Median window: 5
+      Min Value: 0
+      Name: Face Detection
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: false
+    - Alpha: 0.699999988
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /map
+      Unreliable: false
+      Use Timestamp: false
+      Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        base_link:
+          Value: false
+        bottle_rim:
+          Value: false
+        cup_rim:
+          Value: true
+        eye_left:
+          Value: false
+        eye_right:
+          Value: false
+        face_camera_depth_frame:
+          Value: false
+        face_camera_depth_optical_frame:
+          Value: false
+        face_camera_link:
+          Value: false
+        face_camera_rgb_frame:
+          Value: false
+        face_camera_rgb_optical_frame:
+          Value: false
+        fore_head:
+          Value: false
+        map:
+          Value: false
+        mouth2:
+          Value: true
+        omnirob_camera_bridge/simtrack/cupletters:
+          Value: false
+        omnirob_camera_bridge/simtrack/waterbottle:
+          Value: false
+        omnirob_camera_depth_frame:
+          Value: false
+        omnirob_camera_depth_optical_frame:
+          Value: false
+        omnirob_camera_link:
+          Value: false
+        omnirob_camera_rgb_frame:
+          Value: false
+        omnirob_camera_rgb_optical_frame:
+          Value: false
+        omnirob_lbr/base_box_link:
+          Value: false
+        omnirob_lbr/base_box_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/base_box_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/base_box_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/base_box_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/base_link:
+          Value: false
+        omnirob_lbr/base_theta_link:
+          Value: false
+        omnirob_lbr/base_theta_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/base_theta_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/base_theta_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/base_theta_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/base_x_link:
+          Value: false
+        omnirob_lbr/base_y_link:
+          Value: false
+        omnirob_lbr/base_y_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/base_y_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/base_y_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/base_y_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/camera_depth_frame:
+          Value: false
+        omnirob_lbr/camera_depth_frame_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/camera_depth_frame_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/camera_depth_frame_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/camera_depth_frame_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/camera_depth_optical_frame:
+          Value: false
+        omnirob_lbr/camera_depth_optical_frame_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/camera_depth_optical_frame_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/camera_depth_optical_frame_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/camera_depth_optical_frame_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/camera_link:
+          Value: false
+        omnirob_lbr/camera_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/camera_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/camera_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/camera_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/camera_rgb_frame:
+          Value: false
+        omnirob_lbr/camera_rgb_frame_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/camera_rgb_frame_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/camera_rgb_frame_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/camera_rgb_frame_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/camera_rgb_optical_frame:
+          Value: false
+        omnirob_lbr/camera_rgb_optical_frame_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/camera_rgb_optical_frame_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/camera_rgb_optical_frame_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/camera_rgb_optical_frame_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/laser_front_link:
+          Value: false
+        omnirob_lbr/laser_front_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/laser_front_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/laser_front_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/laser_front_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/laser_rear_link:
+          Value: false
+        omnirob_lbr/laser_rear_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/laser_rear_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/laser_rear_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/laser_rear_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/lbr_0_link:
+          Value: false
+        omnirob_lbr/lbr_0_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/lbr_0_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/lbr_0_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/lbr_0_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/lbr_1_link:
+          Value: false
+        omnirob_lbr/lbr_1_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/lbr_1_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/lbr_1_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/lbr_1_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/lbr_2_link:
+          Value: false
+        omnirob_lbr/lbr_2_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/lbr_2_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/lbr_2_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/lbr_2_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/lbr_3_link:
+          Value: false
+        omnirob_lbr/lbr_3_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/lbr_3_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/lbr_3_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/lbr_3_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/lbr_4_link:
+          Value: false
+        omnirob_lbr/lbr_4_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/lbr_4_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/lbr_4_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/lbr_4_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/lbr_5_link:
+          Value: false
+        omnirob_lbr/lbr_5_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/lbr_5_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/lbr_5_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/lbr_5_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/lbr_6_link:
+          Value: false
+        omnirob_lbr/lbr_6_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/lbr_6_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/lbr_6_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/lbr_6_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/lbr_7_link:
+          Value: false
+        omnirob_lbr/lbr_7_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/lbr_7_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/lbr_7_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/lbr_7_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/lbr_flange_link:
+          Value: false
+        omnirob_lbr/lbr_flange_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/lbr_flange_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/lbr_flange_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/lbr_flange_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/odom:
+          Value: false
+        omnirob_lbr/platform_link:
+          Value: false
+        omnirob_lbr/platform_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/platform_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/platform_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/platform_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/pole_base_link:
+          Value: false
+        omnirob_lbr/pole_base_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/pole_base_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/pole_base_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/pole_base_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/pole_top2_link:
+          Value: false
+        omnirob_lbr/pole_top2_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/pole_top2_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/pole_top2_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/pole_top2_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/pole_top_link:
+          Value: false
+        omnirob_lbr/pole_top_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/pole_top_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/pole_top_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/pole_top_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/sdh2_finger_11_link:
+          Value: false
+        omnirob_lbr/sdh2_finger_11_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/sdh2_finger_11_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/sdh2_finger_11_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/sdh2_finger_11_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/sdh2_finger_12_link:
+          Value: false
+        omnirob_lbr/sdh2_finger_12_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/sdh2_finger_12_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/sdh2_finger_12_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/sdh2_finger_12_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/sdh2_finger_13_link:
+          Value: false
+        omnirob_lbr/sdh2_finger_13_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/sdh2_finger_13_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/sdh2_finger_13_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/sdh2_finger_13_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/sdh2_finger_21_link:
+          Value: false
+        omnirob_lbr/sdh2_finger_21_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/sdh2_finger_21_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/sdh2_finger_21_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/sdh2_finger_21_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/sdh2_finger_22_link:
+          Value: false
+        omnirob_lbr/sdh2_finger_22_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/sdh2_finger_22_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/sdh2_finger_22_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/sdh2_finger_22_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/sdh2_finger_23_link:
+          Value: false
+        omnirob_lbr/sdh2_finger_23_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/sdh2_finger_23_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/sdh2_finger_23_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/sdh2_finger_23_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/sdh2_grasp_link:
+          Value: false
+        omnirob_lbr/sdh2_grasp_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/sdh2_grasp_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/sdh2_grasp_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/sdh2_grasp_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/sdh2_palm_link:
+          Value: false
+        omnirob_lbr/sdh2_palm_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/sdh2_palm_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/sdh2_palm_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/sdh2_palm_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/sdh2_thumb_1_link:
+          Value: false
+        omnirob_lbr/sdh2_thumb_1_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/sdh2_thumb_1_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/sdh2_thumb_1_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/sdh2_thumb_1_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/sdh2_thumb_2_link:
+          Value: false
+        omnirob_lbr/sdh2_thumb_2_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/sdh2_thumb_2_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/sdh2_thumb_2_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/sdh2_thumb_2_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/sdh2_thumb_3_link:
+          Value: false
+        omnirob_lbr/sdh2_thumb_3_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/sdh2_thumb_3_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/sdh2_thumb_3_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/sdh2_thumb_3_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/sdh2_tip_link:
+          Value: false
+        omnirob_lbr/sdh2_tip_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/sdh2_tip_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/sdh2_tip_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/sdh2_tip_link_trajectory_8375349752110071468:
+          Value: false
+        omnirob_lbr/sdh_adapter_link:
+          Value: false
+        omnirob_lbr/sdh_adapter_link_trajectory_12195650561038422639:
+          Value: false
+        omnirob_lbr/sdh_adapter_link_trajectory_17859751402570475525:
+          Value: false
+        omnirob_lbr/sdh_adapter_link_trajectory_2052119544300751952:
+          Value: false
+        omnirob_lbr/sdh_adapter_link_trajectory_8375349752110071468:
+          Value: false
+        overview_camera_link:
+          Value: false
+        shelf_left_camera/simtrack/cupletters:
+          Value: false
+        shelf_left_camera_depth_frame:
+          Value: false
+        shelf_left_camera_depth_optical_frame:
+          Value: false
+        shelf_left_camera_link:
+          Value: false
+        shelf_left_camera_rgb_frame:
+          Value: false
+        shelf_left_camera_rgb_optical_frame:
+          Value: false
+        shelf_right_camera/simtrack/waterbottle:
+          Value: false
+        shelf_right_camera_depth_frame:
+          Value: false
+        shelf_right_camera_depth_optical_frame:
+          Value: false
+        shelf_right_camera_link:
+          Value: false
+        shelf_right_camera_rgb_frame:
+          Value: false
+        shelf_right_camera_rgb_optical_frame:
+          Value: false
+        table_camera_link:
+          Value: false
+      Marker Scale: 1
+      Name: TF
+      Show Arrows: false
+      Show Axes: true
+      Show Names: false
+      Tree:
+        map:
+          omnirob_lbr/odom:
+            omnirob_lbr/base_link:
+              base_link:
+                {}
+              omnirob_lbr/base_x_link:
+                omnirob_lbr/base_y_link:
+                  omnirob_lbr/platform_link:
+                    omnirob_lbr/base_theta_link:
+                      omnirob_lbr/base_box_link:
+                        omnirob_lbr/laser_front_link:
+                          {}
+                        omnirob_lbr/laser_rear_link:
+                          {}
+                        omnirob_lbr/lbr_0_link:
+                          omnirob_camera_link:
+                            omnirob_camera_depth_frame:
+                              omnirob_camera_depth_optical_frame:
+                                {}
+                            omnirob_camera_rgb_frame:
+                              omnirob_camera_rgb_optical_frame:
+                                omnirob_camera_bridge/simtrack/cupletters:
+                                  {}
+                                omnirob_camera_bridge/simtrack/waterbottle:
+                                  {}
+                          omnirob_lbr/lbr_0_link_trajectory_12195650561038422639:
+                            omnirob_lbr/lbr_1_link_trajectory_12195650561038422639:
+                              omnirob_lbr/lbr_2_link_trajectory_12195650561038422639:
+                                omnirob_lbr/lbr_3_link_trajectory_12195650561038422639:
+                                  omnirob_lbr/lbr_4_link_trajectory_12195650561038422639:
+                                    omnirob_lbr/lbr_5_link_trajectory_12195650561038422639:
+                                      omnirob_lbr/lbr_6_link_trajectory_12195650561038422639:
+                                        omnirob_lbr/lbr_7_link_trajectory_12195650561038422639:
+                                          omnirob_lbr/lbr_flange_link_trajectory_12195650561038422639:
+                                            omnirob_lbr/sdh_adapter_link_trajectory_12195650561038422639:
+                                              omnirob_lbr/sdh2_palm_link_trajectory_12195650561038422639:
+                                                omnirob_lbr/sdh2_finger_11_link_trajectory_12195650561038422639:
+                                                  omnirob_lbr/sdh2_finger_12_link_trajectory_12195650561038422639:
+                                                    omnirob_lbr/sdh2_finger_13_link_trajectory_12195650561038422639:
+                                                      {}
+                                                omnirob_lbr/sdh2_finger_21_link_trajectory_12195650561038422639:
+                                                  omnirob_lbr/sdh2_finger_22_link_trajectory_12195650561038422639:
+                                                    omnirob_lbr/sdh2_finger_23_link_trajectory_12195650561038422639:
+                                                      {}
+                                                omnirob_lbr/sdh2_grasp_link_trajectory_12195650561038422639:
+                                                  {}
+                                                omnirob_lbr/sdh2_thumb_1_link_trajectory_12195650561038422639:
+                                                  omnirob_lbr/sdh2_thumb_2_link_trajectory_12195650561038422639:
+                                                    omnirob_lbr/sdh2_thumb_3_link_trajectory_12195650561038422639:
+                                                      {}
+                                                omnirob_lbr/sdh2_tip_link_trajectory_12195650561038422639:
+                                                  {}
+                          omnirob_lbr/lbr_0_link_trajectory_17859751402570475525:
+                            omnirob_lbr/lbr_1_link_trajectory_17859751402570475525:
+                              omnirob_lbr/lbr_2_link_trajectory_17859751402570475525:
+                                omnirob_lbr/lbr_3_link_trajectory_17859751402570475525:
+                                  omnirob_lbr/lbr_4_link_trajectory_17859751402570475525:
+                                    omnirob_lbr/lbr_5_link_trajectory_17859751402570475525:
+                                      omnirob_lbr/lbr_6_link_trajectory_17859751402570475525:
+                                        omnirob_lbr/lbr_7_link_trajectory_17859751402570475525:
+                                          omnirob_lbr/lbr_flange_link_trajectory_17859751402570475525:
+                                            omnirob_lbr/sdh_adapter_link_trajectory_17859751402570475525:
+                                              omnirob_lbr/sdh2_palm_link_trajectory_17859751402570475525:
+                                                omnirob_lbr/sdh2_finger_11_link_trajectory_17859751402570475525:
+                                                  omnirob_lbr/sdh2_finger_12_link_trajectory_17859751402570475525:
+                                                    omnirob_lbr/sdh2_finger_13_link_trajectory_17859751402570475525:
+                                                      {}
+                                                omnirob_lbr/sdh2_finger_21_link_trajectory_17859751402570475525:
+                                                  omnirob_lbr/sdh2_finger_22_link_trajectory_17859751402570475525:
+                                                    omnirob_lbr/sdh2_finger_23_link_trajectory_17859751402570475525:
+                                                      {}
+                                                omnirob_lbr/sdh2_grasp_link_trajectory_17859751402570475525:
+                                                  {}
+                                                omnirob_lbr/sdh2_thumb_1_link_trajectory_17859751402570475525:
+                                                  omnirob_lbr/sdh2_thumb_2_link_trajectory_17859751402570475525:
+                                                    omnirob_lbr/sdh2_thumb_3_link_trajectory_17859751402570475525:
+                                                      {}
+                                                omnirob_lbr/sdh2_tip_link_trajectory_17859751402570475525:
+                                                  {}
+                          omnirob_lbr/lbr_0_link_trajectory_2052119544300751952:
+                            omnirob_lbr/lbr_1_link_trajectory_2052119544300751952:
+                              omnirob_lbr/lbr_2_link_trajectory_2052119544300751952:
+                                omnirob_lbr/lbr_3_link_trajectory_2052119544300751952:
+                                  omnirob_lbr/lbr_4_link_trajectory_2052119544300751952:
+                                    omnirob_lbr/lbr_5_link_trajectory_2052119544300751952:
+                                      omnirob_lbr/lbr_6_link_trajectory_2052119544300751952:
+                                        omnirob_lbr/lbr_7_link_trajectory_2052119544300751952:
+                                          omnirob_lbr/lbr_flange_link_trajectory_2052119544300751952:
+                                            omnirob_lbr/sdh_adapter_link_trajectory_2052119544300751952:
+                                              omnirob_lbr/sdh2_palm_link_trajectory_2052119544300751952:
+                                                omnirob_lbr/sdh2_finger_11_link_trajectory_2052119544300751952:
+                                                  omnirob_lbr/sdh2_finger_12_link_trajectory_2052119544300751952:
+                                                    omnirob_lbr/sdh2_finger_13_link_trajectory_2052119544300751952:
+                                                      {}
+                                                omnirob_lbr/sdh2_finger_21_link_trajectory_2052119544300751952:
+                                                  omnirob_lbr/sdh2_finger_22_link_trajectory_2052119544300751952:
+                                                    omnirob_lbr/sdh2_finger_23_link_trajectory_2052119544300751952:
+                                                      {}
+                                                omnirob_lbr/sdh2_grasp_link_trajectory_2052119544300751952:
+                                                  {}
+                                                omnirob_lbr/sdh2_thumb_1_link_trajectory_2052119544300751952:
+                                                  omnirob_lbr/sdh2_thumb_2_link_trajectory_2052119544300751952:
+                                                    omnirob_lbr/sdh2_thumb_3_link_trajectory_2052119544300751952:
+                                                      {}
+                                                omnirob_lbr/sdh2_tip_link_trajectory_2052119544300751952:
+                                                  {}
+                          omnirob_lbr/lbr_0_link_trajectory_8375349752110071468:
+                            omnirob_lbr/lbr_1_link_trajectory_8375349752110071468:
+                              omnirob_lbr/lbr_2_link_trajectory_8375349752110071468:
+                                omnirob_lbr/lbr_3_link_trajectory_8375349752110071468:
+                                  omnirob_lbr/lbr_4_link_trajectory_8375349752110071468:
+                                    omnirob_lbr/lbr_5_link_trajectory_8375349752110071468:
+                                      omnirob_lbr/lbr_6_link_trajectory_8375349752110071468:
+                                        omnirob_lbr/lbr_7_link_trajectory_8375349752110071468:
+                                          omnirob_lbr/lbr_flange_link_trajectory_8375349752110071468:
+                                            omnirob_lbr/sdh_adapter_link_trajectory_8375349752110071468:
+                                              omnirob_lbr/sdh2_palm_link_trajectory_8375349752110071468:
+                                                omnirob_lbr/sdh2_finger_11_link_trajectory_8375349752110071468:
+                                                  omnirob_lbr/sdh2_finger_12_link_trajectory_8375349752110071468:
+                                                    omnirob_lbr/sdh2_finger_13_link_trajectory_8375349752110071468:
+                                                      {}
+                                                omnirob_lbr/sdh2_finger_21_link_trajectory_8375349752110071468:
+                                                  omnirob_lbr/sdh2_finger_22_link_trajectory_8375349752110071468:
+                                                    omnirob_lbr/sdh2_finger_23_link_trajectory_8375349752110071468:
+                                                      {}
+                                                omnirob_lbr/sdh2_grasp_link_trajectory_8375349752110071468:
+                                                  {}
+                                                omnirob_lbr/sdh2_thumb_1_link_trajectory_8375349752110071468:
+                                                  omnirob_lbr/sdh2_thumb_2_link_trajectory_8375349752110071468:
+                                                    omnirob_lbr/sdh2_thumb_3_link_trajectory_8375349752110071468:
+                                                      {}
+                                                omnirob_lbr/sdh2_tip_link_trajectory_8375349752110071468:
+                                                  {}
+                          omnirob_lbr/lbr_1_link:
+                            omnirob_lbr/lbr_2_link:
+                              omnirob_lbr/lbr_3_link:
+                                omnirob_lbr/lbr_4_link:
+                                  omnirob_lbr/lbr_5_link:
+                                    omnirob_lbr/lbr_6_link:
+                                      omnirob_lbr/lbr_7_link:
+                                        omnirob_lbr/lbr_flange_link:
+                                          face_camera_link:
+                                            face_camera_depth_frame:
+                                              face_camera_depth_optical_frame:
+                                                {}
+                                            face_camera_rgb_frame:
+                                              face_camera_rgb_optical_frame:
+                                                eye_left:
+                                                  {}
+                                                eye_right:
+                                                  {}
+                                                fore_head:
+                                                  {}
+                                                mouth2:
+                                                  {}
+                                          omnirob_lbr/sdh_adapter_link:
+                                            omnirob_lbr/sdh2_palm_link:
+                                              omnirob_lbr/sdh2_finger_11_link:
+                                                omnirob_lbr/sdh2_finger_12_link:
+                                                  omnirob_lbr/sdh2_finger_13_link:
+                                                    {}
+                                              omnirob_lbr/sdh2_finger_21_link:
+                                                omnirob_lbr/sdh2_finger_22_link:
+                                                  omnirob_lbr/sdh2_finger_23_link:
+                                                    {}
+                                              omnirob_lbr/sdh2_grasp_link:
+                                                bottle_rim:
+                                                  {}
+                                                cup_rim:
+                                                  {}
+                                              omnirob_lbr/sdh2_thumb_1_link:
+                                                omnirob_lbr/sdh2_thumb_2_link:
+                                                  omnirob_lbr/sdh2_thumb_3_link:
+                                                    {}
+                                              omnirob_lbr/sdh2_tip_link:
+                                                {}
+                        omnirob_lbr/pole_base_link:
+                          omnirob_lbr/pole_top2_link:
+                            omnirob_lbr/camera_link:
+                              omnirob_lbr/camera_depth_frame:
+                                omnirob_lbr/camera_depth_optical_frame:
+                                  {}
+                              omnirob_lbr/camera_rgb_frame:
+                                omnirob_lbr/camera_rgb_optical_frame:
+                                  {}
+                          omnirob_lbr/pole_top_link:
+                            {}
+          overview_camera_link:
+            {}
+          shelf_left_camera_link:
+            shelf_left_camera_depth_frame:
+              shelf_left_camera_depth_optical_frame:
+                {}
+            shelf_left_camera_rgb_frame:
+              shelf_left_camera_rgb_optical_frame:
+                {}
+          shelf_right_camera_link:
+            shelf_right_camera_depth_frame:
+              shelf_right_camera_depth_optical_frame:
+                {}
+            shelf_right_camera_rgb_frame:
+              shelf_right_camera_rgb_optical_frame:
+                shelf_right_camera/simtrack/waterbottle:
+                  {}
+          table_camera_link:
+            {}
+      Update Interval: 0
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.300000012
+      Axes Length: 0.300000012
+      Axes Radius: 0.00999999978
+      Class: rviz/PoseArray
+      Color: 255; 25; 0
+      Enabled: false
+      Head Length: 0.0700000003
+      Head Radius: 0.0299999993
+      Name: Localization Particles
+      Shaft Length: 0.230000004
+      Shaft Radius: 0.00999999978
+      Shape: Arrow (Flat)
+      Topic: /particlecloud
+      Unreliable: false
+      Value: false
+    - Class: rviz/InteractiveMarkers
+      Enable Transparency: true
+      Enabled: false
+      Name: Default Grasp/Drop
+      Show Axes: false
+      Show Descriptions: true
+      Show Visual Aids: false
+      Update Topic: /prm_planner/default_omnirob/object_goals/update
+      Value: false
+    - Class: rviz/InteractiveMarkers
+      Enable Transparency: true
+      Enabled: false
+      Name: Default Arm
+      Show Axes: false
+      Show Descriptions: true
+      Show Visual Aids: false
+      Update Topic: /prm_planner/default_omnirob/goal/update
+      Value: false
+    - Class: rviz/InteractiveMarkers
+      Enable Transparency: true
+      Enabled: false
+      Name: Pour
+      Show Axes: false
+      Show Descriptions: true
+      Show Visual Aids: false
+      Update Topic: /prm_planner/omnirob_pouring/prm_planner/goal_pose/update
+      Value: false
+    - Class: rviz/InteractiveMarkers
+      Enable Transparency: true
+      Enabled: false
+      Name: Drink
+      Show Axes: false
+      Show Descriptions: true
+      Show Visual Aids: false
+      Update Topic: /prm_planner/omnirob_drinking/prm_planner/goal_pose/update
+      Value: false
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /prm_planner/omnirob_drinking/prm/omnirob_omnirob_lbr_single
+      Name: "PRM: Path"
+      Namespaces:
+        edges_active: true
+        edges_inactive: true
+        edges_invisible: true
+        nodes: false
+        nodes_x: true
+        nodes_y: true
+        nodes_z: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /prm_planner/default_omnirob_y_down/objects/droping_poses_cupletters
+      Name: "PRM: Drop Positions"
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: true
+      Marker Topic: /prm_planner/default_omnirob/dropping/region
+      Name: "PRM: Dropping Region"
+      Namespaces:
+        fields: true
+      Queue Size: 100
+      Value: true
+    - Class: octomap_rviz_plugin/OccupancyGrid
+      Enabled: false
+      Max. Height Display: 3.40282347e+38
+      Max. Octree Depth: 16
+      Min. Height Display: -3.40282347e+38
+      Name: "PRM: octomap"
+      Octomap Topic: /prm_planner/default_omnirob/octomap
+      Queue Size: 5
+      Value: false
+      Voxel Alpha: 1
+      Voxel Coloring: Z-Axis
+      Voxel Rendering: Occupied Voxels
+    - Class: rviz/Marker
+      Enabled: false
+      Marker Topic: /tree_nodes_marker
+      Name: Nodes_Start_Tree
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+    - Class: rviz/MarkerArray
+      Enabled: false
+      Marker Topic: /tree_edges_marker
+      Name: Edges_Start_Tree
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+    - Class: rviz/Marker
+      Enabled: false
+      Marker Topic: /tree_nodes_marker2
+      Name: Nodes_Goal_Tree
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+    - Class: rviz/MarkerArray
+      Enabled: false
+      Marker Topic: /tree_edges_marker2
+      Name: Edges_Goal_Tree
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /base_tree_solution_path
+      Name: Mobile_Base_Solution_Path
+      Namespaces:
+        base_solution: true
+      Queue Size: 100
+      Value: true
+    - Class: rviz/MarkerArray
+      Enabled: false
+      Marker Topic: visualization_marker_array
+      Name: MarkerArray
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+    - Class: rviz/Camera
+      Enabled: false
+      Image Rendering: background and overlay
+      Image Topic: /overview_camera/rgb/image_raw
+      Name: Camera
+      Overlay Alpha: 0.699999988
+      Queue Size: 2
+      Transport Hint: raw
+      Unreliable: false
+      Value: false
+      Visibility:
+        Default Arm: true
+        Default Grasp/Drop: true
+        Drink: true
+        Edges_Goal_Tree: true
+        Edges_Start_Tree: true
+        Face Camera: true
+        Face Detection: true
+        Grid: true
+        Localization Particles: true
+        Map: true
+        MarkerArray: true
+        Mobile_Base_Solution_Path: true
+        Nodes_Goal_Tree: true
+        Nodes_Start_Tree: true
+        OmniRob: true
+        Omnirob Laser Front: true
+        Omnirob Laser Rear: true
+        Overview Camera: true
+        "PRM: Drop Positions": true
+        "PRM: Dropping Region": true
+        "PRM: Path": true
+        "PRM: octomap": true
+        PlanningScene: true
+        Pour: true
+        Shelf Left Camera: true
+        Shelf Right Camera: true
+        Simtrack omniRob: true
+        TF: true
+        Table Camera: true
+        Value: true
+        omniRob Camera: true
+      Zoom Factor: 1
+    - Class: rviz/MarkerArray
+      Enabled: false
+      Marker Topic: /prm_planner/default_omnirob_y_down/objects/grasping_poses_waterbottle
+      Name: MarkerArray
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: false
+  Enabled: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: map
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+      Hide Inactive Objects: true
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/FocusCamera
+    - Class: rviz/Measure
+    - Class: rviz/SetInitialPose
+      Topic: /initialpose
+    - Class: rviz/SetGoal
+      Topic: /move_base_simple/goal
+    - Class: rviz/PublishPoint
+      Single click: true
+      Topic: /clicked_point
+  Value: true
+  Views:
+    Current:
+      Class: rviz/XYOrbit
+      Distance: 6.17836094
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.0599999987
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Focal Point:
+        X: -0.728992999
+        Y: -1.37057137
+        Z: -4.71029944e-06
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.0500000007
+      Invert Z Axis: false
+      Name: Current View
+      Near Clip Distance: 0.00999999978
+      Pitch: 1.1302036
+      Target Frame: <Fixed Frame>
+      Value: XYOrbit (rviz)
+      Yaw: 5.89137602
+    Saved: ~
+Window Geometry:
+  Camera:
+    collapsed: false
+  Displays:
+    collapsed: false
+  Face Detection:
+    collapsed: false
+  Height: 1056
+  Hide Left Dock: false
+  Hide Right Dock: true
+  QMainWindow State: 000000ff00000000fd0000000400000000000001ee00000399fc0200000010fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006400fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000002800000207000000dd00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000001e004d006f00740069006f006e00200050006c0061006e006e0069006e0067000000010b000001d70000000000000000fb0000002000530069006d0074007200610063006b0020006f006d006e00690052006f006201000002350000018c0000001600fffffffb0000000a0049006d00610067006501000002f6000000cb0000000000000000fb0000000a0049006d00610067006501000002f6000000cb0000000000000000fb0000000a0049006d00610067006501000002f6000000cb0000000000000000fb0000000a0049006d00610067006501000002f7000000ca0000000000000000fb0000001c004600610063006500200044006500740065006300740069006f006e00000002fd000000c40000001600fffffffb0000000c00430061006d006500720061000000034e000000730000001600ffffff000000010000010f00000399fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000002800000399000000b000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b20000000000000000000000020000073f000000a9fc0100000002fb0000000c00430061006d0065007200610300000108000000d000000546000002b7fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000073f0000003bfc0100000002fb0000000800540069006d006501000000000000073f0000030000fffffffb0000000800540069006d006501000000000000045000000000000000000000054b0000039900000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  Selection:
+    collapsed: false
+  Simtrack omniRob:
+    collapsed: false
+  Time:
+    collapsed: false
+  Tool Properties:
+    collapsed: false
+  Views:
+    collapsed: true
+  Width: 1855
+  X: 65
+  Y: 24

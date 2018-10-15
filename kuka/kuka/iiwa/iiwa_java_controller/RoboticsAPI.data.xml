@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<RoboticsAPIData version="3">
+    <world>
+        <gravitation x="0.0" y="0.0" z="9.81"/>
+        <frame name="P1">
+            <transformation a="-3.14" b="0.21" c="3.14" x="500.0" y="0.0" z="711.0"/>
+            <additionalInformation>
+                <info key="LastModificationTime" type="java.lang.Long" value="1517307479843"/>
+            </additionalInformation>
+            <redundancyData>
+                <redundancy transformationProviderName="legacy" type="com.kuka.roboticsAPI.deviceModel.LBRE1Redundancy"/>
+            </redundancyData>
+        </frame>
+        <frame name="P2">
+            <transformation a="0.0" b="0.0" c="0.0" x="50.0" y="0.0" z="1250.0"/>
+            <additionalInformation>
+                <info key="LastModificationTime" type="java.lang.Long" value="1517307935531"/>
+            </additionalInformation>
+            <redundancyData>
+                <redundancy transformationProviderName="legacy" type="com.kuka.roboticsAPI.deviceModel.LBRE1Redundancy"/>
+            </redundancyData>
+        </frame>
+        <frame name="HandGuidingInit">
+            <transformation a="3.14" b="0.0" c="3.14" x="472.0" y="0.0" z="641.0"/>
+            <additionalInformation>
+                <info key="LastModificationTime" type="java.lang.Long" value="1535543752608"/>
+            </additionalInformation>
+            <redundancyData>
+                <redundancy transformationProviderName="legacy" type="com.kuka.roboticsAPI.deviceModel.LBRE1Redundancy"/>
+            </redundancyData>
+        </frame>
+    </world>
+    <objectTemplates>
+        <toolTemplate class="" name="SchunkSDH2">
+            <loadData cogA="0.0" cogB="0.0" cogC="0.0" cogX="8.46814986838626" cogY="10.65012807753989" cogZ="165.33594298891637" inertiaX="0.0" inertiaY="0.0" inertiaZ="0.0" mass="2.4210491295837473"/>
+        </toolTemplate>
+        <toolTemplate class="" name="SchunkWSG50">
+            <loadData cogA="0.0" cogB="0.0" cogC="0.0" cogX="-15.163366336100216" cogY="-25.060180333216163" cogZ="105.19200550556027" inertiaX="0.0" inertiaY="0.0" inertiaZ="0.0" mass="1.712366592551458"/>
+        </toolTemplate>
+    </objectTemplates>
+</RoboticsAPIData>

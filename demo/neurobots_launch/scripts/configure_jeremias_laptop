@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+export ROS_IP=192.168.42.68
+export ROS_MASTER_URI=http://192.168.42.71:11311
+#export ROS_MASTER_URI=http://192.168.42.68:11311
+
+
+#roslaunch mouth_detection_package mouth_detection.launch (runs mouth detection node and another node transforming the mouth pose into the map frame and writes it into the database)

@@ -1,0 +1,20 @@
+<launch>
+
+	<!-- Name of Camera to be calibrated -->
+	<arg name="calibration_camera_name" default="shelf"/>
+ 
+	<!-- Queue size for Simtrack Synchronizer -->
+	<arg name="sync_queue_size" default="5"/>
+
+
+	<!-- Simtrack for Camera to be calibrated -->
+	<include file="$(find extrinsic_camera_calibration)/launch/multi-rigid-calibration.launch">
+		<arg name="camera_name" value="$(arg calibration_camera_name)" />
+		<arg name="sync_queue_size" value="$(arg sync_queue_size)" />
+	</include>
+	
+
+	<node name="calibration_node" pkg="extrinsic_camera_calibration" type="extrinsic_camera_calibration_node" output="screen" args="$(arg calibration_camera_name)"/>
+	
+
+</launch>	

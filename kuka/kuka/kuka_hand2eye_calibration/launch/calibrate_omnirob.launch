@@ -1,0 +1,23 @@
+<launch>
+	<arg name="marker_size" default="0.168" />
+	<arg name="marker_file" default="$(find lbr_camera_calibration)/aruco_boards/board_2_1/board.yml" />
+	<arg name="camera_prefix" default="face_" />
+	<arg name="robot" default="omnirob" />
+	<arg name="flange_link" default="/omnirob_lbr/lbr_flange_link"/>
+	<arg name="world_link" default="/omnirob_lbr/lbr_0_link"/>
+	<arg name="joint_state_execution_service" default="/omnirob_lbr/omnirob/cmd_joint_state" />
+	<arg name="trajectory_file" default="$(find kuka_hand2eye_calibration)/trajectories/omnirob.trajectory" />
+	<arg name="calibration_file" default="$(find kuka_hand2eye_calibration)/calibration.txt" />
+
+	<node name="visp_hand2eye_calibration" pkg="visp_hand2eye_calibration" type="visp_hand2eye_calibration_calibrator" output="screen" />
+	<node name="kuka_hand2eye_calibration" pkg="kuka_hand2eye_calibration" type="kuka_hand2eye_calibration" args="
+		$(arg robot)
+		$(arg marker_file) 
+		$(arg marker_size) 
+		$(arg flange_link)
+		$(arg world_link)
+		$(arg joint_state_execution_service)
+		$(arg trajectory_file)
+		$(arg calibration_file)
+		$(arg camera_prefix)" output="screen" />
+</launch>

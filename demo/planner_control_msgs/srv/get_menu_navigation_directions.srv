@@ -1,0 +1,6 @@
+# returns true for feasible directions 
+---
+bool up
+bool down
+bool left
+bool right

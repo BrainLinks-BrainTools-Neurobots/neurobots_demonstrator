@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="sdh2_hand" type="sdh2_hand" name="sdh2_hand" respawn="true" />
+  <!--  <remap from="joint_states" to="joint_states_iiwa" /> 
+  </node> -->
+</launch>

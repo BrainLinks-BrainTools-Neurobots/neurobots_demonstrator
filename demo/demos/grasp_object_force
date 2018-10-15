@@ -1,0 +1,71 @@
+#!/bin/bash
+
+rosservice call /omnirob_lbr/omnirob/cmd_joint_state "header:
+  seq: 0
+  stamp:
+    secs: 0
+    nsecs: 0
+  frame_id: ''
+jointState:
+  header:
+    seq: 0
+    stamp: {secs: 0, nsecs: 0}
+    frame_id: ''
+  name: ['lbr_1_joint', 'lbr_2_joint', 'lbr_3_joint', 'lbr_4_joint', 'lbr_5_joint', 'lbr_6_joint', 'lbr_7_joint']
+  position: [0.3, 1.1, -1.779272819045312, 0.9228271785461337, 0.5, 1.4, 1.5]
+  velocity: [0]
+  effort: [0]
+transform:
+  translation: {x: 0.0, y: 0.0, z: 0.0}
+  rotation: {x: 0.0, y: 0.0, z: 0.0, w: 0.0}"
+
+#open
+rosservice call /omnirob_lbr/sdh_action "type: 0
+gripType: 0
+ratio: 0.4
+velocity: 0.9" 
+
+sleep 5
+
+while true; do
+	force=$(rostopic echo -n 1 /omnirob_lbr/joint_states/effort[3])
+	force1=$(echo "$force" | grep -o '[0-9\.]*')
+	force1=$(echo $force1 | sed 's/\./,/')
+	echo $force1
+	echo "Wait for press"
+	if [[ $(awk '{printf($1 >= $2) ? 1 : 0}' <<<" $force1 2,0 ") -eq 1 ]]; then
+		#close
+rosservice call /omnirob_lbr/sdh_action "type: 0
+gripType: 0
+ratio: 0.8
+velocity: 0.9" 	
+		break
+	fi
+done
+
+rosservice call /omnirob_lbr/omnirob/cmd_joint_state "header:
+  seq: 0
+  stamp:
+    secs: 0
+    nsecs: 0
+  frame_id: ''
+jointState:
+  header:
+    seq: 0
+    stamp: {secs: 0, nsecs: 0}
+    frame_id: ''
+  name: ['lbr_1_joint', 'lbr_2_joint', 'lbr_3_joint', 'lbr_4_joint', 'lbr_5_joint', 'lbr_6_joint', 'lbr_7_joint']
+  position: [1.39677084420528, 0.3845928792661519, -1.779272819045312, 0.9228271785461337, 0.8605012271409866, 2.0188659618561786, 1.0106677490035043]
+  velocity: [0]
+  effort: [0]
+transform:
+  translation: {x: 0.0, y: 0.0, z: 0.0}
+  rotation: {x: 0.0, y: 0.0, z: 0.0, w: 0.0}"
+
+
+
+
+
+
+
+

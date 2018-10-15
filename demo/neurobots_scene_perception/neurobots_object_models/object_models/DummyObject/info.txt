@@ -1,0 +1,4 @@
+- Ikea cup, model number 123.
+- Dimensions are 5cm x 5cm x 10cm
+- Works well with Simtrack
+...

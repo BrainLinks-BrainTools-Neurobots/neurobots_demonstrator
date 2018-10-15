@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<robot name="iiwa" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Import Rviz colors -->
+  <xacro:include filename="$(find iiwa_description)/urdf/xacro/materials.xacro" />
+  <!--Import the iiwa macro -->
+  <xacro:include filename="$(find iiwa_description)/urdf/xacro/iiwa.xacro"/>
+ <!-- Import Gazebo plugins -->
+  <xacro:include filename="$(find iiwa_description)/gazebo/gazebo.urdf.xacro"/>
+
+  <!-- Fix to world just for testing -->
+  <link name="iiwa_base_link"/>
+
+  <!--iiwa-->
+  <xacro:iiwa name="iiwa" hardware_interface="iiwa" parent="iiwa_base_link">
+    <origin xyz="0 0 0.0" rpy="0 0 0" />
+  </xacro:iiwa>
+
+</robot>

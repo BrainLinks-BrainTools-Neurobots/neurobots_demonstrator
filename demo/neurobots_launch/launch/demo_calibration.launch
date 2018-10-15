@@ -1,0 +1,25 @@
+<launch>
+
+	<arg name="camera" default="shelf"/>
+
+	<!-- Load machine configs -->
+	<include file="$(find neurobots_launch)/launch/machines/machines.launch" />
+
+ 	<!-- Omnirob Robot Localization --> 
+	<include file="$(find neurobots_launch)/launch/robot_localization/robot_localization.launch" />
+
+	<!-- Scene Perception -->
+	<include file="$(find neurobots_launch)/launch/camera_perception/neurobots_perception.launch" >
+		<arg name="calibration" value="true"/>
+		<arg name="calibration_camera_name" value="$(arg camera)"/>
+	</include>
+
+	<!-- Start Simtrack Nodes (on cube1)-->
+	<!-- rosrun neurobots_launch start_extrinsic_calibration shelf/table 5/15 -->
+	
+	<!-- Start Rviz Node -->
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find neurobots_launch)/rviz_configs/demo_calibration.rviz" />
+		
+	<machine name="omnirob-on-board2" address="192.168.42.36" env-loader="/home/kuhnerd/ros_workspaces/neurobots_ws/src/demo/neurobots_launch/scripts/setup_env_omnirob_laptop_onboard_daniel" user="kuhnerd" default="true" />
+	<include file="$(find neurobots_launch)/launch/hardware/omnirob_demo.launch" />	
+</launch>

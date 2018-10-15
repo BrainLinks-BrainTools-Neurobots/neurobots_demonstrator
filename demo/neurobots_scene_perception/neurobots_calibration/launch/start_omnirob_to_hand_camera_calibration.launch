@@ -1,0 +1,23 @@
+<launch>
+	<!-- Start camera -->
+	<node name="face_camera_launcher" pkg="neurobots_launch" type="start_omnirob_camera" args="face" /> 
+
+ 	<include file="$(find kuka_manager)/launch/omnirob_manager.launch" /> 
+
+ 	<param name="robot_description" textfile="$(find omnirob_description)/urdf/omnirob_lbr_sdh2_extended.urdf" /> 
+ 	<node name="omnirob_robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" /> 
+
+	<include file="$(find kuka_hand2eye_calibration)/launch/calibrate_omnirob.launch">
+		<arg name="marker_size" default="0.168" />
+		<arg name="marker_file" default="$(find lbr_camera_calibration)/aruco_boards/board_2_1/board.yml" />
+		<arg name="camera_prefix" default="face_" />
+		<arg name="robot" default="omnirob" />
+		<arg name="flange_link" default="/lbr_flange_link" />
+		<arg name="world_link" default="/lbr_0_link" />
+		<arg name="joint_state_execution_service" default="/omnirob/cmd_joint_state" />
+		<arg name="trajectory_file" default="$(find kuka_hand2eye_calibration)/trajectories/omnirob.trajectory" />
+		<arg name="calibration_file" default="$(find neurobots_calibration)/calibration_files/omnirob_hand_camera_to_omnirob.mat" />
+	</include>
+
+	<node pkg="rviz" type="rviz" name="rviz" args="-d $(find neurobots_calibration)/rviz/omnirob_hand2eye.rviz" />
+</launch>

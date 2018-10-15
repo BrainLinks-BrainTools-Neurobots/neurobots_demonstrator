@@ -1,0 +1,12 @@
+<library path="lib/libneurobots_prm_planner_problems">
+	<class type="neurobots_prm_planner_problems::PouringProblemDefinition" base_class_type="prm_planner::ProblemDefinition">
+		<description>
+			pouring problem definition
+		</description>
+	</class>
+	<class type="neurobots_prm_planner_problems::DrinkingProblemDefinition" base_class_type="prm_planner::ProblemDefinition">
+		<description>
+			drinking problem definition
+		</description>
+	</class>
+</library>

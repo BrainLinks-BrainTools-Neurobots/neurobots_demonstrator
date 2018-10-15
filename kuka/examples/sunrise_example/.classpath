@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="KUKAJavaLib/slf4j-api-1.7.2.jar"/>
+	<classpathentry kind="lib" path="KUKAJavaLib/slf4j-jdk14-1.7.3.jar"/>
+	<classpathentry kind="lib" path="KUKAJavaLib/roboticsAPI.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/SunriseProjekt1/KUKAJavaLib/roboticsAPI-javadoc.zip!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="KUKAJavaLib/common.utilities.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/SunriseProjekt1/KUKAJavaLib/common.utilities-javadoc.zip!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="KUKAJavaLib/roboticsAPI.handGuiding.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/SunriseProjekt1/KUKAJavaLib/roboticsAPI.handGuiding-javadoc.zip!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="KUKAJavaLib/applicationServer.publishing.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/SunriseProjekt1/KUKAJavaLib/applicationServer.publishing-javadoc.zip!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

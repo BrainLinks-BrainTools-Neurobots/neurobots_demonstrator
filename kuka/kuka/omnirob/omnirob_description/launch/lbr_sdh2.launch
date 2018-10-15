@@ -1,0 +1,7 @@
+<launch>
+	<param name="robot_description" textfile="$(find omnirob_description)/urdf/lbr_sdh2.urdf" />
+	<param name="robot_description_semantic" textfile="$(find omnirob_description)/srdf/lbr.srdf" />
+	<param name="use_gui" value="True"/>
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+</launch>

@@ -1,0 +1,33 @@
+<launch>
+
+  
+  <include file="$(find neurobots_launch)/launch/planners/birrt_moveit_config.launch" /> -->
+  
+  
+  <!-- Arguments for Planners  -->
+  <arg name="start_uni_planner" default="false"/> 	<!-- Activate/Deactivate Uni RRT* planner -->
+  <arg name="start_bi_planner" default="true"/>		<!-- Activate/Deactivate Bi RRT* planner -->
+  <arg name="planning_config" default="planner_parameters_omnirob_neurobots_demo"/> <!-- Planner parameters config file -->
+ 
+  <!-- Arguments for Trajectory Execution  -->
+  <arg name="execution_config" default="execution_config_real_omnirob"/> <!-- Execution parameters config file -->
+  
+  <!-- Name of configuration files for planning and execution -->
+  <include file="$(find planning_server)/launch/planning_server.launch">
+	<arg name="ns_prefix_robot" 		value="/omnirob_lbr/" />
+	<arg name="robot_description_robot" value="/omnirob_lbr/robot_description" />
+	<arg name="planning_group" 			value="omnirob_base"/>
+	<arg name="planning_config" 		value="$(arg planning_config)" />
+	<arg name="start_uni_planner" 		value="$(arg start_uni_planner)" />
+	<arg name="start_bi_planner" 		value="$(arg start_bi_planner)" />
+  </include> 
+  
+  <include file="$(find execution_server)/launch/execution_server.launch">
+	<arg name="ns_prefix_robot" 		value="/omnirob_lbr/" />
+	<arg name="robot_description_robot" value="/omnirob_lbr/robot_description" />
+	<arg name="planning_group" value="omnirob_base"/>
+	<arg name="execution_config" value="$(arg execution_config)" />
+  </include>  
+	
+		
+</launch>

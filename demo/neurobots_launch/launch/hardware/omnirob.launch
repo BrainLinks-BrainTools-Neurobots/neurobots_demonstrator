@@ -1,0 +1,15 @@
+<launch>
+
+	<group ns="omnirob_lbr">
+		<param name="tf_prefix" value="omnirob_lbr" />
+		<include file="$(find kuka_manager)/launch/omnirob_manager.launch">
+			<arg name="base_prismatic_joints" value="true" />
+		</include>
+		<include file="$(find omnirob_joy)/launch/omnirob_teleop.launch">
+			<arg name="namespace" value="omnirob_lbr" />
+		</include>
+	</group>
+
+	<include file="$(find neurobots_launch)/launch/robot_descriptions/robot_descriptions.launch" />
+	<include file="$(find neurobots_launch)/launch/robot_descriptions/robot_description_semantics.launch" />
+</launch>

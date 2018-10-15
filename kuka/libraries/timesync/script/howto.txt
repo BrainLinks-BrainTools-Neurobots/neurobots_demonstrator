@@ -1,0 +1,6 @@
+//remove comments and incomplete lines
+
+//in octave or matlab
+
+x=load("timesync_crop.log" )
+PlotPingClientLog(x)

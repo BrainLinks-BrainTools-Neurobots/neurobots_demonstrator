@@ -1,0 +1,21 @@
+<launch>
+	<!-- Given the published joint states, publish tf for the robot links -->
+	<group ns="iiwa">
+		<param name="robot_description" textfile="$(find iiwa_description)/urdf/iiwa_correct.urdf" />
+
+		<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen">
+			<param name="tf_prefix" type="string" value="iiwa" />
+		</node>
+
+<!-- 		<node name="joint_state_publisher" pkg="extended_joint_state_publisher" type="joint_state_publisher">
+			<param name="use_gui" type="bool" value="true" />
+			<param name="rate" type="int" value="60" />
+			<rosparam param="joints_to_publish">["sdh2_thumb_3_joint", "sdh2_thumb_2_joint", "sdh2_thumb_1_joint", "sdh2_finger_23_joint", "sdh2_finger_22_joint", "sdh2_finger_21_joint", "sdh2_finger_13_joint", "sdh2_finger_12_joint", "sdh2_knuckle_joint"]</rosparam>
+		</node> -->
+<!-- 
+		<param name="collision_matrix" type="string" value="$(find iiwa_description)/collision_matrices/iiwa_sdh2.cm" /> -->
+		<!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" args="_use_gui:=true" ></node> -->
+	</group>
+
+	<node name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find prm_planner_simple_iiwa)/rviz/example.rviz" output="screen" />
+</launch>

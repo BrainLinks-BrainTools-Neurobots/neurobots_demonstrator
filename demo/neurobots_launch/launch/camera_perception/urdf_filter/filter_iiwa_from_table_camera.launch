@@ -1,0 +1,8 @@
+<launch>
+	<include file="$(find neurobots_launch)/launch/camera_perception/urdf_filter/include/filter.launch.xml">
+		<arg name="nodelet" value="false" />
+		<arg name="parameter_file" value="$(find neurobots_launch)/launch/camera_perception/urdf_filter/params/iiwa_table_camera.yaml" />
+		<arg name="camera_prefix" value="table" />
+	</include>
+</launch>
+

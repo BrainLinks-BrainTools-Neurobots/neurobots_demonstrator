@@ -1,0 +1,8 @@
+<launch>
+	<node name="camera_tf_broadcaster" pkg="lbr_camera_calibration" type="camera_tf_broadcaster" output="screen">
+		<param name="from_link" value="iiwa_0_link" />
+		<param name="to_link" value="camera_link" />
+		<!--The following line is only needed if you have a calibration file in custom location-->
+		<param name="calibration_file" value="/tmp/calibration.txt" />
+	</node>
+</launch>

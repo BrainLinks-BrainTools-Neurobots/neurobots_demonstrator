@@ -1,0 +1,4 @@
+<launch>
+	<include file="$(find lbr_camera_calibration)/launch/tf_publisher.launch" />
+	<param name="camera_description" textfile="$(find camera_description)/urdf/asus_xtion.urdf" />
+</launch>

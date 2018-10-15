@@ -1,0 +1,6 @@
+<launch>
+	<include
+		file="$(find realtime_urdf_filter)/launch/include/filter.launch.xml">
+		<arg name="nodelet" value="false" />
+	</include>
+</launch>

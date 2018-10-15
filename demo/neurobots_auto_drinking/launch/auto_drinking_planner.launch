@@ -1,0 +1,32 @@
+<launch>  
+	<group ns="iiwa">
+	<!-- By default, we are not in debug mode -->
+	  	<arg name="debug" default="false" />
+	  	
+	  	<param name="move_group/trajectory_execution/execution_duration_monitoring" value="false" />
+	  	<param name="move_group/plan_execution/max_replan_attempts" value="100" />
+	  	<param name="move_group/ompl/minimum_waypoint_count" value="10" />
+	  	<param name="move_group/max_sampling_attempts" value="200" />
+
+		<include file="$(find iiwa_sdh2_moveit_config)/launch/planning_context.launch">
+	    	<arg name="load_robot_description" value="true"/>
+	  	</include>
+	  	
+	  	<!-- If needed, broadcast static tf for robot root -->
+	    <!-- <node pkg="tf" type="static_transform_publisher" name="virtual_joint_broadcaster" args="0 0 0 0 0 0 iiwa_0_link iiwa/iiwa_0_link 100" /> -->
+	    <!-- <node pkg="tf" type="static_transform_publisher" name="virtual_joint_broadcaster2" args="0 0 0 0 0 0 /iiwa/base_link base_link_iiwa 100" /> -->
+	  	
+	  	<include file="$(find iiwa_sdh2_moveit_config)/launch/move_group.launch">
+	    	<arg name="allow_trajectory_execution" value="true"/>
+	    	<arg name="fake_execution" value="false"/>
+	    	<arg name="info" value="true"/>
+	    	<arg name="debug" value="$(arg debug)"/>
+	  	</include>
+	    
+	    <node pkg="auto_drinking_planner" name="auto_drinking_planner" type="auto_drinking_planner"  output="screen" /> 
+	    <!-- <param name="robot" type="str" value="IIWA" />
+        <param name="gripperIIWA" type="str" value="Schunk_Hand" />
+
+	    <node pkg="kuka_moveit_controller" name="kuka_moveit_controller" type="kuka_moveit_controller" /> -->
+	</group>
+</launch>

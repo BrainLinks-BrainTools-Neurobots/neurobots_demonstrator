@@ -1,0 +1,41 @@
+controller_list:
+  - name: fake_omnirob_lbr_controller
+    joints:
+      - base_x_joint
+      - base_y_joint
+      - base_theta_joint
+      - lbr_1_joint
+      - lbr_2_joint
+      - lbr_3_joint
+      - lbr_4_joint
+      - lbr_5_joint
+      - lbr_6_joint
+      - lbr_7_joint
+  - name: fake_omnirob_lbr_sdh_controller
+    joints:
+      - base_x_joint
+      - base_y_joint
+      - base_theta_joint
+      - lbr_1_joint
+      - lbr_2_joint
+      - lbr_3_joint
+      - lbr_4_joint
+      - lbr_5_joint
+      - lbr_6_joint
+      - lbr_7_joint
+      - sdh2_finger_22_joint
+      - sdh2_finger_23_joint
+      - sdh2_knuckle_joint
+      - sdh2_finger_12_joint
+      - sdh2_finger_13_joint
+      - sdh2_thumb_2_joint
+      - sdh2_thumb_3_joint
+  - name: fake_sdh_controller
+    joints:
+      - sdh2_finger_22_joint
+      - sdh2_finger_23_joint
+      - sdh2_knuckle_joint
+      - sdh2_finger_12_joint
+      - sdh2_finger_13_joint
+      - sdh2_thumb_2_joint
+      - sdh2_thumb_3_joint

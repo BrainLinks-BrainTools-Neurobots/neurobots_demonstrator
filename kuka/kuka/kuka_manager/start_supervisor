@@ -1,0 +1,42 @@
+#!/bin/bash
+# the first argument needs to be the ip of the ROS MASTER
+if [ $# -ne "1" ]
+then
+    echo
+    echo "Usage: `basename $0` <ROS master IP>"
+    echo
+    exit -99    
+fi
+MASTERIP=$1
+
+#this finds the own IP that is assigned in the 192.168.42. subnet
+#MYIP=`ifconfig | grep "inet addr:" | grep "192.168.42" | cut -d: -f2 | awk '{ print $1}'`
+MYIP=`ip addr| grep "inet" | grep "192.168.42" | cut -d: -f2 |awk '{ print $2}' | sed 's/\/24//g'`
+if [[ -z ${MYIP} ]];
+then 
+    echo 
+    echo
+    echo "ERROR: YOU HAVE NO IP ASSIGNED IN THE 192.168.42. SUBNET!"
+    echo "==> EXITING!"
+    echo
+    echo
+    exit -99
+else
+    echo
+    export ROS_IP=${MYIP}
+    echo "Exporting your ROS_IP as "${MYIP}
+    export ROS_MASTER_URI="http://"${MASTERIP}":11311"
+    echo "Exporting your ROS_MASTER_URI as http://"${MASTERIP}":11311"
+    echo
+fi
+
+
+echo "starting screen"
+screen -S supervisor -c ./screenconfig-supervisor -d -m
+sleep 3.0
+
+echo "starting rviz"
+screen -p 0 -S supervisor -X eval 'stuff "rosrun rviz rviz\015"'
+sleep 0.5
+
+screen -r

@@ -1,0 +1,13 @@
+simtrack/model_names:
+#- ros_hydro
+- redcup21
+- cupletters
+#- cupletters5
+#- red_cup_final
+- waterbottle
+
+simtrack/model_types:
+- cup
+- cup
+- bottle
+

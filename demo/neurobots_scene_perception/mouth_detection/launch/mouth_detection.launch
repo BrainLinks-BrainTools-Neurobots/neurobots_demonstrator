@@ -1,0 +1,9 @@
+<launch>
+	<arg name="machine" default="localhost" />
+	<node pkg="mouth_detection" name="mouth_detect" type="mouth_detect" output="screen" machine="$(arg machine)">
+		<param name="camera_image_topic" value="/face_camera/depth_registered/camera_info" />
+		<param name="camera_rgb_topic" value="/face_camera/rgb/image_raw" />
+		<param name="camera_depth_topic" value="/face_camera/depth_registered/image_raw" />
+		<param name="camera_rgb_frame" value="face_camera_rgb_optical_frame" />
+	</node>
+</launch>

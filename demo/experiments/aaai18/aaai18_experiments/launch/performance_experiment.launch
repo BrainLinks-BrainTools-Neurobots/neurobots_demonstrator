@@ -1,0 +1,3 @@
+<launch>	
+	<node name="performance_experiments_master" pkg="aaai18_experiments" type="performance_experiments.py" output="screen"/>
+</launch>

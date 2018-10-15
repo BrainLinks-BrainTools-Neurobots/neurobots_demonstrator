@@ -1,0 +1,29 @@
+<launch>
+  	<!-- By default, we are not in debug mode -->
+  	<arg name="debug" default="false" />
+  	
+  	<param name="/move_group/trajectory_execution/execution_duration_monitoring" value="false" />
+  	<param name="/move_group/plan_execution/max_replan_attempts" value="100" />
+  	<param name="/move_group/ompl/minimum_waypoint_count" value="10" />
+  	<param name="/move_group/max_sampling_attempts" value="200" />
+  	
+  	<!--node name="vrep" pkg="vrep" type="start_vrep" respawn="false" output="screen"/ -->
+
+	<include file="$(find omnirob_moveit_config)/launch/planning_context.launch">
+    	<arg name="load_robot_description" value="true"/>
+  	</include>
+  	
+  	<!-- If needed, broadcast static tf for robot root -->
+    <node pkg="tf" type="static_transform_publisher" name="virtual_joint_broadcaster" args="0 0 0 0 0 0 world base_link 100" />
+  	
+  	<include file="$(find omnirob_moveit_config)/launch/move_group.launch">
+    	<arg name="allow_trajectory_execution" value="true"/>
+    	<arg name="fake_execution" value="false"/>
+    	<arg name="info" value="true"/>
+    	<arg name="debug" value="$(arg debug)"/>
+  	</include>
+  	
+  	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+  	
+  		
+</launch>

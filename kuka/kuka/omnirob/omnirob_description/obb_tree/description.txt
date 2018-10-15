@@ -1,0 +1,29 @@
+# define each group by adding the corresponding links. 
+# If you want to use a defined group add a @ in front of the name
+
+#sdh2
+sdh2_finger_1=sdh2_finger_11_link,sdh2_finger_12_link,sdh2_finger_13_link
+sdh2_finger_2=sdh2_finger_21_link,sdh2_finger_22_link,sdh2_finger_23_link
+sdh2_thumb=sdh2_thumb_1_link,sdh2_thumb_2_link,sdh2_thumb_3_link
+sdh2=sdh2_palm_link,@sdh2_finger_1,@sdh2_finger_2,@sdh2_thumb
+
+#lbr
+lbr_base=lbr_0_link
+lbr_lower=lbr_1_link,lbr_2_link,lbr_3_link
+lbr_upper=lbr_4_link,lbr_5_link,lbr_6_link,lbr_7_link
+lbr=@lbr_base,@lbr_lower,@lbr_upper
+arm/dynamic=@lbr,@sdh2
+
+#camera
+pole_camera=pole_camera_link
+
+#pole
+pole_lower=pole_base_link
+pole_top=pole_top_link,pole_top2_link,@pole_camera
+pole=@pole_lower,@pole_top
+
+#base and pole (static)
+base/static=base_link,@pole
+
+#robot
+robot/dynamic=@arm,@base

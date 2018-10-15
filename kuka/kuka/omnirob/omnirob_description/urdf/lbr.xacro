@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<robot name="lbr" xmlns:xacro="http://ros.org/wiki/xacro">
+  	<xacro:include filename="$(find omnirob_description)/urdf/xacro/lbr_only.urdf.xacro"/>
+	
+	<xacro:lbr_only name="lbr">
+	</xacro:lbr_only>
+</robot>

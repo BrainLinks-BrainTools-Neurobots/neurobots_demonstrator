@@ -1,0 +1,19 @@
+
+<launch>
+	<!-- Define Parameter storing the namespace of the omnirob robot -->
+<!--	<param name="ns_prefix_robot" value="omnirob_lbr/" /> -->
+<!-- 	<param name="ns_iiwa_robot" value="iiwa/" /> -->
+
+	<!-- Define Parameter storing the name of the robot description parameter -->
+<!-- 	<param name="robot_description_robot" value="/omnirob_lbr/robot_description" /> -->
+<!-- 	<param name="robot_description_iiwa" value="/iiwa/robot_description" /> -->
+<!-- 	<param name="robot_description" textfile="$(find omnirob_description)/urdf/omnirob_lbr_wsg.urdf" /> -->
+	
+	<group ns="iiwa">
+		<param name="tf_prefix" value="iiwa" />
+		<param name="robot_description" textfile="$(find iiwa_description)/urdf/iiwa.urdf" />
+
+		<node name="iiwa_robot_state_publisher" pkg="robot_state_publisher" type="state_publisher">
+		</node>
+	</group>
+</launch>

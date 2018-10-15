@@ -1,0 +1,19 @@
+<launch>
+
+	<arg name="base_prismatic_joints" default="false" />
+
+	<node pkg="kuka_manager" type="kuka_manager" name="kuka_manager" output="screen">
+		<param name="robot_name" type="str" value="Omnirob" />
+		<param name="base_prismatic_joints" value="$(arg base_prismatic_joints)" />
+		<param name="host" type="str" value="localhost" />
+		<param name="portFrontLaser" type="int" value="34791" />
+		<param name="portRearLaser" type="int" value="34792" />
+		<param name="portOdometry" type="int" value="34789" />
+		<param name="portFrontLaser" type="int" value="34791" />
+		<param name="portRearLaser" type="int" value="34792" />
+		<param name="portOdometry" type="int" value="34789" />
+	</node>
+
+	<node pkg="omnirob_java_controller" type="start_controller" name="omnirob_java_controller" output="screen">
+	</node>
+</launch>

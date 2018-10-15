@@ -1,0 +1,4 @@
+<launch>
+	<arg name="sensor_file" default="vrep" />
+	<rosparam command="load" file="$(find omnirob_moveit_config)/config/$(arg sensor_file)_sensors.yaml"  />
+</launch>

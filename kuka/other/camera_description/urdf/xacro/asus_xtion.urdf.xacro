@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+	xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+	xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+	xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<xacro:include filename="$(find camera_description)/urdf/xacro/asus_xtion_only.urdf.xacro"/>
+
+	<xacro:macro name="asus_xtion" params="name parent *origin">
+		<joint name="${name}_base_joint" type="fixed">
+			<parent link="${parent}" />
+			<child link="${name}_link" />
+			<insert_block name="origin" />
+		</joint>
+
+		<xacro:asus_xtion_only name="${name}"></xacro:asus_xtion_only>
+	</xacro:macro>
+
+</robot>

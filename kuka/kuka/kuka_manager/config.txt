@@ -1,0 +1,7 @@
+OmnirobControllerPort 50000
+OmnirobPublisherPort 50002
+OmnirobReceiverPort 50004
+OmnirobPlatformPublisherPort 50006
+IIWAControllerPort 50100
+IIWAPublisherPort 50102
+IIWAReceiverPort 50104

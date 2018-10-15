@@ -1,0 +1,37 @@
+<launch>
+	<arg name="calibration" default="false"/> 
+	<arg name="calibration_camera_name" default="shelf"/>
+	
+	<group unless="$(arg calibration)">
+
+		<!-- Start first camera -->
+		<include file="$(find neurobots_launch)/launch/camera_perception/shelf_left_camera.launch" />
+		
+		<!-- Start second camera -->
+		<include file="$(find neurobots_launch)/launch/camera_perception/shelf_right_camera.launch" />
+		
+		<!-- Start third camera -->
+		<include file="$(find neurobots_launch)/launch/camera_perception/face_camera.launch" />
+
+		<!-- Start fourth camera -->
+		<include file="$(find neurobots_launch)/launch/camera_perception/omnirob_camera.launch" />
+		
+		<!-- Start fifth camera -->
+<!-- 		<include file="$(find neurobots_launch)/launch/camera_perception/table_camera.launch" /> -->
+
+		<!-- Start static transform publishers -->
+		<include file="$(find neurobots_launch)/launch/camera_perception/transformations.launch" />
+
+	</group>
+
+	<group if="$(arg calibration)">
+		
+		<!-- Start camera "calibration_camera_name"-->
+		<include file="$(find neurobots_launch)/launch/camera_perception/$(arg calibration_camera_name)_camera.launch" />
+	
+	</group>
+
+<!-- 	<group ns="mouth_detection"> -->
+<!-- 	    <include file="$(find mouth_detection)/launch/mouth_detection.launch" /> -->
+<!-- 	</group> -->
+</launch>

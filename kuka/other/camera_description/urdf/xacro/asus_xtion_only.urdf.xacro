@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+	xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+	xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+	xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<material name="asus_xtion_gray">
+		<color rgba="0.6 0.6 0.6 1.0" />
+	</material>
+
+	<xacro:macro name="asus_xtion_only" params="name">
+		<link name="${name}_depth_frame"></link>
+		<link name="${name}_rgb_frame"></link>
+		<link name="${name}_depth_optical_frame"></link>
+		<link name="${name}_rgb_optical_frame"></link>
+
+		<link name="${name}_link">
+			<visual>
+				<geometry>
+					<box size="0.04 0.18 0.048" />
+				</geometry>
+				<origin xyz="0 0 0" />
+				<material name="asus_xtion_gray" />
+			</visual>
+			<collision>
+				<geometry>
+					<box size="0.04 0.18 0.048" />
+				</geometry>
+				<origin xyz="0 0 0" />
+			</collision>
+		</link>
+
+		<joint name="${name}_joint1" type="fixed">
+			<parent link="${name}_link" />
+			<child link="${name}_depth_frame" />
+			<origin xyz="0 0.049 0.013" rpy="0 0 0" />
+		</joint>
+
+		<joint name="${name}_joint2" type="fixed">
+			<parent link="${name}_link" />
+			<child link="${name}_rgb_frame" />
+			<origin xyz="0 0.022 0.013" rpy="0 0 0" />
+		</joint>
+
+		<joint name="${name}_joint3" type="fixed">
+			<parent link="${name}_depth_frame" />
+			<child link="${name}_depth_optical_frame" />
+			<origin xyz="0 0 0" rpy="-1.57 0 -1.57" />
+		</joint>
+
+		<joint name="${name}_joint4" type="fixed">
+			<parent link="${name}_rgb_frame" />
+			<child link="${name}_rgb_optical_frame" />
+			<origin xyz="0 0 0" rpy="-1.57 0 -1.57" />
+		</joint>
+	</xacro:macro>
+
+</robot>

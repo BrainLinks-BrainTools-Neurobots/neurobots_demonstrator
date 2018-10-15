@@ -1,0 +1,14 @@
+controller_list:
+ - name: iiwa
+   action_ns: follow_joint_trajectory
+   type: FollowJointTrajectory
+   default: true
+   joints:
+     - iiwa_base_joint
+     - iiwa_1_joint
+     - iiwa_2_joint
+     - iiwa_3_joint
+     - iiwa_4_joint
+     - iiwa_5_joint
+     - iiwa_6_joint
+     - iiwa_7_joint

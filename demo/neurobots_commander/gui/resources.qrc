@@ -1,0 +1,29 @@
+<RCC>
+  <qresource prefix="img">
+    <file>img/icon.png</file>
+  </qresource>
+  <qresource prefix="icons">
+    <file>img/icons/clear.svg</file>
+    <file>img/icons/lock.svg</file>
+    <file>img/icons/close.svg</file>
+    <file>img/icons/25-Black1.png</file>
+    <file>img/icons/25-Blue1.png</file>
+    <file>img/icons/25-Blue2.png</file>
+    <file>img/icons/25-Blue3.png</file>
+    <file>img/icons/25-Gray1.png</file>
+    <file>img/icons/25-Green1.png</file>
+    <file>img/icons/25-Green2.png</file>
+    <file>img/icons/25-Green3.png</file>
+    <file>img/icons/25-Mauve1.png</file>
+    <file>img/icons/25-Mauve2.png</file>
+    <file>img/icons/25-Orange1.png</file>
+    <file>img/icons/25-Orange2.png</file>
+    <file>img/icons/25-Pink1.png</file>
+    <file>img/icons/25-Purple1.png</file>
+    <file>img/icons/25-Red1.png</file>
+    <file>img/icons/25-Red2.png</file>
+    <file>img/icons/25-White1.png</file>
+    <file>img/icons/25-Yellow1.png</file>
+    <file>img/icons/25-Yellow2.png</file>
+  </qresource>
+</RCC>

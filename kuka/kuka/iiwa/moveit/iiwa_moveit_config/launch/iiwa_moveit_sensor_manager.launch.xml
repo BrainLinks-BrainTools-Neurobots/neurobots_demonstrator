@@ -1,0 +1,6 @@
+<launch>
+       <param name="octomap_frame" type="string" value="odom" />
+       <param name="octomap_resolution" type="double" value="0.025" />
+       <param name="max_range" type="double" value="2.0" />
+       <rosparam command="load" file="$(find iiwa_moveit_config)/config/sensors.yaml" />
+</launch>

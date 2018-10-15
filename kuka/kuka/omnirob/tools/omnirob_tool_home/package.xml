@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<package>
+  <name>omnirob_tool_home</name>
+  <version>0.0.0</version>
+  <description>The omnirob_tool_home package</description>
+
+  <maintainer email="Aklinger@dk-netz.de">Andreas Kuhner</maintainer>
+  <license>BSD</license>
+</package>

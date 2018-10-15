@@ -1,0 +1,28 @@
+<launch>
+	<arg name="device_id" default="#2" />
+	
+	<include file="$(find neurobots_launch)/launch/machines/machines.launch" />
+	<!-- Starts the camera -->
+	<!-- <include file="$(find simtrack_nodes)/launch/camera_xtion.launch" /> -->
+
+	<arg name="use_camera_toggle_mode" value="true" />
+	<arg name="camera_suffix" value="_bridge" />
+
+	<param name="camera/driver/color_mode" value="5" /> <!-- mode 1 = sxga/30hz, "hi-res" -->
+	<!-- <param name="/omnirob_camera/driver/data_skip" value="10" /> -->
+
+
+	<include file="$(find neurobots_launch)/launch/camera_perception/openni2/openni2.launch">
+		<arg name="depth_registration" value="true" />
+		<arg name="device_id" default="$(arg device_id)" /> <!--1403180090 -->
+		<arg name="camera" value="omnirob_camera" />
+		<arg name="machine" value="omnirob-on-board" />
+		<arg name="rgb_camera_info_url" value="package://neurobots_calibration/calibration_files/rgb_omnirob_camera.yaml" />
+		<arg name="depth_camera_info_url" value="package://neurobots_calibration/calibration_files/depth_omnirob_camera.yaml" />
+	</include>
+
+	<node if="$(arg use_camera_toggle_mode)" name="omnirob_camera_control" type="omnirob_camera_control" pkg="scene_perception" machine="omnirob-on-board" />
+	<!-- <node name="start_table_camera" type="start_table_camera" pkg="neurobots_launch" machine="cube1" /> -->
+
+	<!-- <node pkg="tf" type="static_transform_publisher" name="marker_to_cup_publisher" args="0 0.12 0 0.707107 0.000000 0.000000 0.707107 /omnirob_camera/simtrack/ros_hydro /omnirob_camera/simtrack/cup_letters 100" /> -->
+</launch>

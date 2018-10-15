@@ -1,0 +1,30 @@
+general:
+    execute_motion: true
+    use_shortcuts: true
+    verbose: true
+    visualize: true
+    problem_definition: omnirob_pouring       #tray_dual_arm_omnirob_iiwa, single_arm_omnirob
+    connected_to_vrep: false
+    start_ros_spinner: true
+    start_ros_publishers: true
+    start_ros_subscribers: true
+    one_image_mode: 0 #one image mode (use service client to get new data)
+    use_collision_detection: true
+    use_trajectory_optimization: false
+    use_path_database: false
+planning:
+    max_planning_time: 3
+execution:
+    mode: 2
+octomap:
+    resolution: 0.025
+    prob_hit: 0.7
+    prob_miss: 0.4
+    clamping_threshold_min: 0.12
+    clamping_threshold_max: 0.97
+topics:
+    camera_depth: /omnirob_camera_bridge/depth_registered_filtered/image_raw
+    camera_depth_info: /omnirob_camera_bridge/depth_registered_filtered/camera_info
+    camera_prefix: omnirob_camera
+constraint:
+    type: xyzrpy

@@ -1,0 +1,9 @@
+<launch>
+	<!--env name="ROSCONSOLE_CONFIG_FILE" value="$(find wsg_gripper)/log.conf"/ -->
+	<!--env name="ROSCONSOLE_FORMAT" value="[${severity}] [${time}]: ${message}"/ -->
+	<arg name="close_on_start" default="false" />
+	<arg name="debug" default="false" />
+	<arg unless="$(arg debug)" name="launch_prefix" value="" />
+	<arg if="$(arg debug)" name="launch_prefix" value="/usr/bin/gdb -ex run -args" />
+	<node pkg="wsg_gripper" type="driver" name="wsg_driver" respawn="true" output="screen" launch-prefix="$(arg launch_prefix)" args="$(arg close_on_start)"/>
+</launch>

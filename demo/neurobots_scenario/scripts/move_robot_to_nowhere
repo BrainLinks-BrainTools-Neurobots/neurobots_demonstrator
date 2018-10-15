@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rosservice call /neurobots_database/debug/set_string "name: 'omnirob'       
+attribute: 'at'
+value: 'nowhere'
+send_change: true"

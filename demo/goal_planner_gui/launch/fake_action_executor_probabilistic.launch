@@ -1,0 +1,4 @@
+<launch>
+	<!-- fake action executor -->
+	<node name="fake_action_executor" pkg="goal_planner_gui" type="fake_action_executor_node.py" args="0.6 1 10" output="screen"/>
+</launch>

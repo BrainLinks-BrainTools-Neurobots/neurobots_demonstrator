@@ -1,0 +1,5 @@
+#!/bin/bash
+name=`cat /proc/bus/input/devices | grep -A 10 "RumblePad" | grep Handlers | cut -d' ' -f3`
+export ROS_NAMESPACE=$1
+rosparam set joy_node/dev /dev/input/$name
+rosrun joy joy_node

@@ -1,0 +1,6 @@
+<launch>
+	<!-- gui --> 
+	<arg name="auto" default="" />
+	<node name="goal_generation_planner_gui" pkg="goal_planner_gui" type="start_goal_planner_gui.py"
+	args="-g $(find neurobots_scenario)/iros1-domain.pddl $(find neurobots_scenario)/iros1.ref $(arg auto) -ros -it /shelf_left_camera/rgb/image_raw /shelf_right_camera/rgb/image_raw /omnirob_camera_bridge/rgb/image_rect_color /face_camera/rgb/image_raw" output="screen" required="true"/> 
+</launch>

@@ -1,0 +1,10 @@
+<launch>
+
+	<group ns="iiwa">
+		<param name="tf_prefix" value="iiwa" />
+		<include file="$(find kuka_manager)/launch/iiwa_manager.launch">
+		</include>
+	</group>
+
+	<include file="$(find kuka_manager)/launch/iiwa_description.launch" />
+</launch>

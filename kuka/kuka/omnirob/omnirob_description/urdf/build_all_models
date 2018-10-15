@@ -1,0 +1,9 @@
+#!/bin/bash
+
+rosrun xacro xacro.py -o lbr_sdh2.urdf lbr_sdh2.xacro
+rosrun xacro xacro.py -o lbr.urdf lbr.xacro
+rosrun xacro xacro.py -o omnirob.urdf omnirob.xacro
+rosrun xacro xacro.py -o omnirob_lbr_sdh2.urdf omnirob_lbr_sdh2.xacro
+rosrun xacro xacro.py -o omnirob_lbr_wsg.urdf omnirob_lbr_wsg.xacro
+rosrun xacro xacro.py -o omnirob_prm_planner.urdf omnirob_prm_planner.xacro
+rosrun xacro xacro.py -o omnirob_lbr_sdh2_prm_planner.urdf omnirob_lbr_sdh2_prm_planner.xacro

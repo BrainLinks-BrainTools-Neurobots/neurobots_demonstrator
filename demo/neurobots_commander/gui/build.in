@@ -1,0 +1,7 @@
+#!/bin/bash
+
+which pyuic4 >/dev/null 2>&1 || { echo "To use neurobots_commander gui you need to install pyuic4 (sudo apt-get install pyqt4-dev-tools qt4-designer)."; exit 0; }
+which pyrcc4 >/dev/null 2>&1 || { echo "To use neurobots_commander gui you need to install pyrcc4 (sudo apt-get install pyqt4-dev-tools qt4-designer)."; exit 0; }
+
+pyuic4 -o @CMAKE_CURRENT_SOURCE_DIR@/gui/gui.py @CMAKE_CURRENT_SOURCE_DIR@/gui/gui.ui
+pyrcc4 -o @CMAKE_CURRENT_SOURCE_DIR@/gui/resources_rc.py @CMAKE_CURRENT_SOURCE_DIR@/gui/resources.qrc

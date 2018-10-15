@@ -1,0 +1,389 @@
+<?xml version="1.0"?>
+<robot xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor" xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller" xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<xacro:include filename="$(find sdh2_description)/urdf/xacro/sdh.gazebo.xacro" />
+	<xacro:include filename="$(find sdh2_description)/urdf/xacro/sdh.transmission.xacro" />
+	<xacro:include filename="$(find sdh2_description)/urdf/xacro/materials.urdf.xacro" />
+
+	<xacro:macro name="sdh2" params="name">
+
+		<link name="${name}_adapter_link">
+			<visual>
+				<geometry>
+					<cylinder length="0.028" radius="0.055" />
+				</geometry>
+				<origin xyz="0 0 0.014" rpy="0 0 0" />
+				<material name="Grey" />
+			</visual>
+			<collision>
+				<geometry>
+					<cylinder length="0.028" radius="0.055" />
+				</geometry>
+				<origin xyz="0 0 0.014" rpy="0 0 0" />
+			</collision>
+		</link>
+
+		<!-- adapter joint -->
+		<joint name="${name}_adapter_joint" type="fixed">
+			<origin xyz="0 0 0.028" rpy="0 0 0" />
+			<parent link="${name}_adapter_link" />
+			<child link="${name}_palm_link" />
+		</joint>
+
+		<link name="${name}_palm_link">
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<mass value="1" />
+				<inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+			</inertial>
+
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/palm.stl" />
+				</geometry>
+				<material name="Schunk/LightGrey" />
+			</visual>
+
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/palm_low_res.stl" />
+				</geometry>
+			</collision>
+		</link>
+
+		<!-- grasp joint -->
+		<joint name="${name}_grasp_joint" type="fixed">
+			<origin xyz="-0.012 0 0.15" rpy="0 0 0" />
+			<parent link="${name}_palm_link" />
+			<child link="${name}_grasp_link" />
+		</joint>
+
+		<link name="${name}_grasp_link" />
+
+		<!-- tip joint -->
+		<joint name="${name}_tip_joint" type="fixed">
+			<origin xyz="-0.012 0 0.22" rpy="0 0 0" />
+			<parent link="${name}_palm_link" />
+			<child link="${name}_tip_link" />
+		</joint>
+
+		<link name="${name}_tip_link" />
+
+		<!-- push joint -->
+		<joint name="${name}_push_joint" type="fixed">
+			<origin xyz="0 0 0.25" rpy="0 0 0" />
+			<parent link="${name}_palm_link" />
+			<child link="${name}_push_link" />
+		</joint>
+
+		<link name="${name}_push_link" />
+
+
+		<!-- finger1 -->
+		<!-- joint between sdh_palm_link and sdh_finger_11_link -->
+		<joint name="${name}_knuckle_joint" type="revolute">
+			<origin xyz="0.01905 0.033 0.0745" rpy="0 0 3.14159265" />
+			<parent link="${name}_palm_link" />
+			<child link="${name}_finger_11_link" />
+			<axis xyz="0 0 1" />
+			<dynamics damping="1" />
+			<limit effort="100" lower="0" upper="1.570796327" velocity="5" />
+		</joint>
+
+		<link name="${name}_finger_11_link">
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<mass value="0.1" />
+				<inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+			</inertial>
+
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/knuckle.stl" />
+				</geometry>
+				<material name="Schunk/LightGrey" />
+			</visual>
+
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/knuckle_low_res.stl" />
+				</geometry>
+			</collision>
+		</link>
+
+		<!-- joint between sdh_finger_11_link and sdh_finger_12_link -->
+		<joint name="${name}_finger_12_joint" type="revolute">
+			<origin xyz="0 0 0.0165" rpy="0 0 0" />
+			<parent link="${name}_finger_11_link" />
+			<child link="${name}_finger_12_link" />
+			<axis xyz="0 1 0" />
+			<dynamics damping="1" />
+			<limit effort="100" lower="-1.570796327" upper="1.570796327" velocity="5" />
+		</joint>
+
+		<link name="${name}_finger_12_link">
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<mass value="0.1" />
+				<inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+			</inertial>
+
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/finger.stl" />
+				</geometry>
+				<material name="Schunk/LightGrey" />
+			</visual>
+
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/finger_low_res.stl" />
+				</geometry>
+			</collision>
+		</link>
+
+		<!-- joint between sdh_finger_12_link and sdh_finger_13_link -->
+		<joint name="${name}_finger_13_joint" type="revolute">
+
+			<origin xyz="0 0 0.0865" rpy="0 0 0" />
+			<parent link="${name}_finger_12_link" />
+			<child link="${name}_finger_13_link" />
+			<axis xyz="0 1 0" />
+			<dynamics damping="1" />
+			<limit effort="100" lower="-1.570796327" upper="1.570796327" velocity="5" />
+		</joint>
+
+		<link name="${name}_finger_13_link">
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<mass value="0.1" />
+				<inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+			</inertial>
+
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/finger_tip.stl" />
+				</geometry>
+				<material name="Schunk/LightGrey" />
+			</visual>
+
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/finger_tip_low_res.stl" />
+				</geometry>
+			</collision>
+		</link>
+
+		<!-- finger2 -->
+		<!-- joint between sdh_palm_link and sdh_finger_21_link -->
+		<joint name="${name}_finger_21_joint" type="revolute">
+			<mimic joint="${name}_knuckle_joint" multiplier="1" offset="0" />
+			<origin xyz="0.01905 -0.033 0.0745" rpy="0 0 3.14159265" />
+			<parent link="${name}_palm_link" />
+			<child link="${name}_finger_21_link" />
+			<axis xyz="0 0 -1" />
+			<dynamics damping="1" />
+			<limit effort="100" lower="0" upper="1.570796327" velocity="5" />
+		</joint>
+
+		<link name="${name}_finger_21_link">
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<mass value="0.1" />
+				<inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+			</inertial>
+
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/knuckle.stl" />
+				</geometry>
+				<material name="Schunk/LightGrey" />
+			</visual>
+
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/knuckle_low_res.stl" />
+				</geometry>
+			</collision>
+		</link>
+
+		<!-- joint between sdh_finger_21_link and sdh_finger_22_link -->
+		<joint name="${name}_finger_22_joint" type="revolute">
+			<origin xyz="0 0 0.0165" rpy="0 0 0" />
+			<parent link="${name}_finger_21_link" />
+			<child link="${name}_finger_22_link" />
+			<axis xyz="0 1 0" />
+			<dynamics damping="1" />
+			<limit effort="100" lower="-1.570796327" upper="1.570796327" velocity="5" />
+		</joint>
+
+		<link name="${name}_finger_22_link">
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<mass value="0.1" />
+				<inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+			</inertial>
+
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/finger.stl" />
+				</geometry>
+				<material name="Schunk/LightGrey" />
+			</visual>
+
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/finger_low_res.stl" />
+				</geometry>
+			</collision>
+		</link>
+
+		<!-- joint between sdh_finger_22_link and sdh_finger_23_link -->
+		<joint name="${name}_finger_23_joint" type="revolute">
+			<origin xyz="0 0 0.0865" rpy="0 0 0" />
+			<parent link="${name}_finger_22_link" />
+			<child link="${name}_finger_23_link" />
+			<axis xyz="0 1 0" />
+			<dynamics damping="1" />
+			<limit effort="100" lower="-1.570796327" upper="1.570796327" velocity="5" />
+		</joint>
+
+		<link name="${name}_finger_23_link">
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<mass value="0.1" />
+				<inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+			</inertial>
+
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/finger_tip.stl" />
+				</geometry>
+				<material name="Schunk/LightGrey" />
+			</visual>
+
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/finger_tip_low_res.stl" />
+				</geometry>
+			</collision>
+		</link>
+
+		<!-- thumb -->
+		<!-- joint between sdh_palm_link and sdh_thumb_1_link -->
+		<joint name="${name}_thumb_1_joint" type="fixed">
+			<origin xyz="-0.03811 0 0.0745 " rpy="0 0 0" />
+			<parent link="${name}_palm_link" />
+			<child link="${name}_thumb_1_link" />
+		</joint>
+
+		<link name="${name}_thumb_1_link">
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<mass value="0.1" />
+				<inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+			</inertial>
+
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/knuckle.stl" />
+				</geometry>
+				<material name="Schunk/LightGrey" />
+			</visual>
+
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/knuckle_low_res.stl" />
+				</geometry>
+			</collision>
+		</link>
+
+		<!-- joint between sdh_thumb_1_link and shd_thumb_2_link -->
+		<joint name="${name}_thumb_2_joint" type="revolute">
+			<origin xyz="0 0 0.0165" rpy="0 0 0" />
+			<parent link="${name}_thumb_1_link" />
+			<child link="${name}_thumb_2_link" />
+			<axis xyz="0 1 0" />
+			<dynamics damping="1" />
+			<limit effort="100" lower="-1.570796327" upper="1.570796327" velocity="5" />
+		</joint>
+
+		<link name="${name}_thumb_2_link">
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<mass value="0.1" />
+				<inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+			</inertial>
+
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/finger.stl" />
+				</geometry>
+				<material name="Schunk/LightGrey" />
+			</visual>
+
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/finger_low_res.stl" />
+				</geometry>
+			</collision>
+		</link>
+
+		<!-- joint between sdh_thumb_2_link and sdh_thumb_3_link -->
+		<joint name="${name}_thumb_3_joint" type="revolute">
+			<origin xyz="0 0 0.0865" rpy="0 0 0" />
+			<parent link="${name}_thumb_2_link" />
+			<child link="${name}_thumb_3_link" />
+			<axis xyz="0 1 0" />
+			<dynamics damping="1" />
+			<limit effort="100" lower="-1.570796327" upper="1.570796327" velocity="5" />
+		</joint>
+
+		<link name="${name}_thumb_3_link">
+			<inertial>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<mass value="0.1" />
+				<inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+			</inertial>
+
+			<visual>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/finger_tip.stl" />
+				</geometry>
+				<material name="Schunk/LightGrey" />
+			</visual>
+
+			<collision>
+				<origin xyz="0 0 0" rpy="0 0 0" />
+				<geometry>
+					<mesh filename="package://sdh2_description/meshes/finger_tip_low_res.stl" />
+				</geometry>
+			</collision>
+		</link>
+
+		<!-- extensions -->
+		<xacro:schunk_sdh_gazebo name="${name}" />
+		<xacro:schunk_sdh_transmission name="${name}" />
+
+	</xacro:macro>
+
+</robot>

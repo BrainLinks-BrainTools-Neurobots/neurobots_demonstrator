@@ -1,0 +1,4 @@
+<launch>
+	<arg name="controller_type" default="velocity_trajectory_controller"/>
+	<param name="omnirob_lbr/controller_type" type="str" value="$(arg controller_type)"/>
+</launch>

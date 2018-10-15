@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rosrun xacro xacro.py -o asus_xtion.urdf asus_xtion.xacro

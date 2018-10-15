@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package>
+  <name>timesync</name>
+  <version>0.0.0</version>
+  <description>The timesync package</description>
+
+  <maintainer email="sprunkc@informatik.uni-freiburg.de">Christoph Sprunk</maintainer>
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+	
+  <export>
+    <cpp lflags="-L${prefix}/lib -ltimelib" cflags="-I${prefix}/include"/>
+  </export>
+</package>

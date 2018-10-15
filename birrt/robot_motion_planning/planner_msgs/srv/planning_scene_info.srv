@@ -1,0 +1,7 @@
+float64[] env_size_x
+float64[] env_size_y
+bool show_environment_borders
+
+---
+
+bool ok

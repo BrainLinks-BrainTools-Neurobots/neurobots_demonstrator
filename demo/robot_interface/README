@@ -1,0 +1,2 @@
+To download the planner packages please call the script download_planners.sh 
+in the current directory. It the downloads the packages into the workspace.

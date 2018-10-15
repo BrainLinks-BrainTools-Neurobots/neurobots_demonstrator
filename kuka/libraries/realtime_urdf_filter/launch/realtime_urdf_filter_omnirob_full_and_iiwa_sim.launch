@@ -1,0 +1,7 @@
+<launch>
+	<include
+		file="$(find realtime_urdf_filter)/launch/include/filter.launch.xml">
+		<arg name="nodelet" value="false" />
+		<arg name="parameter_file" value="filter_parameters_omnirob_full_and_iiwa" />
+	</include>
+</launch>

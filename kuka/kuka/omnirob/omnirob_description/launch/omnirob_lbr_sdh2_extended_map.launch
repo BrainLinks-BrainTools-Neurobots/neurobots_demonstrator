@@ -1,0 +1,96 @@
+<launch>
+
+	<!-- Get package path-->
+	<!--<param name="package_path" value="$(find kuka_motion_control)" />
+	<param name="planner_package_path" value="$(find planner_statistics)" />
+	<param name="terminal_configs_path" value="$(find planning_scenarios)" />-->
+	
+	<arg name="omnirob_robot_description" default="robot_description"/>
+	<arg name="omnirob_robot_semantic" default="robot_description_semantic"/>
+	
+	<!-- Define Parameter storing the namespace of the omnirob robot -->
+	<param name="ns_prefix_robot" value="" />
+    <!-- Define Parameter storing the name of the robot description parameter -->
+	<param name="robot_description_robot" value="$(arg omnirob_robot_description)" />
+	
+	<!-- Publish map frame to base_link frame transform (usually provided by localization when planning for real robot)-->
+	<node pkg="tf" type="static_transform_publisher" name="base_frame_publisher" args="0 0 0 0 0 0 /map /base_link 100"/>
+  
+  
+	<param name="$(arg omnirob_robot_description)" textfile="$(find omnirob_description)/urdf/omnirob_lbr_sdh2_extended_wo_pole.urdf" />
+	<param name="$(arg omnirob_robot_semantic)" textfile="$(find omnirob_description)/srdf/omnirob_lbr_sdh2_wo_pole_map.srdf" />
+	
+	<!--<param name="use_gui" value="True"/>-->
+	
+	<arg name="robot" default="omnirob"/>
+	
+	<node name="$(arg robot)_joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+	  <remap from="robot_description" to="$(arg omnirob_robot_description)" />
+	  <!-- <remap from="omnirob_robot_description_semantic" to="$(arg omnirob_robot_semantic)" /> -->
+	</node>
+	
+	<node name="$(arg robot)_robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" >
+	  <remap from="robot_description" to="$(arg omnirob_robot_description)" />
+	  <!-- <remap from="omnirob_robot_description_semantic" to="$(arg omnirob_robot_semantic)" /> -->
+	</node>
+		
+	<!-- Load parameters for planner -->
+	<rosparam command="load" file="$(find planner_param_config)/planner_config/planner_parameters_omnirob.yaml"/>
+	
+	
+	<!-- +++++++++++++++++++++++++++++++  MOVEIT TOOLS +++++++++++++++++++++++++++++++++++++++++++++ -->
+	
+	
+	<!-- GDB Debug Option -->
+	<arg name="debug" default="false" />
+	<arg unless="$(arg debug)" name="launch_prefix" value="" />-->
+	<arg if="$(arg debug)" name="launch_prefix" value="gdb -x $(find moveit_config_omnirob_lbr_sdh)/launch/gdb_settings.gdb --ex run --args" />
+	
+	<!-- Verbose Mode Option -->
+	<arg name="info" default="$(arg debug)" />
+	<arg unless="$(arg info)" name="command_args" value="" />
+	<arg     if="$(arg info)" name="command_args" value="--debug" />
+
+	<!-- move_group settings -->
+	<arg name="publish_monitored_planning_scene" default="true"/>
+
+	<!-- Start the actual move_group node/action server -->
+	<node name="$(arg robot)_move_group" launch-prefix="$(arg launch_prefix)" pkg="moveit_ros_move_group" type="move_group" respawn="false" output="screen" args="$(arg command_args)">
+	  <!-- Set the display variable, in case OpenGL code is used internally -->
+	  <env name="DISPLAY" value="$(optenv DISPLAY :0)" />
+	  
+	  <remap from="robot_description" to="$(arg omnirob_robot_description)" />
+	  <!-- <remap from="omnirob_robot_description_semantic" to="$(arg omnirob_robot_semantic)" /> -->
+
+	  <!-- MoveGroup capabilities to load -->
+	  <param name="capabilities" value="move_group/MoveGroupCartesianPathService
+				      move_group/MoveGroupExecuteService
+				      move_group/MoveGroupKinematicsService
+				      move_group/MoveGroupMoveAction
+				      move_group/MoveGroupPickPlaceAction
+				      move_group/MoveGroupPlanService
+				      move_group/MoveGroupQueryPlannersService
+				      move_group/MoveGroupStateValidationService
+				      move_group/MoveGroupGetPlanningSceneService
+				      move_group/ClearOctomapService
+				      " />
+
+	  <!-- Publish the planning scene of the physical robot so that rviz plugin can know actual robot -->
+	  <param name="planning_scene_monitor/publish_planning_scene" value="$(arg publish_monitored_planning_scene)" />
+	  <param name="planning_scene_monitor/publish_geometry_updates" value="$(arg publish_monitored_planning_scene)" />
+	  <param name="planning_scene_monitor/publish_state_updates" value="$(arg publish_monitored_planning_scene)" />
+	  <param name="planning_scene_monitor/publish_transforms_updates" value="$(arg publish_monitored_planning_scene)" />
+	</node>
+	
+	<!-- Argument defining whether multiple robots are present -->
+	<arg name="multi_robot" default="false"/>
+	
+	<arg name="start_rviz_display" default="true"/>
+	
+	<group unless="$(arg multi_robot)">
+	  <group if="$(arg start_rviz_display)">
+		<node pkg="rviz" type="rviz" name="rviz" args="-d $(find kuka_motion_control)/motion_control_display.rviz" />
+	  </group>
+	</group>
+	
+</launch>

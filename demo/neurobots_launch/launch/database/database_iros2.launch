@@ -1,0 +1,7 @@
+<launch>
+	<group ns="robot_poses">
+		<rosparam command="load" file="$(find neurobots_setup_poses)/config/poses.yaml" />
+	</group>
+
+	<node name="neurobots_database" pkg="neurobots_database" type="neurobots_database_node" output="screen" args="iros2" />
+</launch>

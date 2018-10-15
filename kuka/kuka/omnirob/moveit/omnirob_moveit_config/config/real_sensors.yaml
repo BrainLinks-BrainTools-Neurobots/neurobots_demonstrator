@@ -1,0 +1,32 @@
+sensors:
+- sensor_plugin: occupancy_map_monitor/PointCloudOctomapUpdater
+  point_cloud_topic: /camera/depth/points
+  max_range: 5.0
+  point_subsample: 1
+  frame_subsample: 1
+#  self_mask:
+#    min_sensor_dist: 0.8
+#    self_see_default_padding: 0.04
+#    self_see_default_scale: 1.0
+#    self_see_links:
+#    - name: katana_internal_controlbox_link
+#    - name: katana_base_link
+#    - name: katana_motor1_pan_link
+#    - name: katana_motor2_lift_link
+#      padding: 0.06
+#    - name: katana_motor3_lift_link
+#      padding: 0.06
+#    - name: katana_motor4_lift_link
+#      padding: 0.06
+#    - name: katana_motor5_wrist_roll_link
+#      padding: 0.04
+#    - name: katana_gripper_link
+#      padding: 0.02
+#    - name: katana_l_finger_link
+#      padding: 0.02
+#    - name: katana_r_finger_link
+#      padding: 0.02
+#    - name: kurtana_baseplate_link
+#    - name: laser
+#    - name: kurtana_pole_link
+#    - name: kurtana_innerpole_stretch_link

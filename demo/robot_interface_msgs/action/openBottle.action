@@ -1,0 +1,10 @@
+#goal definition
+string fixing_robot	#omnirob / iiwa
+string turning_robot #omnirob / iiwa
+string target_object # name of the bottle
+---
+#result definition
+bool opened
+---
+#feedback
+string state

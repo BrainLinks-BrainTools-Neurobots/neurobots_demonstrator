@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- FROM: https://github.com/IDSCETHZurich/re_trajectory-generator -->
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<xacro:include filename="$(find omnirob_description)/urdf/xacro/lbr_only.urdf.xacro"/>
+
+	<xacro:macro name="lbr" params="parent name *origin">
+	
+	<xacro:lbr_only name="${name}">
+	</xacro:lbr_only>
+
+	<joint name="${parent}_base_joint" type="fixed" >
+		<origin xyz="0.42 0.18 0.655" rpy="0 0 -1.5708" />
+		<parent link="base_link" />
+		<child link="${name}_0_link" />
+	</joint>
+
+	</xacro:macro>
+
+</robot>

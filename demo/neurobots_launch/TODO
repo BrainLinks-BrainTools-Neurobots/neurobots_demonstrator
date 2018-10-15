@@ -1,0 +1,14 @@
+Calibration: Add reference frame to parameters
+
+Robot Desciption: Adapt WSG Gripper Orientation in Xacro 
+
+Simtrack: Node writing transform /map to /object into database + publish tf /map to /object
+
+Robot Interface: Write changes to database after actions are executed
+
+
+
+WSG Gripper keine Joint States
+Datenbank Robot Action Interface
+Posen bestimmen
+Erkennen ob Objekt im Greifer in simtrack für Datenbank

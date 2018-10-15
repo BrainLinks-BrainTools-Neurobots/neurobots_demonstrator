@@ -1,0 +1,10 @@
+controller_list:
+  - name: fake_omnirob_lbr_controller
+    joints:
+      - lbr_1_joint
+      - lbr_2_joint
+      - lbr_3_joint
+      - lbr_4_joint
+      - lbr_5_joint
+      - lbr_6_joint
+      - lbr_7_joint

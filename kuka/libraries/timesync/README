@@ -1,0 +1,8 @@
+This package contains the core of the TICSync library by Alastair Harrison and Paul Newman of the University of Oxford. It was provided to ALUFR for the use in First-MM in the academic context.
+
+To get a license for the software from isis innovation (academic and commercial) please see
+http://www.isis-innovation.com/licensing/6860.html
+
+The corresponding paper describing the approach is:
+Alastair Harrison and Paul Newman TICSync?: Knowing When Things Happened. In Proc. {IEEE} International Conference on Robotics and Automation (ICRA2011). Shanghai, China. May 2011
+http://www.robots.ox.ac.uk/~mobile/Papers/2011ICRA_arh.pdf

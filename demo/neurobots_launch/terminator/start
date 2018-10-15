@@ -1,0 +1,2 @@
+#!/bin/bash
+terminator -g `rospack find neurobots_launch`/terminator/terminator.config --layout=Neurobots > /dev/null 2>&1 

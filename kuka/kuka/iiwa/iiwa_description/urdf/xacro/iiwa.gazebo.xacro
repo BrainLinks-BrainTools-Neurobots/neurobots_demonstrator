@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<robot name="iiwa" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="iiwa" params="name">
+
+    <!-- Link0 -->
+    <gazebo reference="${name}_0_link">
+      <material>Gazebo/Grey</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+    </gazebo>
+
+    <!-- Link1 -->
+    <gazebo reference="${name}_1_link">
+      <material>Gazebo/Orange</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+    </gazebo>
+
+    <!-- Link2 -->
+    <gazebo reference="${name}_2_link">
+      <material>Gazebo/Orange</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+    </gazebo>
+
+    <!-- Link3 -->
+    <gazebo reference="${name}_3_link">
+      <material>Gazebo/Orange</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+    </gazebo>
+
+
+    <!-- Link4 -->
+    <gazebo reference="${name}_4_link">
+      <material>Gazebo/Orange</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+    </gazebo>
+
+    <!-- Link5 -->
+    <gazebo reference="${name}_5_link">
+      <material>Gazebo/Orange</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+    </gazebo>
+
+    <!-- Link6 -->
+    <gazebo reference="${name}_6_link">
+      <material>Gazebo/Orange</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+    </gazebo>
+
+    <!-- Link7 -->
+    <gazebo reference="${name}_7_link">
+      <material>Gazebo/Grey</material>
+      <mu1>0.2</mu1>
+      <mu2>0.2</mu2>
+    </gazebo>
+
+  </xacro:macro>
+
+</robot>
+

@@ -1,0 +1,5 @@
+database_msgs/object object
+string name
+bool send_changes
+---
+bool success
